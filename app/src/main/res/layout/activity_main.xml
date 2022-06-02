@@ -26,10 +26,6 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
 
             <TextView
                 android:layout_width="match_parent"
@@ -45,23 +41,26 @@
                 android:id="@+id/postalCode"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="100dp"
+                android:layout_marginStart="100dp"
                 android:layout_marginTop="70dp"
-                android:maxLength="6"
                 android:ems="10"
                 android:hint="Postal Code"
                 android:inputType="textCapCharacters"
-                android:textAlignment="center" />
+                android:maxLength="6"
+                android:minHeight="48dp"
+                android:textAlignment="center"
+                android:textColorHint="#757575"
+                android:autofillHints="" />
 
             <Button
 
                 android:id="@+id/searchPc"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="160dp"
+                android:layout_marginStart="160dp"
                 android:layout_marginTop="40dp"
                 android:text="Search" />
-        </LinearLayout>
+
 
 
 
