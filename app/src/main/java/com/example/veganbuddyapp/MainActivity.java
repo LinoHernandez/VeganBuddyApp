@@ -7,6 +7,8 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import android.os.Bundle;
 import android.view.MenuItem;
 
+import java.util.Objects;
+
 public class MainActivity extends AppCompatActivity {
 
     public DrawerLayout drawerLayout;
@@ -28,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
         actionBarDrawerToggle.syncState();
 
         // to make the Navigation drawer icon always appear on the action bar
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
     }
 
     // override the onOptionsItemSelected()
