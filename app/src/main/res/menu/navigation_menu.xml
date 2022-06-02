@@ -1,18 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    tools:ignore="HardcodedText">
+    xmlns:tools="http://schemas.android.com/tools">
 
     <item
         android:id="@+id/nav_account"
-        android:title="My Account" />
+        android:icon="@drawable/user"
+        android:title="@string/my_account" />
 
     <item
-        android:id="@+id/nav_settings"
-        android:title="Settings" />
+        android:id="@+id/nav_payment"
+        android:icon="@drawable/credit_card"
+        android:title="@string/settings" />
 
     <item
         android:id="@+id/nav_logout"
-        android:title="Logout" />
+        android:icon="@drawable/login"
+        android:title="@string/logout" />
 
 </menu>

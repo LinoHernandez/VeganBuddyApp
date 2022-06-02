@@ -5,9 +5,22 @@ import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.drawerlayout.widget.DrawerLayout;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+import java.util.Objects;
 
 public class MainActivity extends AppCompatActivity {
+
+    EditText postalCode;
+    Button searchPc;
+    String postalString;
 
     public DrawerLayout drawerLayout;
     public ActionBarDrawerToggle actionBarDrawerToggle;
@@ -16,6 +29,26 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+//---------------------
+        postalCode = findViewById(R.id.postalCode);
+        searchPc = findViewById(R.id.searchPc);
+        searchPc.setVisibility(View.INVISIBLE);
+        searchPc.setClickable(false);
+
+        //OnKeyListener on PostalCode TextView for enter key
+        postalCode.setOnKeyListener(new View.OnKeyListener() {
+            @Override
+            public boolean onKey(View view, int i, KeyEvent keyEvent) {
+                postalString = String.valueOf(postalCode.getText());
+                if ((keyEvent.getAction() == KeyEvent.ACTION_DOWN) &&
+                        (i == KeyEvent.KEYCODE_ENTER)) {
+                    // Perform action on key press
+                    validatePostalCode(postalString);
+                    return true;
+                }
+                return false;
+            }
+        });
 
         // drawer layout instance to toggle the menu icon to open
         // drawer and back button to close drawer
@@ -28,7 +61,27 @@ public class MainActivity extends AppCompatActivity {
         actionBarDrawerToggle.syncState();
 
         // to make the Navigation drawer icon always appear on the action bar
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
+    }
+
+    //Function to Validate the code
+    public void validatePostalCode(String postalString){
+
+        //Regression for Canadian Postal Code
+        String regex = "^(?!.*[DFIOQU])[A-VXY][0-9][A-Z] ?[0-9][A-Z][0-9]$";
+
+        Pattern pattern = Pattern.compile(regex);
+
+        Matcher matcher = pattern.matcher(postalString);
+        if(matcher.matches()){
+            searchPc.setVisibility(View.VISIBLE);
+            searchPc.setClickable(true);
+        }
+        else{
+            searchPc.setVisibility(View.INVISIBLE);
+            searchPc.setClickable(false);
+        }
+
     }
 
     // override the onOptionsItemSelected()
