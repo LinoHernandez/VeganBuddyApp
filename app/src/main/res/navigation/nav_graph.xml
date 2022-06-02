@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/profileScreen">
+
+    <fragment
+        android:id="@+id/profileScreen"
+        android:name="com.example.veganbuddyapp.ProfileScreen"
+        android:label="fragment_profile_screen"
+        tools:layout="@layout/fragment_profile_screen" />
+    <fragment
+        android:id="@+id/paymentScreen"
+        android:name="com.example.veganbuddyapp.PaymentScreen"
+        android:label="fragment_payment_screen"
+        tools:layout="@layout/fragment_payment_screen" />
+    <fragment
+        android:id="@+id/logScreen"
+        android:name="com.example.veganbuddyapp.LogScreen"
+        android:label="fragment_log_screen"
+        tools:layout="@layout/fragment_log_screen" />
+</navigation>
