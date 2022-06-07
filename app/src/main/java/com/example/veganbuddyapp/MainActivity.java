@@ -4,6 +4,8 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.drawerlayout.widget.DrawerLayout;
+
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.MenuItem;
@@ -19,7 +21,7 @@ import java.util.Objects;
 public class MainActivity extends AppCompatActivity {
 
     EditText postalCode;
-    Button searchPc;
+    Button searchPc,switchToSecondActivity;
     String postalString;
 
     public DrawerLayout drawerLayout;
@@ -62,6 +64,15 @@ public class MainActivity extends AppCompatActivity {
 
         // to make the Navigation drawer icon always appear on the action bar
         Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
+
+        //Navigation method
+        switchToSecondActivity = findViewById(R.id.nav_account);
+        switchToSecondActivity.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                switchActivities();
+            }
+        });
     }
 
     //Function to Validate the code
@@ -96,5 +107,10 @@ public class MainActivity extends AppCompatActivity {
             return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    private void switchActivities() {
+        Intent switchActivityIntent = new Intent(this, ProfilePage.class);
+        startActivity(switchActivityIntent);
     }
 }
