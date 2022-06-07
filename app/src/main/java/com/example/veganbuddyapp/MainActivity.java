@@ -23,7 +23,7 @@ import java.util.Objects;
 public class MainActivity extends AppCompatActivity {
 
     EditText postalCode;
-    Button searchPc;
+    Button searchPc,switchToSecondActivity;
     String postalString;
 
     public DrawerLayout drawerLayout;
@@ -125,5 +125,10 @@ public class MainActivity extends AppCompatActivity {
         
         return super.onOptionsItemSelected(item);
 
+    }
+
+    private void switchActivities() {
+        Intent switchActivityIntent = new Intent(this, ProfilePage.class);
+        startActivity(switchActivityIntent);
     }
 }
