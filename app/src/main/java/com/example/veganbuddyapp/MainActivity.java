@@ -21,7 +21,7 @@ import java.util.Objects;
 public class MainActivity extends AppCompatActivity {
 
     EditText postalCode;
-    Button searchPc,switchToSecondActivity;
+    Button searchPc, switchToSecondActivity;
     String postalString;
 
     public DrawerLayout drawerLayout;
@@ -64,19 +64,10 @@ public class MainActivity extends AppCompatActivity {
 
         // to make the Navigation drawer icon always appear on the action bar
         Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
-
-        //Navigation method
-        switchToSecondActivity = findViewById(R.id.nav_account);
-        switchToSecondActivity.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                switchActivities();
-            }
-        });
     }
 
     //Function to Validate the code
-    public void validatePostalCode(String postalString){
+    public void validatePostalCode(String postalString) {
 
         //Regression for Canadian Postal Code
         String regex = "^(?!.*[DFIOQU])[A-VXY][0-9][A-Z] ?[0-9][A-Z][0-9]$";
@@ -84,11 +75,10 @@ public class MainActivity extends AppCompatActivity {
         Pattern pattern = Pattern.compile(regex);
 
         Matcher matcher = pattern.matcher(postalString);
-        if(matcher.matches()){
+        if (matcher.matches()) {
             searchPc.setVisibility(View.VISIBLE);
             searchPc.setClickable(true);
-        }
-        else{
+        } else {
             searchPc.setVisibility(View.INVISIBLE);
             searchPc.setClickable(false);
         }
@@ -101,16 +91,11 @@ public class MainActivity extends AppCompatActivity {
     // to open and close the navigation
     // drawer when the icon is clicked
     @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+    public boolean onOptionsItemSelected(@NonNull MenuItem item){
 
-        if (actionBarDrawerToggle.onOptionsItemSelected(item)) {
-            return true;
-        }
-        return super.onOptionsItemSelected(item);
-    }
-
-    private void switchActivities() {
-        Intent switchActivityIntent = new Intent(this, ProfilePage.class);
-        startActivity(switchActivityIntent);
+            if (actionBarDrawerToggle.onOptionsItemSelected(item)) {
+                return true;
+            }
+            return super.onOptionsItemSelected(item);
     }
 }
