@@ -8,7 +8,12 @@
         <entry key="..\:/Users/linoj/AndroidStudioProjects/VeganBuddyApp/app/src/main/res/layout/fragment_payment_screen.xml" value="0.22826086956521738" />
         <entry key="..\:/Users/linoj/AndroidStudioProjects/VeganBuddyApp/app/src/main/res/layout/fragment_profile_screen.xml" value="0.22826086956521738" />
         <entry key="..\:/Users/linoj/AndroidStudioProjects/VeganBuddyApp/app/src/main/res/menu/navigation_menu.xml" value="0.25" />
+<<<<<<< Updated upstream
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.1182952880859375" />
+=======
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.25104166666666666" />
+        <entry key="app/src/main/res/layout/activity_profile_page.xml" value="0.36022949218750006" />
+>>>>>>> Stashed changes
       </map>
     </option>
   </component>
