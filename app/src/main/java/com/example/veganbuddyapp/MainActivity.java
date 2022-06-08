@@ -69,7 +69,7 @@ public class MainActivity extends AppCompatActivity {
         // to make the Navigation drawer icon always appear on the action bar
         Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
 
-<<<<<<< Updated upstream
+
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -87,10 +87,7 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
-=======
-        //Navigation method
-        switchToSecondActivity = findViewById(R.id.nav_account);
->>>>>>> Stashed changes
+
 
     }
 
