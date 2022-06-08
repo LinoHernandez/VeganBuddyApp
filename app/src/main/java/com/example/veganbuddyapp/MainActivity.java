@@ -80,7 +80,9 @@ public class MainActivity extends AppCompatActivity {
                     case R.id.nav_logout:
 
                     case R.id.nav_payment:
-
+                        intent = new Intent(MainActivity.this,PaymentPage.class);
+                        startActivity(intent);
+                        return true;
                     default:
                         return true;
                 }
