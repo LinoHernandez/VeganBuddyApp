@@ -56,6 +56,10 @@ public class PaymentPage extends AppCompatActivity {
                         Intent payment = new Intent(PaymentPage.this,PaymentPage.class);
                         startActivity(payment);
                         return true;
+                    case R.id.nav_menu:
+                        Intent menu = new Intent(PaymentPage.this,MainActivity.class);
+                        startActivity(menu);
+                        return true;
                     default:
                         return true;
                 }
