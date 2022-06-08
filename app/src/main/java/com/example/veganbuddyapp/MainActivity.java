@@ -3,6 +3,7 @@ package com.example.veganbuddyapp;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.content.Intent;
@@ -23,21 +24,21 @@ import java.util.Objects;
 public class MainActivity extends AppCompatActivity {
 
     EditText postalCode;
-    Button searchPc,switchToSecondActivity;
+    Button searchPc;
     String postalString;
 
     public DrawerLayout drawerLayout;
     public ActionBarDrawerToggle actionBarDrawerToggle;
-
     public NavigationView navigationView;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-//---------------------
+
+        //---------------------
         postalCode = findViewById(R.id.postalCode);
         searchPc = findViewById(R.id.searchPc);
+        navigationView = findViewById(R.id.navView);
         searchPc.setVisibility(View.INVISIBLE);
         searchPc.setClickable(false);
         navigationView = findViewById(R.id.navView);
@@ -88,14 +89,16 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+
         //Navigation method
         switchToSecondActivity = findViewById(R.id.nav_account);
+
 
 
     }
 
     //Function to Validate the code
-    public void validatePostalCode(String postalString){
+    public void validatePostalCode(String postalString) {
 
         //Regression for Canadian Postal Code
         String regex = "^(?!.*[DFIOQU])[A-VXY][0-9][A-Z] ?[0-9][A-Z][0-9]$";
@@ -103,11 +106,10 @@ public class MainActivity extends AppCompatActivity {
         Pattern pattern = Pattern.compile(regex);
 
         Matcher matcher = pattern.matcher(postalString);
-        if(matcher.matches()){
+        if (matcher.matches()) {
             searchPc.setVisibility(View.VISIBLE);
             searchPc.setClickable(true);
-        }
-        else{
+        } else {
             searchPc.setVisibility(View.INVISIBLE);
             searchPc.setClickable(false);
         }
@@ -120,7 +122,7 @@ public class MainActivity extends AppCompatActivity {
     // to open and close the navigation
     // drawer when the icon is clicked
     @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+    public boolean onOptionsItemSelected(@NonNull MenuItem item){
 
         if (actionBarDrawerToggle.onOptionsItemSelected(item)) {
 
@@ -130,10 +132,5 @@ public class MainActivity extends AppCompatActivity {
         
         return super.onOptionsItemSelected(item);
 
-    }
-
-    private void switchActivities() {
-        Intent switchActivityIntent = new Intent(this, ProfilePage.class);
-        startActivity(switchActivityIntent);
     }
 }
