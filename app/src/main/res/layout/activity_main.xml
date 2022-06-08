@@ -14,44 +14,43 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="#F8EFB7"
         android:orientation="vertical">
 
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="128dp"
-                android:gravity="center"
-                android:text="Enter a postal code to search for nearby restaurants"
-                android:textAlignment="center"
-                android:textSize="18sp"
-                android:textStyle="bold" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="128dp"
+            android:gravity="center"
+            android:text="Enter a postal code to search for nearby restaurants"
+            android:textAlignment="center"
+            android:textSize="18sp"
+            android:textStyle="bold" />
 
-            <EditText
-                android:id="@+id/postalCode"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="100dp"
-                android:layout_marginTop="70dp"
-                android:ems="10"
-                android:hint="Postal Code"
-                android:inputType="textCapCharacters"
-                android:maxLength="6"
-                android:minHeight="48dp"
-                android:textAlignment="center"
-                android:textColorHint="#757575"
-                android:autofillHints="" />
+        <EditText
+            android:id="@+id/postalCode"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="100dp"
+            android:layout_marginTop="70dp"
+            android:autofillHints=""
+            android:ems="10"
+            android:hint="Postal Code"
+            android:inputType="textCapCharacters"
+            android:maxLength="6"
+            android:minHeight="48dp"
+            android:textAlignment="center"
+            android:textColorHint="#757575" />
 
-            <Button
+        <Button
 
-                android:id="@+id/searchPc"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="160dp"
-                android:layout_marginTop="40dp"
-                android:text="Search" />
-
-
+            android:id="@+id/searchPc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="160dp"
+            android:layout_marginTop="40dp"
+            android:text="Search" />
 
 
     </LinearLayout>
