@@ -21,7 +21,6 @@ public class ProfilePage extends AppCompatActivity {
     public ActionBarDrawerToggle actionBarDrawerToggle;
     public NavigationView navigationView;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -59,7 +58,6 @@ public class ProfilePage extends AppCompatActivity {
             }
         });
     }
-<<<<<<< Updated upstream
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item){
@@ -70,6 +68,3 @@ public class ProfilePage extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 }
-=======
-}
->>>>>>> Stashed changes
