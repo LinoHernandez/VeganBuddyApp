@@ -89,10 +89,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        //Navigation method
-        switchToSecondActivity = findViewById(R.id.nav_account);
-
-
     }
 
     //Function to Validate the code
