@@ -11,4 +11,13 @@
     <string name="Payment" />
     <string name="payment">Payment</string>
     <string name="my_profile">My Profile</string>
+    <string name="password">Password</string>
+    <string name="userpassword">password</string>
+    <string name="email">email</string>
+    <string name="useremail">Email</string>
+    <string name="name">Name</string>
+    <string name="full_name">full name</string>
+    <string name="mobile_no">mobile no</string>
+    <string name="todo">TODO</string>
+    <string name="usermobile_no">Mobile No.</string>
 </resources>

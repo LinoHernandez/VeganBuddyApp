@@ -25,7 +25,6 @@
             android:layout_marginRight="20dp"
             android:breakStrategy="high_quality"
             android:fontFamily="sans-serif"
-            android:text="Password"
             android:textAlignment="center"
             android:textSize="14sp" />
 
@@ -38,6 +37,16 @@
             android:layout_marginEnd="40dp"
             android:layout_toEndOf="@+id/textPassword"
             android:ems="10"
+
+            android:hint="@string/userpassword"
+            android:inputType="textPassword"
+            android:paddingStart="20dp"
+            android:scrollIndicators="left"
+            android:textAlignment="center"
+            android:textSize="14sp"
+            tools:ignore="TouchTargetSizeCheck"
+            android:importantForAutofill="no" />
+
             android:hint="password"
             android:inputType="textPassword"
             android:paddingLeft="20dp"
@@ -45,6 +54,7 @@
             android:textAlignment="center"
             android:textSize="14sp"
             tools:ignore="TouchTargetSizeCheck" />
+
     </RelativeLayout>
 
     <RelativeLayout
@@ -67,7 +77,7 @@
             android:layout_marginRight="20dp"
             android:breakStrategy="high_quality"
             android:fontFamily="sans-serif"
-            android:text="Mobile No."
+            android:text="@string/usermobile_no"
             android:textAlignment="center"
             android:textSize="14sp" />
 
@@ -80,13 +90,15 @@
             android:layout_marginEnd="40dp"
             android:layout_toEndOf="@+id/textMobileNo"
             android:ems="10"
-            android:hint="mobile no"
+            android:hint="@string/mobile_no"
             android:inputType="text|phone"
+            android:paddingStart="20dp"
             android:paddingLeft="20dp"
             android:scrollIndicators="left"
             android:textAlignment="center"
             android:textSize="14sp"
-            tools:ignore="TouchTargetSizeCheck" />
+            tools:ignore="TouchTargetSizeCheck"
+            android:importantForAutofill="no" />
     </RelativeLayout>
 
     <RelativeLayout
@@ -109,7 +121,7 @@
             android:layout_marginRight="20dp"
             android:breakStrategy="high_quality"
             android:fontFamily="sans-serif"
-            android:text="Email"
+            android:text="@string/useremail"
             android:textAlignment="center"
             android:textSize="14sp" />
 
@@ -123,19 +135,33 @@
             android:layout_marginEnd="40dp"
             android:layout_toEndOf="@+id/textEmailAddress"
             android:ems="10"
-            android:hint="email"
+
+            android:hint="@string/email"
             android:inputType="textEmailAddress"
+            android:paddingStart="20dp"
+
+
+
             android:paddingLeft="20dp"
+
             android:scrollIndicators="left"
             android:textAlignment="center"
             android:textSize="14sp"
-            tools:ignore="TouchTargetSizeCheck" />
+            tools:ignore="TouchTargetSizeCheck"
+            android:autofillHints="" />
     </RelativeLayout>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context=".ProfilePage">
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="142dp"
+        android:layout_height="144dp"
+        android:layout_marginTop="100dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:srcCompat="@tools:sample/avatars"
+        android:contentDescription="@string/todo" />
 
         <RelativeLayout
             android:id="@+id/relativeLayout"
@@ -329,7 +355,7 @@
             android:layout_marginRight="20dp"
             android:breakStrategy="high_quality"
             android:fontFamily="sans-serif"
-            android:text="Name"
+            android:text="@string/name"
             android:textAlignment="center"
             android:textSize="14sp" />
 
@@ -343,12 +369,18 @@
             android:layout_marginEnd="40dp"
             android:layout_toEndOf="@+id/textName"
             android:ems="10"
-            android:hint="full name"
+
+            android:hint="@string/full_name"
+
+
+
             android:inputType="textPersonName"
-            android:paddingLeft="20dp"
+            android:paddingStart="20dp"
             android:scrollIndicators="left"
             android:textAlignment="center"
-            tools:ignore="TouchTargetSizeCheck" />
+            android:textColorHint="#757575"
+            tools:ignore="TouchTargetSizeCheck"
+            android:importantForAutofill="no" />
     </RelativeLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
