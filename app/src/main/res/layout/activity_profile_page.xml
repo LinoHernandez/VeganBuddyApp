@@ -92,6 +92,7 @@
             tools:ignore="TouchTargetSizeCheck" />
     </RelativeLayout>
 
+<<<<<<< Updated upstream
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="142dp"
@@ -113,8 +114,25 @@
         android:layout_marginBottom="54dp"
         android:text="Hello"
         app:layout_constraintBottom_toTopOf="@+id/imageView"
+=======
+    <RelativeLayout
+        android:id="@+id/relativeLayout3"
+        android:layout_width="410dp"
+        android:layout_height="61dp"
+        android:layout_marginTop="40dp"
+>>>>>>> Stashed changes
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="100dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:srcCompat="@tools:sample/avatars" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
