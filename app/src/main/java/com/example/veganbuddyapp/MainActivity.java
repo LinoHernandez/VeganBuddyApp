@@ -76,7 +76,7 @@ public class MainActivity extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()) {
                     case R.id.nav_account:
-                        Intent intent = new Intent(MainActivity.this,ProfilePage.class);
+                        Intent intent = new Intent(MainActivity.this, ProfilePage.class);
                         startActivity(intent);
                         return true;
                     case R.id.nav_logout:
@@ -88,12 +88,6 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
-
-
-        //Navigation method
-        switchToSecondActivity = findViewById(R.id.nav_account);
-
-
 
     }
 
