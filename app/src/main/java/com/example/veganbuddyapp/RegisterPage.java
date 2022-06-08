@@ -54,6 +54,10 @@ public class RegisterPage extends AppCompatActivity {
                         Intent payment = new Intent(RegisterPage.this,PaymentPage.class);
                         startActivity(payment);
                         return true;
+                    case R.id.nav_menu:
+                        Intent menu = new Intent(RegisterPage.this,MainActivity.class);
+                        startActivity(menu);
+                        return true;
                     default:
                         return true;
                 }
