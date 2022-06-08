@@ -3,31 +3,17 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Dell/VeganBuddyApp/app/src/main/res/layout/activity_main.xml" value="0.25416666666666665" />
-        <entry key="..\:/Dell/VeganBuddyApp/app/src/main/res/layout/activity_profile_page.xml" value="0.24114583333333334" />
-        <entry key="..\:/Dell/VeganBuddyApp/app/src/main/res/layout/fragment_log_screen.xml" value="0.25416666666666665" />
-        <entry key="..\:/Dell/VeganBuddyApp/app/src/main/res/layout/fragment_payment_screen.xml" value="0.24114583333333334" />
-        <entry key="..\:/Dell/VeganBuddyApp/app/src/main/res/layout/fragment_profile_screen.xml" value="0.24114583333333334" />
-        <entry key="..\:/Dell/VeganBuddyApp/app/src/main/res/layout/logregister_screen.xml" value="0.25416666666666665" />
-        <entry key="..\:/Dell/VeganBuddyApp/app/src/main/res/layout/payment_page.xml" value="0.253125" />
-        <entry key="..\:/Dell/VeganBuddyApp/app/src/main/res/menu/navigation_menu.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/linoj/AndroidStudioProjects/VeganBuddyApp/app/src/main/res/layout/activity_main.xml" value="0.264" />
-        <entry key="..\:/Users/linoj/AndroidStudioProjects/VeganBuddyApp/app/src/main/res/layout/activity_profile_page.xml" value="0.1" />
         <entry key="..\:/Users/linoj/AndroidStudioProjects/VeganBuddyApp/app/src/main/res/layout/fragment_log_screen.xml" value="0.22826086956521738" />
         <entry key="..\:/Users/linoj/AndroidStudioProjects/VeganBuddyApp/app/src/main/res/layout/fragment_payment_screen.xml" value="0.22826086956521738" />
         <entry key="..\:/Users/linoj/AndroidStudioProjects/VeganBuddyApp/app/src/main/res/layout/fragment_profile_screen.xml" value="0.22826086956521738" />
-
-        <entry key="..\:/Users/linoj/AndroidStudioProjects/VeganBuddyApp/app/src/main/res/layout/logregister_screen.xml" value="0.22826086956521738" />
-
-        <entry key="..\:/Users/linoj/AndroidStudioProjects/VeganBuddyApp/app/src/main/res/layout/payment_page.xml" value="0.25" />
-
         <entry key="..\:/Users/linoj/AndroidStudioProjects/VeganBuddyApp/app/src/main/res/menu/navigation_menu.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.219439697265625" />
-        <entry key="app/src/main/res/layout/activity_profile_page.xml" value="0.19451446533203132" />
+        <entry key="app/src/main/res/layout/activity_profile_page.xml" value="0.24174652099609376" />
         <entry key="app/src/main/res/layout/fragment_log_screen.xml" value="0.11145833333333334" />
         <entry key="app/src/main/res/layout/fragment_payment_screen.xml" value="0.11145833333333334" />
         <entry key="app/src/main/res/layout/fragment_profile_screen.xml" value="0.11145833333333334" />
-        <entry key="app/src/main/res/layout/logregister_screen.xml" value="0.13405797101449277" />
+        <entry key="app/src/main/res/layout/logregister_screen.xml" value="0.20012242413949277" />
       </map>
     </option>
   </component>
