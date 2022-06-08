@@ -14,6 +14,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.google.android.material.navigation.NavigationView;
+
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -27,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
 
     public DrawerLayout drawerLayout;
     public ActionBarDrawerToggle actionBarDrawerToggle;
-
+    public NavigationView navigationView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,6 +37,7 @@ public class MainActivity extends AppCompatActivity {
 //---------------------
         postalCode = findViewById(R.id.postalCode);
         searchPc = findViewById(R.id.searchPc);
+        navigationView = findViewById(R.id.navView);
         searchPc.setVisibility(View.INVISIBLE);
         searchPc.setClickable(false);
 
@@ -65,6 +68,23 @@ public class MainActivity extends AppCompatActivity {
 
         // to make the Navigation drawer icon always appear on the action bar
         Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
+        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch (item.getItemId()) {
+                    case R.id.nav_account:
+                        Intent intent = new Intent(MainActivity.this,ProfilePage.class);
+                        startActivity(intent);
+                        return true;
+                    case R.id.nav_logout:
+
+                    case R.id.nav_payment:
+
+                    default:
+                        return true;
+                }
+            }
+        });
     }
 
     //Function to Validate the code
