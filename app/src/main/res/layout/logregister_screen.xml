@@ -1,10 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<!--the root view must be the DrawerLayout-->
+<androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/my_drawer_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".RegisterPage"
+    tools:ignore="HardcodedText">
+
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".RegisterPage">
 
     <TextView
         android:id="@+id/Email"
@@ -12,7 +21,7 @@
         android:layout_height="21dp"
         android:layout_marginStart="30dp"
         android:layout_marginTop="153dp"
-        android:text="Email"
+        android:text="@string/email"
         android:textAlignment="center"
         android:textSize="15sp"
         app:layout_constraintStart_toStartOf="parent"
@@ -23,7 +32,7 @@
         android:layout_width="74dp"
         android:layout_height="26dp"
         android:layout_marginTop="34dp"
-        android:text="Password"
+        android:text="@string/password"
         android:textAlignment="center"
         android:textSize="15sp"
         app:layout_constraintStart_toStartOf="@+id/Email"
@@ -34,9 +43,9 @@
         android:layout_width="86dp"
         android:layout_height="54dp"
         android:layout_marginTop="70dp"
-        android:text="Log In"
+        android:text="@string/log_in"
         android:textColor="@color/black"
-        android:textSize="30dp"
+        android:textSize="30sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.501"
@@ -49,7 +58,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="216dp"
         android:backgroundTint="#4CAF50"
-        android:text="Log In"
+        android:text="@string/log_inBtn"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
@@ -61,7 +70,7 @@
         android:id="@+id/createAnAccount"
         android:layout_width="122dp"
         android:layout_height="25dp"
-        android:text="Create an account"
+        android:text="@string/create_an_account"
         app:layout_constraintBottom_toTopOf="@+id/register"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
@@ -74,7 +83,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="150dp"
         android:backgroundTint="#4CAF50"
-        android:text="Register"
+        android:text="@string/register"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
@@ -90,7 +99,8 @@
         android:minHeight="48dp"
         app:layout_constraintStart_toStartOf="@+id/editTextTextEmailAddress"
         app:layout_constraintTop_toBottomOf="@+id/editTextTextEmailAddress"
-        tools:ignore="SpeakableTextPresentCheck" />
+        tools:ignore="SpeakableTextPresentCheck"
+        android:autofillHints="Type your password" />
 
     <EditText
         android:id="@+id/editTextTextEmailAddress"
@@ -103,6 +113,20 @@
         android:minHeight="48dp"
         app:layout_constraintStart_toEndOf="@+id/Email"
         app:layout_constraintTop_toBottomOf="@+id/logIn"
-        tools:ignore="SpeakableTextPresentCheck" />
+        tools:ignore="SpeakableTextPresentCheck"
+        android:autofillHints="Type your email address" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <!--this the navigation view which draws
+       and shows the navigation drawer-->
+    <!--include the menu created in the menu folder-->
+    <com.google.android.material.navigation.NavigationView
+        android:id="@+id/navView"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        android:background="#FFFFFF"
+        app:menu="@menu/navigation_menu" />
+
+</androidx.drawerlayout.widget.DrawerLayout>

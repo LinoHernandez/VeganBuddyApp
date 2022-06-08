@@ -8,14 +8,12 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.Button;
 
 import com.google.android.material.navigation.NavigationView;
 
 import java.util.Objects;
 
-public class PaymentPage extends AppCompatActivity {
+public class RegisterPage extends AppCompatActivity {
 
     public DrawerLayout drawerLayout;
     public ActionBarDrawerToggle actionBarDrawerToggle;
@@ -24,7 +22,7 @@ public class PaymentPage extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.payment_page);
+        setContentView(R.layout.logregister_screen);
 
         navigationView = findViewById(R.id.navView);
 
@@ -45,15 +43,15 @@ public class PaymentPage extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()) {
                     case R.id.nav_account:
-                        Intent intent = new Intent(PaymentPage.this,ProfilePage.class);
+                        Intent intent = new Intent(RegisterPage.this,ProfilePage.class);
                         startActivity(intent);
                         return true;
                     case R.id.nav_logout:
-                        Intent register = new Intent(PaymentPage.this,RegisterPage.class);
+                        Intent register = new Intent(RegisterPage.this,RegisterPage.class);
                         startActivity(register);
                         return true;
                     case R.id.nav_payment:
-                        Intent payment = new Intent(PaymentPage.this,PaymentPage.class);
+                        Intent payment = new Intent(RegisterPage.this,PaymentPage.class);
                         startActivity(payment);
                         return true;
                     default:

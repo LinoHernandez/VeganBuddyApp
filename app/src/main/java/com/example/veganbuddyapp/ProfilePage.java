@@ -49,10 +49,12 @@ public class ProfilePage extends AppCompatActivity {
                         startActivity(intent);
                         return true;
                     case R.id.nav_logout:
-
+                        Intent register = new Intent(ProfilePage.this,RegisterPage.class);
+                        startActivity(register);
+                        return true;
                     case R.id.nav_payment:
-                        intent = new Intent(ProfilePage.this,PaymentPage.class);
-                        startActivity(intent);
+                        Intent payment = new Intent(ProfilePage.this,PaymentPage.class);
+                        startActivity(payment);
                         return true;
                     default:
                         return true;
