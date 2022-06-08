@@ -3,6 +3,11 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <item
+        android:id="@+id/nav_menu"
+        android:icon="@drawable/ic_icons8_home"
+        android:title="Main page" />
+
+    <item
         android:id="@+id/nav_account"
         android:icon="@drawable/user"
         android:title="@string/my_profile" />

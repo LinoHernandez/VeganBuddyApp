@@ -56,6 +56,10 @@ public class ProfilePage extends AppCompatActivity {
                         Intent payment = new Intent(ProfilePage.this,PaymentPage.class);
                         startActivity(payment);
                         return true;
+                    case R.id.nav_menu:
+                        Intent menu = new Intent(ProfilePage.this,MainActivity.class);
+                        startActivity(menu);
+                        return true;
                     default:
                         return true;
                 }
