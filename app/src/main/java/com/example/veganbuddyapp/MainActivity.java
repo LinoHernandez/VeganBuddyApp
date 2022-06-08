@@ -34,7 +34,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-//---------------------
+
+        //---------------------
         postalCode = findViewById(R.id.postalCode);
         searchPc = findViewById(R.id.searchPc);
         navigationView = findViewById(R.id.navView);
