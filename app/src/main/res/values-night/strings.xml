@@ -3,4 +3,6 @@
     <string name="logout">Logout</string>
     <string name="settings">Settings</string>
     <string name="my_account">My Account</string>
+    <string name="log_inBtn">Log In</string>
+    <string name="register">Register</string>
 </resources>

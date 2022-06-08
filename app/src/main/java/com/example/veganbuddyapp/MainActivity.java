@@ -80,9 +80,13 @@ public class MainActivity extends AppCompatActivity {
                         startActivity(intent);
                         return true;
                     case R.id.nav_logout:
-
+                        Intent register = new Intent(MainActivity.this,RegisterPage.class);
+                        startActivity(register);
+                        return true;
                     case R.id.nav_payment:
-
+                        Intent payment = new Intent(MainActivity.this,PaymentPage.class);
+                        startActivity(payment);
+                        return true;
                     default:
                         return true;
                 }

@@ -15,7 +15,7 @@ import com.google.android.material.navigation.NavigationView;
 
 import java.util.Objects;
 
-public class ProfilePage extends AppCompatActivity {
+public class PaymentPage extends AppCompatActivity {
 
     public DrawerLayout drawerLayout;
     public ActionBarDrawerToggle actionBarDrawerToggle;
@@ -24,7 +24,7 @@ public class ProfilePage extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_profile_page);
+        setContentView(R.layout.payment_page);
 
         navigationView = findViewById(R.id.navView);
 
@@ -45,15 +45,15 @@ public class ProfilePage extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()) {
                     case R.id.nav_account:
-                        Intent intent = new Intent(ProfilePage.this,ProfilePage.class);
+                        Intent intent = new Intent(PaymentPage.this,ProfilePage.class);
                         startActivity(intent);
                         return true;
                     case R.id.nav_logout:
-                        Intent register = new Intent(ProfilePage.this,RegisterPage.class);
+                        Intent register = new Intent(PaymentPage.this,RegisterPage.class);
                         startActivity(register);
                         return true;
                     case R.id.nav_payment:
-                        Intent payment = new Intent(ProfilePage.this,PaymentPage.class);
+                        Intent payment = new Intent(PaymentPage.this,PaymentPage.class);
                         startActivity(payment);
                         return true;
                     default:
