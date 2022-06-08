@@ -44,7 +44,8 @@
             android:scrollIndicators="left"
             android:textAlignment="center"
             android:textSize="14sp"
-            tools:ignore="TouchTargetSizeCheck" />
+            tools:ignore="TouchTargetSizeCheck"
+            android:importantForAutofill="no" />
     </RelativeLayout>
 
     <RelativeLayout
