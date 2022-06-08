@@ -15,12 +15,53 @@
         android:layout_width="410dp"
         android:layout_height="61dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/relativeLayout6">
+
+        <TextView
+            android:id="@+id/textPassword"
+            android:layout_width="131dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="20dp"
+            android:breakStrategy="high_quality"
+            android:fontFamily="sans-serif"
+            android:text="Password"
+            android:textAlignment="center"
+            android:textSize="14sp" />
+
+        <EditText
+            android:id="@+id/editTextTextPassword"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="17dp"
+            android:layout_marginEnd="40dp"
+            android:layout_toEndOf="@+id/textPassword"
+            android:ems="10"
+            android:inputType="textPassword"
+            android:paddingLeft="20dp"
+            android:scrollIndicators="left"
+            android:text="Password"
+            android:textAlignment="center"
+            android:textSize="14sp"
+            tools:ignore="TouchTargetSizeCheck" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/relativeLayout6"
+        android:layout_width="410dp"
+        android:layout_height="61dp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.505"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/relativeLayout5">
 
         <TextView
-            android:id="@+id/textView2"
+            android:id="@+id/textMobileNo"
             android:layout_width="131dp"
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
@@ -35,15 +76,15 @@
             android:textSize="14sp" />
 
         <EditText
-            android:id="@+id/editTextTextPersonName2"
+            android:id="@+id/editTextTextMobileNo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
             android:layout_marginStart="17dp"
             android:layout_marginEnd="40dp"
-            android:layout_toEndOf="@+id/textView2"
+            android:layout_toEndOf="@+id/textMobileNo"
             android:ems="10"
-            android:inputType="textPersonName"
+            android:inputType="text|phone"
             android:paddingLeft="20dp"
             android:scrollIndicators="left"
             android:text="647-721-5377"
@@ -86,7 +127,7 @@
             android:layout_marginEnd="40dp"
             android:layout_toEndOf="@+id/textEmailAddress"
             android:ems="10"
-            android:inputType="textPersonName"
+            android:inputType="textEmailAddress"
             android:paddingLeft="20dp"
             android:scrollIndicators="left"
             android:text="C0780768@mylambton.ca"
@@ -116,7 +157,7 @@
         app:layout_constraintTop_toBottomOf="@+id/imageView">
 
         <TextView
-            android:id="@+id/textMobileNo"
+            android:id="@+id/textName"
             android:layout_width="131dp"
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
@@ -131,14 +172,14 @@
             android:textSize="14sp" />
 
         <EditText
-            android:id="@+id/editTextTextMobileNo"
+            android:id="@+id/editTextTextName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
             android:layout_marginStart="17dp"
             android:layout_marginTop="10dp"
             android:layout_marginEnd="40dp"
-            android:layout_toEndOf="@+id/textMobileNo"
+            android:layout_toEndOf="@+id/textName"
             android:ems="10"
             android:inputType="textPersonName"
             android:paddingLeft="20dp"
