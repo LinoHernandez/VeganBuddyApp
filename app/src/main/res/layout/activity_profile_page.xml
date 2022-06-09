@@ -145,13 +145,15 @@
             android:id="@+id/imageView"
             android:layout_width="142dp"
             android:layout_height="144dp"
-            android:layout_marginTop="100dp"
-            android:outlineProvider="bounds"
+            android:layout_marginTop="80dp"
+            android:visibility="visible"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintHorizontal_bias="0.486"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:srcCompat="@tools:sample/avatars" />
+            app:srcCompat="@color/teal_200"
+            tools:srcCompat="@tools:sample/backgrounds/scenic"
+            tools:visibility="visible" />
 
         <RelativeLayout
             android:id="@+id/relativeLayout3"
