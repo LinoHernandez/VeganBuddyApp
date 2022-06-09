@@ -3,7 +3,6 @@ package com.example.veganbuddyapp;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.content.Intent;
@@ -127,7 +126,6 @@ public class MainActivity extends AppCompatActivity {
             return true;
             }
 
-        
         return super.onOptionsItemSelected(item);
 
     }

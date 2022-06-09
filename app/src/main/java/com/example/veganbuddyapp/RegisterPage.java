@@ -6,8 +6,14 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.material.navigation.NavigationView;
 
@@ -18,6 +24,10 @@ public class RegisterPage extends AppCompatActivity {
     public DrawerLayout drawerLayout;
     public ActionBarDrawerToggle actionBarDrawerToggle;
     public NavigationView navigationView;
+    int counter = 5;
+    Button login,register;
+    EditText username,password;
+    TextView tx1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,7 +73,42 @@ public class RegisterPage extends AppCompatActivity {
                 }
             }
         });
+
+        login = (Button)findViewById(R.id.loginbutton);
+        register = (Button)findViewById(R.id.registerbutton);
+
+        username = (EditText)findViewById(R.id.editTextTextEmailAddress);
+        password = (EditText)findViewById(R.id.editTextTextPassword);
+
+        tx1 = (TextView)findViewById(R.id.textView5);
+        tx1.setVisibility(View.GONE);
+
+        login.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(username.getText().toString().equals("admin") && password.getText().toString().equals("admin")){
+
+                    //Correct password function
+                    Toast.makeText(getApplicationContext(),
+                            "Loading", Toast.LENGTH_SHORT).show();
+                }else{
+                    //Wrong password function
+                    Toast.makeText(getApplicationContext(), "Wrong Credentials", Toast.LENGTH_SHORT).show();
+
+                    tx1.setVisibility(View.VISIBLE);
+                    tx1.setTextColor(Color.RED);
+                    counter--;
+                    tx1.setText(getString(R.string.attempts)+Integer.toString(counter));
+                    if(counter==0){
+                        login.setEnabled(false);
+                        //disable button function or warning
+                    }
+                }
+            }
+        });
+        
     }
+
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item){
