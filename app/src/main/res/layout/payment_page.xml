@@ -21,9 +21,10 @@
             android:layout_width="410dp"
             android:layout_height="61dp"
             android:layout_marginTop="144dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:ignore="MissingConstraints"
-            tools:layout_editor_absoluteX="0dp">
+            tools:ignore="MissingConstraints">
 
             <TextView
                 android:id="@+id/textPassword"
@@ -42,7 +43,8 @@
                 android:breakStrategy="high_quality"
                 android:fontFamily="sans-serif"
                 android:text="Card Number"
-                android:textAlignment="center" />
+                android:textAlignment="center"
+                android:textStyle="bold" />
 
             <EditText
                 android:id="@+id/editTextNumberPassword2"
@@ -70,9 +72,10 @@
             android:layout_width="410dp"
             android:layout_height="61dp"
             android:layout_marginTop="60dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/relativeLayout"
-            tools:ignore="MissingConstraints"
-            tools:layout_editor_absoluteX="0dp">
+            tools:ignore="MissingConstraints">
 
             <EditText
                 android:id="@+id/editTextDate"
@@ -80,13 +83,12 @@
                 android:layout_height="37dp"
                 android:layout_alignParentTop="true"
                 android:layout_alignParentEnd="true"
-                android:layout_alignParentBottom="true"
                 android:layout_marginTop="13dp"
                 android:layout_marginEnd="72dp"
-                android:layout_marginBottom="11dp"
                 android:ems="15"
                 android:inputType="date"
                 android:maxLength="4"
+                android:textAlignment="center"
                 android:textSize="16sp"
                 tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
 
@@ -103,7 +105,8 @@
                 android:layout_marginBottom="17dp"
                 android:layout_toStartOf="@+id/editTextDate"
                 android:text="Expiry"
-                android:textAlignment="center" />
+                android:textAlignment="center"
+                android:textStyle="bold" />
         </RelativeLayout>
 
         <RelativeLayout
@@ -128,7 +131,8 @@
                 android:layout_marginBottom="13dp"
                 android:layout_toStartOf="@+id/editTextNumber"
                 android:text="CVV"
-                android:textAlignment="center" />
+                android:textAlignment="center"
+                android:textStyle="bold" />
 
             <EditText
                 android:id="@+id/editTextNumber"
@@ -143,6 +147,7 @@
                 android:ems="15"
                 android:inputType="number"
                 android:maxLength="3"
+                android:textAlignment="center"
                 android:textSize="16sp"
                 tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
         </RelativeLayout>
