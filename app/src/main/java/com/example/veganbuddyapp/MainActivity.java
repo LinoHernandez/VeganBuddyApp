@@ -3,7 +3,6 @@ package com.example.veganbuddyapp;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.content.Intent;
@@ -95,7 +94,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    //Function to Validate the code
+    //Function to Validate the Postal code
     public void validatePostalCode(String postalString) {
 
         //Regression for Canadian Postal Code
