@@ -15,7 +15,6 @@
     android:layout_height="match_parent"
     tools:context=".RegisterPage">
 
-<<<<<<< Updated upstream
     <TextView
         android:id="@+id/Email"
         android:layout_width="74dp"
@@ -27,7 +26,7 @@
         android:textSize="15sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/logIn" />
-=======
+
             <TextView
                 android:id="@+id/textPassword"
                 android:layout_width="131dp"
@@ -43,7 +42,7 @@
                 android:textAlignment="center"
                 android:textSize="14sp"
                 android:textStyle="bold" />
->>>>>>> Stashed changes
+
 
     <TextView
         android:id="@+id/password"
@@ -71,7 +70,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-<<<<<<< Updated upstream
+
     <Button
         android:id="@+id/logInBtn"
         android:layout_width="wrap_content"
@@ -85,7 +84,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextTextPassword"
         tools:ignore="TextContrastCheck" />
-=======
+
             <TextView
                 android:id="@+id/textEmailAddress"
                 android:layout_width="131dp"
@@ -101,7 +100,7 @@
                 android:textAlignment="center"
                 android:textSize="14sp"
                 android:textStyle="bold" />
->>>>>>> Stashed changes
+
 
     <TextView
         android:id="@+id/createAnAccount"
@@ -126,7 +125,7 @@
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent" />
 
-<<<<<<< Updated upstream
+
     <EditText
         android:id="@+id/editTextTextPassword"
         android:layout_width="wrap_content"
@@ -155,7 +154,7 @@
         android:autofillHints="Type your email address" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
-=======
+
         <Button
             android:id="@+id/loginbutton"
             android:layout_width="wrap_content"
@@ -190,7 +189,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView5" />
     </androidx.constraintlayout.widget.ConstraintLayout>
->>>>>>> Stashed changes
+
 
     <!--this the navigation view which draws
        and shows the navigation drawer-->
