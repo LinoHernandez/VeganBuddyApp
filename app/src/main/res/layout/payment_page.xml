@@ -12,7 +12,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#F8EFB7"
+        android:background="@color/Background"
         tools:context=".PaymentPagePage">
 
 
@@ -106,6 +106,7 @@
                 android:layout_toStartOf="@+id/editTextDate"
                 android:text="Expiry"
                 android:textAlignment="center"
+                android:textColor="#000000"
                 android:textStyle="bold" />
         </RelativeLayout>
 
