@@ -94,7 +94,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    //Function to Validate the code
+    //Function to Validate the Postal code
     public void validatePostalCode(String postalString) {
 
         //Regression for Canadian Postal Code

@@ -12,6 +12,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="#F8EFB7"
         tools:context=".ProfilePage">
 
         <RelativeLayout
@@ -147,18 +148,20 @@
             android:id="@+id/imageView"
             android:layout_width="142dp"
             android:layout_height="144dp"
-            android:layout_marginTop="100dp"
-            android:outlineProvider="bounds"
+            android:layout_marginTop="80dp"
+            android:visibility="visible"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintHorizontal_bias="0.486"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:srcCompat="@tools:sample/avatars" />
+            app:srcCompat="@drawable/user"
+            tools:srcCompat="@tools:sample/backgrounds/scenic"
+            tools:visibility="visible" />
 
         <RelativeLayout
             android:id="@+id/relativeLayout3"
-            android:layout_width="410dp"
-            android:layout_height="61dp"
+            android:layout_width="413dp"
+            android:layout_height="56dp"
             android:layout_marginTop="64dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
