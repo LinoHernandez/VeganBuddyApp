@@ -10,9 +10,9 @@
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="#F8EFB7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/Background"
         tools:context=".ProfilePage">
 
         <RelativeLayout
@@ -36,7 +36,9 @@
                 android:fontFamily="sans-serif"
                 android:text="Password"
                 android:textAlignment="center"
-                android:textSize="14sp" />
+                android:textColor="@color/textColor"
+                android:textSize="14sp"
+                android:textStyle="bold" />
 
             <EditText
                 android:id="@+id/editTextTextPassword"
@@ -52,6 +54,7 @@
                 android:paddingLeft="20dp"
                 android:scrollIndicators="left"
                 android:textAlignment="center"
+                android:textColor="@color/textColor"
                 android:textSize="14sp"
                 tools:ignore="TouchTargetSizeCheck" />
         </RelativeLayout>
@@ -78,7 +81,9 @@
                 android:fontFamily="sans-serif"
                 android:text="Mobile No."
                 android:textAlignment="center"
-                android:textSize="14sp" />
+                android:textColor="@color/textColor"
+                android:textSize="14sp"
+                android:textStyle="bold" />
 
             <EditText
                 android:id="@+id/editTextTextMobileNo"
@@ -94,6 +99,7 @@
                 android:paddingLeft="20dp"
                 android:scrollIndicators="left"
                 android:textAlignment="center"
+                android:textColor="@color/textColor"
                 android:textSize="14sp"
                 tools:ignore="TouchTargetSizeCheck" />
         </RelativeLayout>
@@ -120,7 +126,9 @@
                 android:fontFamily="sans-serif"
                 android:text="Email"
                 android:textAlignment="center"
-                android:textSize="14sp" />
+                android:textColor="@color/textColor"
+                android:textSize="14sp"
+                android:textStyle="bold" />
 
             <EditText
                 android:id="@+id/editTextTextEmailAddress"
@@ -137,6 +145,7 @@
                 android:paddingLeft="20dp"
                 android:scrollIndicators="left"
                 android:textAlignment="center"
+                android:textColor="@color/textColor"
                 android:textSize="14sp"
                 tools:ignore="TouchTargetSizeCheck" />
         </RelativeLayout>
@@ -177,7 +186,9 @@
                 android:fontFamily="sans-serif"
                 android:text="Name"
                 android:textAlignment="center"
-                android:textSize="14sp" />
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:textColor="@color/textColor" />
 
             <EditText
                 android:id="@+id/editTextTextName"
@@ -194,6 +205,7 @@
                 android:paddingLeft="20dp"
                 android:scrollIndicators="left"
                 android:textAlignment="center"
+                android:textColor="@color/textColor"
                 tools:ignore="TouchTargetSizeCheck" />
         </RelativeLayout>
 

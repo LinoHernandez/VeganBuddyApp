@@ -15,7 +15,7 @@
         android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#F8EFB7">
+        android:background="@color/Background">
 
 
         <TextView
@@ -27,6 +27,7 @@
             android:gravity="center"
             android:text="Enter a postal code to search for nearby restaurants"
             android:textAlignment="center"
+            android:textColor="@color/textColor"
             android:textSize="18sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="@+id/postalCode"
@@ -46,6 +47,7 @@
             android:maxLength="6"
             android:minHeight="48dp"
             android:textAlignment="center"
+            android:textColor="@color/textColor"
             android:textColorHint="#757575"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

@@ -20,4 +20,5 @@
     <string name="mobile_no">mobile no</string>
     <string name="todo">TODO</string>
     <string name="usermobile_no">Mobile No.</string>
+    <string name="attempts">Number of attempts left:</string>
 </resources>
