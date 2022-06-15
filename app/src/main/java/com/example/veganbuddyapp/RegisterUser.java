@@ -90,8 +90,8 @@ public class RegisterUser extends AppCompatActivity {
             createUser();
         });
 
-        registerButton.setOnClickListener(view ->{
-            startActivity(new Intent(RegisterUser.this, MainActivity.class));
+        login.setOnClickListener(view ->{
+            startActivity(new Intent(RegisterUser.this, LoginPage.class));
         });
 
 

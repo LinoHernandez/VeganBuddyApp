@@ -83,8 +83,8 @@ public class MainActivity extends AppCompatActivity {
                         startActivity(intent);
                         return true;
                     case R.id.nav_logout:
-                        Intent register = new Intent(MainActivity.this, LoginPage.class);
-                        startActivity(register);
+                        mAuth.signOut();
+                        startActivity(new Intent(MainActivity.this, LoginPage.class));
                         return true;
                     case R.id.nav_payment:
                         Intent payment = new Intent(MainActivity.this,PaymentPage.class);

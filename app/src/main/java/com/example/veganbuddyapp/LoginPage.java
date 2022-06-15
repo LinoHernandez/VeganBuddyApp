@@ -30,18 +30,26 @@ public class LoginPage extends AppCompatActivity {
     public DrawerLayout drawerLayout;
     public ActionBarDrawerToggle actionBarDrawerToggle;
     public NavigationView navigationView;
-    int counter = 5;
     Button login,register;
     EditText email,password;
-    TextView tx1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login_screen);
+
+        email = findViewById(R.id.editTextTextEmailAddress);
+        password = findViewById(R.id.editTextTextPassword);
+        login = findViewById(R.id.login);
+        register = findViewById(R.id.registerButton);
+
         mAuth = FirebaseAuth.getInstance();
 
         navigationView = findViewById(R.id.navView);
+
+        login.setOnClickListener(view -> {
+            loginUser();
+        });
 
         // drawer layout instance to toggle the menu icon to open
         // drawer and back button to close drawer
@@ -83,53 +91,14 @@ public class LoginPage extends AppCompatActivity {
         });
 
 
-        login = (Button)findViewById(R.id.login);
-        register = (Button)findViewById(R.id.registerButton);
-
-        email = (EditText)findViewById(R.id.editTextTextEmailAddress);
-        password = (EditText)findViewById(R.id.editTextTextPassword);
-
-        email = findViewById(R.id.editTextTextEmailAddress);
-
-        tx1 = (TextView)findViewById(R.id.textView5);
-        tx1.setVisibility(View.GONE);
-
         register.setOnClickListener(view ->{
-            createUser();
+            startActivity(new Intent(LoginPage.this, RegisterUser.class));
         });
 
-        login.setOnClickListener(view ->{
-            startActivity(new Intent(LoginPage.this, MainActivity.class));
-        });
-
-
-        login.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(email.getText().toString().equals("admin") && password.getText().toString().equals("admin")){
-
-                    //Correct password function
-                    Toast.makeText(getApplicationContext(),
-                            "Loading", Toast.LENGTH_SHORT).show();
-                }else{
-                    //Wrong password function
-                    Toast.makeText(getApplicationContext(), "Wrong Credentials", Toast.LENGTH_SHORT).show();
-
-                    tx1.setVisibility(View.VISIBLE);
-                    tx1.setTextColor(Color.RED);
-                    counter--;
-                    tx1.setText(getString(R.string.attempts)+Integer.toString(counter));
-                    if(counter==0){
-                        login.setEnabled(false);
-                        //disable button function or warning
-                    }
-                }
-            }
-        });
         
     }
 
-    private void createUser(){
+    private void loginUser(){
         String Email = email.getText().toString();
         String Password = password.getText().toString();
 
@@ -140,14 +109,14 @@ public class LoginPage extends AppCompatActivity {
             password.setError("A password is required");
             password.requestFocus();
         }else{
-            mAuth.createUserWithEmailAndPassword(Email,Password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+            mAuth.signInWithEmailAndPassword(Email,Password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                 @Override
                 public void onComplete(@NonNull Task<AuthResult> task) {
                     if (task.isSuccessful()){
-                        Toast.makeText(LoginPage.this,"User registered successfully", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(LoginPage.this,"User logged successfully", Toast.LENGTH_SHORT).show();
                         startActivity(new Intent(LoginPage.this, MainActivity.class));
                     }else{
-                        Toast.makeText(LoginPage.this,"Not able to register user: " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(LoginPage.this,"Log in Error " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                     }
                 }
             });
