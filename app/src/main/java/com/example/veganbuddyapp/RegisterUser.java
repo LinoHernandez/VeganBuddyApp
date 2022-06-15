@@ -18,6 +18,9 @@ import com.google.android.gms.tasks.Task;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.Objects;
 
@@ -120,6 +123,10 @@ public class RegisterUser extends AppCompatActivity {
                 @Override
                 public void onComplete(@NonNull Task<AuthResult> task) {
                     if (task.isSuccessful()){
+                        FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
+                        DatabaseReference databaseReference = firebaseDatabase.getReference().child("Users").child(mAuth.getUid());
+                        User myuserProfile=new User(mAuth.getUid(),String.valueOf(registerName.getText()),String.valueOf(registerEmail.getText()),String.valueOf(registerPhone.getText()));
+                        databaseReference.setValue(myuserProfile);
                         Toast.makeText(RegisterUser.this,"User registered successfully", Toast.LENGTH_SHORT).show();
                         startActivity(new Intent(RegisterUser.this, MainActivity.class));
                     }else{
