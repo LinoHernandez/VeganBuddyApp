@@ -84,7 +84,7 @@ public class LoginPage extends AppCompatActivity {
 
 
         login = (Button)findViewById(R.id.login);
-        register = (Button)findViewById(R.id.registerbutton);
+        register = (Button)findViewById(R.id.registerButton);
 
         email = (EditText)findViewById(R.id.editTextTextEmailAddress);
         password = (EditText)findViewById(R.id.editTextTextPassword);

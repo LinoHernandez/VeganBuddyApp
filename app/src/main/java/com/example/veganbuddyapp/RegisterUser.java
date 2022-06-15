@@ -23,12 +23,11 @@ import java.util.Objects;
 
 public class RegisterUser extends AppCompatActivity {
     EditText registerName, registerPassword, registerPhone, registerEmail;
-    Button registerUser,registerbutton,login;
+    Button login,registerButton;
     private FirebaseAuth mAuth;
     public DrawerLayout drawerLayout;
     public ActionBarDrawerToggle actionBarDrawerToggle;
     public NavigationView navigationView;
-    int counter = 5;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,7 +38,8 @@ public class RegisterUser extends AppCompatActivity {
         registerName = findViewById(R.id.registerName);
         registerPassword = findViewById(R.id.registerPassword);
         registerPhone = findViewById(R.id.registerPhone);
-        registerUser = findViewById(R.id.login);
+        registerButton = findViewById(R.id.registerButton);
+        login = findViewById(R.id.login);
 
         mAuth = FirebaseAuth.getInstance();
 
@@ -84,19 +84,13 @@ public class RegisterUser extends AppCompatActivity {
             }
         });
 
-        registerUser = (Button)findViewById(R.id.registerbutton);
-
-        registerEmail = (EditText)findViewById(R.id.editTextTextEmailAddress);
-        registerPassword = (EditText)findViewById(R.id.editTextTextPassword);
-
-        registerEmail = findViewById(R.id.editTextTextEmailAddress);
 
 
-        registerbutton.setOnClickListener(view ->{
+        registerButton.setOnClickListener(view ->{
             createUser();
         });
 
-        registerbutton.setOnClickListener(view ->{
+        registerButton.setOnClickListener(view ->{
             startActivity(new Intent(RegisterUser.this, MainActivity.class));
         });
 
