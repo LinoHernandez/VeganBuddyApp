@@ -24,7 +24,7 @@ import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.Objects;
 
-public class RegisterPage extends AppCompatActivity {
+public class LoginPage extends AppCompatActivity {
 
     private FirebaseAuth mAuth;
     public DrawerLayout drawerLayout;
@@ -38,7 +38,7 @@ public class RegisterPage extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.register_screen);
+        setContentView(R.layout.login_screen);
         mAuth = FirebaseAuth.getInstance();
 
         navigationView = findViewById(R.id.navView);
@@ -61,19 +61,19 @@ public class RegisterPage extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()) {
                     case R.id.nav_account:
-                        Intent intent = new Intent(RegisterPage.this,ProfilePage.class);
+                        Intent intent = new Intent(LoginPage.this,ProfilePage.class);
                         startActivity(intent);
                         return true;
                     case R.id.nav_logout:
-                        Intent register = new Intent(RegisterPage.this,RegisterPage.class);
+                        Intent register = new Intent(LoginPage.this, LoginPage.class);
                         startActivity(register);
                         return true;
                     case R.id.nav_payment:
-                        Intent payment = new Intent(RegisterPage.this,PaymentPage.class);
+                        Intent payment = new Intent(LoginPage.this,PaymentPage.class);
                         startActivity(payment);
                         return true;
                     case R.id.nav_menu:
-                        Intent menu = new Intent(RegisterPage.this,MainActivity.class);
+                        Intent menu = new Intent(LoginPage.this,MainActivity.class);
                         startActivity(menu);
                         return true;
                     default:
@@ -83,7 +83,7 @@ public class RegisterPage extends AppCompatActivity {
         });
 
 
-        login = (Button)findViewById(R.id.loginbutton);
+        login = (Button)findViewById(R.id.login);
         register = (Button)findViewById(R.id.registerbutton);
 
         email = (EditText)findViewById(R.id.editTextTextEmailAddress);
@@ -99,7 +99,7 @@ public class RegisterPage extends AppCompatActivity {
         });
 
         login.setOnClickListener(view ->{
-            startActivity(new Intent(RegisterPage.this, MainActivity.class));
+            startActivity(new Intent(LoginPage.this, MainActivity.class));
         });
 
 
@@ -144,10 +144,10 @@ public class RegisterPage extends AppCompatActivity {
                 @Override
                 public void onComplete(@NonNull Task<AuthResult> task) {
                     if (task.isSuccessful()){
-                        Toast.makeText(RegisterPage.this,"User registered successfully", Toast.LENGTH_SHORT).show();
-                        startActivity(new Intent(RegisterPage.this, MainActivity.class));
+                        Toast.makeText(LoginPage.this,"User registered successfully", Toast.LENGTH_SHORT).show();
+                        startActivity(new Intent(LoginPage.this, MainActivity.class));
                     }else{
-                        Toast.makeText(RegisterPage.this,"Not able to register user: " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(LoginPage.this,"Not able to register user: " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                     }
                 }
             });

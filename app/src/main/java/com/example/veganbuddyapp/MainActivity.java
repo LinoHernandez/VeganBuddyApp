@@ -83,7 +83,7 @@ public class MainActivity extends AppCompatActivity {
                         startActivity(intent);
                         return true;
                     case R.id.nav_logout:
-                        Intent register = new Intent(MainActivity.this,RegisterPage.class);
+                        Intent register = new Intent(MainActivity.this, LoginPage.class);
                         startActivity(register);
                         return true;
                     case R.id.nav_payment:
@@ -103,7 +103,7 @@ public class MainActivity extends AppCompatActivity {
         // Check if user is signed in (non-null) and update UI accordingly.
         FirebaseUser user = mAuth.getCurrentUser();
         if (user == null){
-            startActivity(new Intent(MainActivity.this, RegisterPage.class));
+            startActivity(new Intent(MainActivity.this, RegisterUser.class));
         }
         //updateUI(currentUser);
     }

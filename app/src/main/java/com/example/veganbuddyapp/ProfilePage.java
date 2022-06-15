@@ -50,7 +50,7 @@ public class ProfilePage extends AppCompatActivity {
                         startActivity(intent);
                         return true;
                     case R.id.nav_logout:
-                        Intent register = new Intent(ProfilePage.this,RegisterPage.class);
+                        Intent register = new Intent(ProfilePage.this, LoginPage.class);
                         startActivity(register);
                         return true;
                     case R.id.nav_payment:
