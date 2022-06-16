@@ -1,19 +1,28 @@
 package com.example.veganbuddyapp;
 
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.text.TextUtils;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.AuthResult;
@@ -21,13 +30,23 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
 
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
 import java.util.Objects;
 
 public class RegisterUser extends AppCompatActivity {
     EditText registerName, registerPassword, registerPhone, registerEmail;
     Button login,registerButton;
+    ImageView setPicture;
+    Uri imagepath;
+    String ImageUriAcessToken;
+    private static int PICK_IMAGE=123;
     private FirebaseAuth mAuth;
+    StorageReference storageReference;
     public DrawerLayout drawerLayout;
     public ActionBarDrawerToggle actionBarDrawerToggle;
     public NavigationView navigationView;
@@ -43,7 +62,7 @@ public class RegisterUser extends AppCompatActivity {
         registerPhone = findViewById(R.id.registerPhone);
         registerButton = findViewById(R.id.registerButton);
         login = findViewById(R.id.login);
-
+        setPicture = findViewById(R.id.setPicture);
         mAuth = FirebaseAuth.getInstance();
 
         navigationView = findViewById(R.id.navView);
@@ -87,8 +106,31 @@ public class RegisterUser extends AppCompatActivity {
             }
         });
 
+        //Uploading Picture
+
+        ActivityResultLauncher<Intent> startActivityForResult = registerForActivityResult(new
+                        ActivityResultContracts.StartActivityForResult(),
+                result -> {
+                    if (result.getResultCode() == AppCompatActivity.RESULT_OK && result.getResultCode() == PICK_IMAGE) {
+                        Intent data = result.getData();
+                        imagepath = data.getData();
+                        setPicture.setImageURI(imagepath);
+                    }
+                });
 
 
+        setPicture.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.INTERNAL_CONTENT_URI);
+                startActivityForResult(intent,PICK_IMAGE);
+
+            }
+        });
+
+
+
+        //Registering User
         registerButton.setOnClickListener(view ->{
             createUser();
         });
@@ -99,7 +141,7 @@ public class RegisterUser extends AppCompatActivity {
 
 
     }
-
+    //Function to create User
     private void createUser(){
         String Email = registerEmail.getText().toString();
         String Password = registerPassword.getText().toString();
@@ -135,6 +177,59 @@ public class RegisterUser extends AppCompatActivity {
                 }
             });
         }
+    }
+
+    public void uploadImage(){
+        storageReference = FirebaseStorage.getInstance().getReference().child("Images").child(mAuth.getUid()).child("Profile Pic");
+
+
+        //Image compresesion
+
+        Bitmap bitmap=null;
+        try {
+            bitmap= MediaStore.Images.Media.getBitmap(getContentResolver(),imagepath);
+        }
+        catch (IOException e)
+        {
+            e.printStackTrace();
+        }
+
+        ByteArrayOutputStream byteArrayOutputStream=new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.JPEG,25,byteArrayOutputStream);
+        byte[] data=byteArrayOutputStream.toByteArray();
+
+        ///putting image to storage
+
+        UploadTask uploadTask=storageReference.putBytes(data);
+
+        uploadTask.addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+            @Override
+            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+
+                storageReference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                    @Override
+                    public void onSuccess(Uri uri) {
+                        ImageUriAcessToken=uri.toString();
+                        Toast.makeText(getApplicationContext(),"URI get success",Toast.LENGTH_SHORT).show();
+
+                    }
+                }).addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Toast.makeText(getApplicationContext(),"URI get Failed",Toast.LENGTH_SHORT).show();
+                    }
+
+
+                });
+                Toast.makeText(getApplicationContext(),"Image is uploaded",Toast.LENGTH_SHORT).show();
+
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Toast.makeText(getApplicationContext(),"Image Not UPdloaded",Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     //@Override

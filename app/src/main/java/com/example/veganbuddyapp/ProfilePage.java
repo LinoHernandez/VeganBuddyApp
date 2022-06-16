@@ -8,8 +8,10 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
@@ -62,6 +64,17 @@ public class ProfilePage extends AppCompatActivity {
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
 
+            }
+        });
+
+        //Updating User profile
+        editProfile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                databaseReference = FirebaseDatabase.getInstance().getReference().child("Users").child(mAuth.getUid());
+                User user = new User(mAuth.getUid(), String.valueOf(nameProfile.getText()),String.valueOf(emailProfile.getText()),String.valueOf(phoneProfile.getText()));
+                databaseReference.setValue(user);
+                Toast.makeText(getApplicationContext(),"Profile Updated",Toast.LENGTH_SHORT).show();
             }
         });
 

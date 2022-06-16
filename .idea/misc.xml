@@ -4,26 +4,19 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="../../../../layout/custom_preview.xml" value="0.11690647482014388" />
-        <entry key="..\:/Dell/VeganBuddyApp/app/src/main/res/layout/activity_main.xml" value="0.25416666666666665" />
-        <entry key="..\:/Dell/VeganBuddyApp/app/src/main/res/layout/activity_profile_page.xml" value="0.25416666666666665" />
-        <entry key="..\:/Dell/VeganBuddyApp/app/src/main/res/layout/logregister_screen.xml" value="0.25416666666666665" />
-        <entry key="..\:/Dell/VeganBuddyApp/app/src/main/res/layout/payment_page.xml" value="0.1" />
         <entry key="..\:/Users/linoj/AndroidStudioProjects/VeganBuddyApp/app/src/main/res/layout/activity_main.xml" value="0.264" />
+        <entry key="..\:/Users/linoj/AndroidStudioProjects/VeganBuddyApp/app/src/main/res/layout/activity_profile_page.xml" value="0.25" />
         <entry key="..\:/Users/linoj/AndroidStudioProjects/VeganBuddyApp/app/src/main/res/layout/fragment_log_screen.xml" value="0.22826086956521738" />
         <entry key="..\:/Users/linoj/AndroidStudioProjects/VeganBuddyApp/app/src/main/res/layout/fragment_payment_screen.xml" value="0.22826086956521738" />
         <entry key="..\:/Users/linoj/AndroidStudioProjects/VeganBuddyApp/app/src/main/res/layout/fragment_profile_screen.xml" value="0.22826086956521738" />
         <entry key="..\:/Users/linoj/AndroidStudioProjects/VeganBuddyApp/app/src/main/res/layout/logregister_screen.xml" value="0.22826086956521738" />
         <entry key="..\:/Users/linoj/AndroidStudioProjects/VeganBuddyApp/app/src/main/res/layout/payment_page.xml" value="0.25" />
         <entry key="..\:/Users/linoj/AndroidStudioProjects/VeganBuddyApp/app/src/main/res/menu/navigation_menu.xml" value="0.25" />
-<<<<<<< Updated upstream
-        <entry key="app/src/main/res/layout/activity_main.xml" value="0.1671051025390624" />
-        <entry key="app/src/main/res/layout/activity_profile_page.xml" value="0.1" />
-=======
         <entry key="..\:/Users/satwi/Documents/GitHub/VeganBuddyApp/app/src/main/res/layout/activity_profile_page.xml" value="0.176" />
+        <entry key="..\:/Users/satwi/Documents/GitHub/VeganBuddyApp/app/src/main/res/layout/activity_register_user.xml" value="0.15789473684210525" />
         <entry key="..\:/Users/satwi/Documents/GitHub/VeganBuddyApp/app/src/main/res/layout/payment_page.xml" value="0.15789473684210525" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.219439697265625" />
         <entry key="app/src/main/res/layout/activity_profile_page.xml" value="0.24174652099609376" />
->>>>>>> Stashed changes
         <entry key="app/src/main/res/layout/fragment_log_screen.xml" value="0.11145833333333334" />
         <entry key="app/src/main/res/layout/fragment_payment_screen.xml" value="0.11145833333333334" />
         <entry key="app/src/main/res/layout/fragment_profile_screen.xml" value="0.11145833333333334" />
@@ -33,7 +26,7 @@
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">

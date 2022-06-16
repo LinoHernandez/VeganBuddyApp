@@ -8,18 +8,30 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
 
+import com.example.veganbuddyapp.models.Card;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.Objects;
 
 public class PaymentPage extends AppCompatActivity {
 
     private FirebaseAuth mAuth;
+    private DatabaseReference databaseReference;
     public DrawerLayout drawerLayout;
     public ActionBarDrawerToggle actionBarDrawerToggle;
     public NavigationView navigationView;
+
+    //-----------
+    EditText cardNumber, expiry, cvv;
+    Button saveCard;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +40,24 @@ public class PaymentPage extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
 
         navigationView = findViewById(R.id.navView);
+
+        cardNumber = findViewById(R.id.cardNumber);
+        expiry = findViewById(R.id.expiry);
+        cvv =  findViewById(R.id.cvv);
+        saveCard = findViewById(R.id.saveCard);
+
+        //Saving Card Details
+        saveCard.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                databaseReference = FirebaseDatabase.getInstance().getReference().child("Users").child(mAuth.getUid()).child("Cards");
+
+                Card card = new Card(String.valueOf(cardNumber.getText()),String.valueOf(expiry.getText()),String.valueOf(cvv.getText()));
+
+                databaseReference.setValue(card);
+                Toast.makeText(getApplicationContext(),"Card Added Sucessfully",Toast.LENGTH_SHORT).show();
+            }
+        });
 
         // drawer layout instance to toggle the menu icon to open        // drawer and back button to close drawer
         drawerLayout = findViewById(R.id.my_drawer_layout);
