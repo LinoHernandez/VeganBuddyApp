@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.veganbuddyapp">
 
-    <uses-permission android:name= "android.permission.INTERNET"></uses-permission>
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -16,7 +16,7 @@
         android:theme="@style/Theme.VeganBuddyApp"
         tools:targetApi="31">
         <activity
-            android:name=".RegisterUser"
+            android:name=".RestaurantsPage"
             android:exported="false" />
         <activity
             android:name=".MainActivity"
@@ -28,13 +28,16 @@
             </intent-filter>
         </activity>
         <activity
+            android:name=".RegisterUser"
+            android:exported="true"></activity>
+        <activity
             android:name=".ProfilePage"
             android:exported="true"></activity>
         <activity
             android:name=".PaymentPage"
             android:exported="true"></activity>
         <activity
-            android:name=".RegisterPage"
+            android:name=".LoginPage"
             android:exported="true"></activity>
     </application>
 
