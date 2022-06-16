@@ -11,9 +11,17 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+<<<<<<< HEAD
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+=======
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+>>>>>>> parent of 1acae23 (database)
 
 import java.util.HashMap;
 import java.util.regex.Matcher;
@@ -57,10 +65,44 @@ public class RegisterUser extends AppCompatActivity {
     str_pass = registerPassword.getText().toString();
     str_phone = registerPhone.getText().toString();
 
+<<<<<<< HEAD
     if (str_name.isEmpty()) {
         registerName.setError("Please enter field");
         registerName.requestFocus();
         return;
+=======
+    private void createUser(){
+        String Email = registerEmail.getText().toString();
+        String Password = registerPassword.getText().toString();
+        String Name = registerName.getText().toString();
+        String PhoneNumber = registerPhone.getText().toString();
+
+        if(TextUtils.isEmpty(Email)){
+            registerEmail.setError("Please add an email address");
+            registerEmail.requestFocus();
+        }else if (TextUtils.isEmpty(Password)){
+            registerPassword.setError("A password is required");
+            registerPassword.requestFocus();
+        }else if (TextUtils.isEmpty(Name)){
+            registerName.setError("Please introduce your name");
+            registerName.requestFocus();
+        }else if (TextUtils.isEmpty(PhoneNumber)){
+            registerPhone.setError("Please add your phone number");
+            registerPhone.requestFocus();
+        }else{
+            mAuth.createUserWithEmailAndPassword(Email,Password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                @Override
+                public void onComplete(@NonNull Task<AuthResult> task) {
+                    if (task.isSuccessful()){
+                        Toast.makeText(RegisterUser.this,"User registered successfully", Toast.LENGTH_SHORT).show();
+                        startActivity(new Intent(RegisterUser.this, MainActivity.class));
+                    }else{
+                        Toast.makeText(RegisterUser.this,"Not able to register user: " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                    }
+                }
+            });
+        }
+>>>>>>> parent of 1acae23 (database)
     }
     if (!Patterns.EMAIL_ADDRESS.matcher(str_mail).matches()){
        registerEmail.setError("Please enter valid email");
