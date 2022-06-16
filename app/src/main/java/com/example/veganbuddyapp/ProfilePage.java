@@ -10,11 +10,13 @@ import android.os.Bundle;
 import android.view.MenuItem;
 
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.Objects;
 
 public class ProfilePage extends AppCompatActivity {
 
+    private FirebaseAuth mAuth;
     public DrawerLayout drawerLayout;
     public ActionBarDrawerToggle actionBarDrawerToggle;
     public NavigationView navigationView;
@@ -23,6 +25,7 @@ public class ProfilePage extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile_page);
+        mAuth = FirebaseAuth.getInstance();
 
         navigationView = findViewById(R.id.navView);
 
@@ -47,7 +50,7 @@ public class ProfilePage extends AppCompatActivity {
                         startActivity(intent);
                         return true;
                     case R.id.nav_logout:
-                        Intent register = new Intent(ProfilePage.this,RegisterPage.class);
+                        Intent register = new Intent(ProfilePage.this, LoginPage.class);
                         startActivity(register);
                         return true;
                     case R.id.nav_payment:

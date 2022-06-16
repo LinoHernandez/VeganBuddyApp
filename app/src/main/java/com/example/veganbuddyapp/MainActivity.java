@@ -14,6 +14,8 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -26,6 +28,7 @@ public class MainActivity extends AppCompatActivity {
     Button searchPc;
     String postalString;
 
+    private FirebaseAuth mAuth;
     public DrawerLayout drawerLayout;
     public ActionBarDrawerToggle actionBarDrawerToggle;
     public NavigationView navigationView;
@@ -33,6 +36,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        mAuth = FirebaseAuth.getInstance();
 
         //---------------------
         postalCode = findViewById(R.id.postalCode);
@@ -79,8 +83,8 @@ public class MainActivity extends AppCompatActivity {
                         startActivity(intent);
                         return true;
                     case R.id.nav_logout:
-                        Intent register = new Intent(MainActivity.this,RegisterPage.class);
-                        startActivity(register);
+                        mAuth.signOut();
+                        startActivity(new Intent(MainActivity.this, LoginPage.class));
                         return true;
                     case R.id.nav_payment:
                         Intent payment = new Intent(MainActivity.this,PaymentPage.class);
@@ -92,6 +96,16 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    public void onStart() {
+        super.onStart();
+        // Check if user is signed in (non-null) and update UI accordingly.
+        FirebaseUser user = mAuth.getCurrentUser();
+        if (user == null){
+            startActivity(new Intent(MainActivity.this, RegisterUser.class));
+        }
+        //updateUI(currentUser);
     }
 
     //Function to Validate the Postal code
