@@ -10,11 +10,13 @@ import android.os.Bundle;
 import android.view.MenuItem;
 
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.Objects;
 
 public class PaymentPage extends AppCompatActivity {
 
+    private FirebaseAuth mAuth;
     public DrawerLayout drawerLayout;
     public ActionBarDrawerToggle actionBarDrawerToggle;
     public NavigationView navigationView;
@@ -23,11 +25,11 @@ public class PaymentPage extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.payment_page);
+        mAuth = FirebaseAuth.getInstance();
 
         navigationView = findViewById(R.id.navView);
 
-        // drawer layout instance to toggle the menu icon to open
-        // drawer and back button to close drawer
+        // drawer layout instance to toggle the menu icon to open        // drawer and back button to close drawer
         drawerLayout = findViewById(R.id.my_drawer_layout);
         actionBarDrawerToggle = new ActionBarDrawerToggle(this, drawerLayout, R.string.nav_open, R.string.nav_close);
 
@@ -47,7 +49,7 @@ public class PaymentPage extends AppCompatActivity {
                         startActivity(intent);
                         return true;
                     case R.id.nav_logout:
-                        Intent register = new Intent(PaymentPage.this,RegisterPage.class);
+                        Intent register = new Intent(PaymentPage.this, LoginPage.class);
                         startActivity(register);
                         return true;
                     case R.id.nav_payment:
