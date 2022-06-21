@@ -201,6 +201,7 @@ public class RegisterUser extends AppCompatActivity {
                         databaseReference.setValue(myuserProfile);
 
                         Toast.makeText(RegisterUser.this,"User registered successfully", Toast.LENGTH_SHORT).show();
+                        uploadImage();
                         startActivity(new Intent(RegisterUser.this, MainActivity.class));
                     }else{
                         Toast.makeText(RegisterUser.this,"Not able to register user: " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
@@ -211,7 +212,7 @@ public class RegisterUser extends AppCompatActivity {
     }
 
     public void uploadImage(){
-        storageReference = FirebaseStorage.getInstance().getReference().child("Images").child(mAuth.getUid()).child("Profile Pic");
+        storageReference = FirebaseStorage.getInstance().getReference().child("Images").child(mAuth.getUid()).child("ProfilePic");
 
 
         //Image compresesion

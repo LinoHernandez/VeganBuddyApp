@@ -5,9 +5,10 @@
     <color name="purple_700">#FF3700B3</color>
     <color name="teal_200">#FF03DAC5</color>
     <color name="teal_700">#FF018786</color>
-    <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
+    <color name="white">#FFFFFF</color>
+    <color name="black">#000000</color>
     <color name="VeganGreen">#295F2D</color>
     <color name="Background">#000000</color>
     <color name="textColor">#FFFFFF</color>
+    <color name="MtextColor">#000000</color>
 </resources>
