@@ -4,13 +4,21 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="../../../../layout/custom_preview.xml" value="0.11690647482014388" />
+        <entry key="..\:/Users/linoj/AndroidStudioProjects/VeganBuddyApp/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.247" />
+        <entry key="..\:/Users/linoj/AndroidStudioProjects/VeganBuddyApp/app/src/main/res/drawable/bg_gradient.xml" value="0.13" />
+        <entry key="..\:/Users/linoj/AndroidStudioProjects/VeganBuddyApp/app/src/main/res/drawable/ic_icons8_home.xml" value="0.247" />
+        <entry key="..\:/Users/linoj/AndroidStudioProjects/VeganBuddyApp/app/src/main/res/drawable/ic_launcher_background.xml" value="0.247" />
+        <entry key="..\:/Users/linoj/AndroidStudioProjects/VeganBuddyApp/app/src/main/res/drawable/splash_background.xml" value="0.1" />
+        <entry key="..\:/Users/linoj/AndroidStudioProjects/VeganBuddyApp/app/src/main/res/drawable/splash_fg.xml" value="0.178" />
         <entry key="..\:/Users/linoj/AndroidStudioProjects/VeganBuddyApp/app/src/main/res/layout/activity_main.xml" value="0.264" />
         <entry key="..\:/Users/linoj/AndroidStudioProjects/VeganBuddyApp/app/src/main/res/layout/activity_profile_page.xml" value="0.25" />
+        <entry key="..\:/Users/linoj/AndroidStudioProjects/VeganBuddyApp/app/src/main/res/layout/activity_splash_screen.xml" value="0.1" />
         <entry key="..\:/Users/linoj/AndroidStudioProjects/VeganBuddyApp/app/src/main/res/layout/fragment_log_screen.xml" value="0.22826086956521738" />
         <entry key="..\:/Users/linoj/AndroidStudioProjects/VeganBuddyApp/app/src/main/res/layout/fragment_payment_screen.xml" value="0.22826086956521738" />
         <entry key="..\:/Users/linoj/AndroidStudioProjects/VeganBuddyApp/app/src/main/res/layout/fragment_profile_screen.xml" value="0.22826086956521738" />
         <entry key="..\:/Users/linoj/AndroidStudioProjects/VeganBuddyApp/app/src/main/res/layout/logregister_screen.xml" value="0.22826086956521738" />
         <entry key="..\:/Users/linoj/AndroidStudioProjects/VeganBuddyApp/app/src/main/res/layout/payment_page.xml" value="0.25" />
+        <entry key="..\:/Users/linoj/AndroidStudioProjects/VeganBuddyApp/app/src/main/res/layout/splash_screen_activity.xml" value="0.1" />
         <entry key="..\:/Users/linoj/AndroidStudioProjects/VeganBuddyApp/app/src/main/res/menu/navigation_menu.xml" value="0.25" />
         <entry key="..\:/Users/satwi/Documents/GitHub/VeganBuddyApp/app/src/main/res/layout/activity_profile_page.xml" value="0.176" />
         <entry key="..\:/Users/satwi/Documents/GitHub/VeganBuddyApp/app/src/main/res/layout/activity_register_user.xml" value="0.15789473684210525" />

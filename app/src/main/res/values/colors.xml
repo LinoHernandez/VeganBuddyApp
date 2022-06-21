@@ -10,5 +10,8 @@
     <color name="VeganGreen">#295F2D</color>
     <color name="Background">#F8EFB7</color>
     <color name="textColor">#000000</color>
-    <color name="MtextColor">#000000</color>
+    <color name="text_color_b">#000000</color>
+    <color name="colorPrimary">#295F2D</color>
+    <color name="colorPrimaryDark">#000</color>
+    <color name="colorAccent">#297F1D</color>
 </resources>
