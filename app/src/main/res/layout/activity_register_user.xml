@@ -151,13 +151,13 @@
         </RelativeLayout>
 
         <ImageView
-            android:id="@+id/imageView"
+            android:id="@+id/setPicture"
             android:layout_width="142dp"
             android:layout_height="144dp"
-            android:layout_marginTop="60dp"
+            android:layout_marginTop="96dp"
             android:visibility="visible"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.486"
+            app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/user"
@@ -171,7 +171,7 @@
             android:layout_marginTop="10dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageView">
+            app:layout_constraintTop_toBottomOf="@+id/setPicture">
 
             <TextView
                 android:id="@+id/textName"
