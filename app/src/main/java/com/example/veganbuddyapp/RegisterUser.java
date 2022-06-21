@@ -42,7 +42,8 @@ public class RegisterUser extends AppCompatActivity {
     EditText registerName, registerPassword, registerPhone, registerEmail;
     Button login,registerButton;
     ImageView setPicture;
-    Uri imagepath;
+    Bitmap selectedImageBitmap;
+    Uri selectedImageUri;
     String ImageUriAcessToken;
     private static int PICK_IMAGE=123;
     private FirebaseAuth mAuth;
@@ -108,27 +109,55 @@ public class RegisterUser extends AppCompatActivity {
 
         //Uploading Picture
 
-        ActivityResultLauncher<Intent> startActivityForResult = registerForActivityResult(new
-                        ActivityResultContracts.StartActivityForResult(),
+//        ActivityResultLauncher<Intent> startActivityForResult = registerForActivityResult(new
+//                        ActivityResultContracts.StartActivityForResult(),
+//                result -> {
+//                    if (result.getResultCode() == AppCompatActivity.RESULT_OK && result.getResultCode() == PICK_IMAGE) {
+//                        Intent data = result.getData();
+//                        imagepath = data.getData();
+//                        setPicture.setImageURI(imagepath);
+//                    }
+//                });
+        ActivityResultLauncher<Intent> startActivityForResult = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(),
                 result -> {
-                    if (result.getResultCode() == AppCompatActivity.RESULT_OK && result.getResultCode() == PICK_IMAGE) {
-                        Intent data = result.getData();
-                        imagepath = data.getData();
-                        setPicture.setImageURI(imagepath);
+            if(result.getResultCode() == AppCompatActivity.RESULT_OK){
+                Intent data = result.getData();
+                // do your operation from here....
+                if (data != null
+                        && data.getData() != null) {
+                    selectedImageUri = data.getData();
+
+                    try {
+                        selectedImageBitmap
+                                = MediaStore.Images.Media.getBitmap(
+                                this.getContentResolver(),
+                                selectedImageUri);
                     }
+                    catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                    setPicture.setImageBitmap(
+                            selectedImageBitmap);
+                }
+            }
                 });
 
 
-        setPicture.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent=new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.INTERNAL_CONTENT_URI);
-                startActivityForResult(intent,PICK_IMAGE);
+//        setPicture.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Intent intent=new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.INTERNAL_CONTENT_URI);
+//                startActivityForResult(intent,PICK_IMAGE);
+//
+//            }
+//        });
 
-            }
-        });
-
-
+    setPicture.setOnClickListener(view -> {
+        Intent intent1 = new Intent();
+        intent1.setType("image/*");
+        intent1.setAction(Intent.ACTION_GET_CONTENT);
+        startActivityForResult.launch(intent1);
+    });
 
         //Registering User
         registerButton.setOnClickListener(view ->{
@@ -165,10 +194,12 @@ public class RegisterUser extends AppCompatActivity {
                 @Override
                 public void onComplete(@NonNull Task<AuthResult> task) {
                     if (task.isSuccessful()){
+                        uploadImage();
                         FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
                         DatabaseReference databaseReference = firebaseDatabase.getReference().child("Users").child(mAuth.getUid());
                         User myuserProfile=new User(mAuth.getUid(),String.valueOf(registerName.getText()),String.valueOf(registerEmail.getText()),String.valueOf(registerPhone.getText()));
                         databaseReference.setValue(myuserProfile);
+
                         Toast.makeText(RegisterUser.this,"User registered successfully", Toast.LENGTH_SHORT).show();
                         uploadImage();
                         startActivity(new Intent(RegisterUser.this, MainActivity.class));
@@ -188,7 +219,7 @@ public class RegisterUser extends AppCompatActivity {
 
         Bitmap bitmap=null;
         try {
-            bitmap= MediaStore.Images.Media.getBitmap(getContentResolver(),imagepath);
+            bitmap= MediaStore.Images.Media.getBitmap(getContentResolver(),selectedImageUri);
         }
         catch (IOException e)
         {
@@ -232,7 +263,6 @@ public class RegisterUser extends AppCompatActivity {
             }
         });
     }
-
     //@Override
     //public void onStart() {
     //super.onStart();
