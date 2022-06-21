@@ -7,6 +7,7 @@
         android:icon="@drawable/ic_icons8_home"
         android:title="Main page"
         android:textColor="@color/MtextColor"/>
+        android:visible="false" />
 
     <item
         android:id="@+id/nav_account"

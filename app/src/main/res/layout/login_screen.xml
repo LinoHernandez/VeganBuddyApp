@@ -100,6 +100,7 @@
                 android:inputType="textEmailAddress"
                 android:paddingLeft="20dp"
                 android:scrollIndicators="left"
+                android:singleLine="false"
                 android:textAlignment="center"
                 android:textColor="@color/textColor"
                 android:textSize="14sp"
