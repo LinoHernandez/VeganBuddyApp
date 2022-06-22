@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         mAuth = FirebaseAuth.getInstance();
 
-        //---------------------
+
         postalCode = findViewById(R.id.postalCode);
         searchPc = findViewById(R.id.searchPc);
         navigationView = findViewById(R.id.navView);
