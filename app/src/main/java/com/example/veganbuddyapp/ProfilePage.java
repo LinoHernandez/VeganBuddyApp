@@ -5,14 +5,23 @@ import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.drawerlayout.widget.DrawerLayout;
 
+import android.content.ContentResolver;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 
+
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -20,8 +29,11 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 
 
+import java.io.IOException;
 import java.util.Objects;
 
 public class ProfilePage extends AppCompatActivity {
@@ -29,6 +41,7 @@ public class ProfilePage extends AppCompatActivity {
 
     private FirebaseAuth mAuth;
     private DatabaseReference databaseReference;
+    private StorageReference storageReference;
     public DrawerLayout drawerLayout;
     public ActionBarDrawerToggle actionBarDrawerToggle;
     public NavigationView navigationView;
@@ -36,6 +49,7 @@ public class ProfilePage extends AppCompatActivity {
     //profile page objects
     EditText nameProfile, emailProfile, phoneProfile;
     Button editProfile;
+    ImageView setPicture;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,11 +60,32 @@ public class ProfilePage extends AppCompatActivity {
         emailProfile = findViewById(R.id.emailProfile);
         phoneProfile = findViewById(R.id.phoneProfile);
         editProfile = findViewById(R.id.editProfile);
+        setPicture = findViewById(R.id.setPicture);
 
         navigationView = findViewById(R.id.navView);
 
 
         //Showing data in profile page
+        storageReference = FirebaseStorage.getInstance().getReference().child("Images").child(mAuth.getUid()).child("ProfilePic");
+//        storageReference.getDownloadUrl().addOnSuccessListener(uri -> setPicture.setImageURI(uri));
+
+        storageReference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+            @Override
+            public void onSuccess(Uri uri) {
+                try {
+                    Bitmap bitmap= MediaStore.Images.Media.getBitmap(getContentResolver(),uri);
+                    setPicture.setImageBitmap(bitmap);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Toast.makeText(getApplicationContext(),"Image is uploaded"+e+"",Toast.LENGTH_SHORT).show();
+            }
+        });
+
         databaseReference = FirebaseDatabase.getInstance().getReference().child("Users").child(mAuth.getUid());
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
