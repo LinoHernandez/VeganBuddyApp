@@ -7,24 +7,25 @@
         android:icon="@drawable/ic_icons8_home"
         android:title="Main page"
         android:visible="true"
-        android:textColor="@color/MtextColor"/>
+        android:textColor="@color/text_color_b"/>
+
 
     <item
         android:id="@+id/nav_account"
         android:icon="@drawable/user"
         android:title="@string/my_profile"
-        android:textColor="@color/MtextColor"/>
+        android:textColor="@color/text_color_b"/>
 
     <item
         android:id="@+id/nav_payment"
         android:icon="@drawable/credit_card"
         android:title="@string/payment"
-        android:textColor="@color/MtextColor"/>
+        android:textColor="@color/text_color_b"/>
 
     <item
         android:id="@+id/nav_logout"
         android:icon="@drawable/login"
         android:title="@string/logout"
-        android:textColor="@color/MtextColor"/>
+        android:textColor="@color/text_color_b"/>
 
 </menu>
