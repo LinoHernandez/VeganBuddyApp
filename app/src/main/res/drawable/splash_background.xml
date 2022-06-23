@@ -3,7 +3,9 @@
     <item
         android:drawable="@drawable/bg_gradient"/>
     <item>
-        <bitmap android:gravity="center"
-            android:src="@drawable/amonglil"/>
+        <bitmap
+            android:gravity="center"
+            android:src="@drawable/amonglil"
+            />
     </item>
 </layer-list>
