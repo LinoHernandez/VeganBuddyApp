@@ -27,7 +27,7 @@ public class RestaurantsPage extends AppCompatActivity {
 
         gridView = findViewById(R.id.restaurants_name_grid_view);
 
-        CustomAdapter customAdapter = new CustomAdapter(names,images, context: this);
+        CustomAdapter customAdapter = new CustomAdapter(names,images, this);
 
         gridView.setAdapter(customAdapter);
     }
@@ -65,7 +65,8 @@ public class RestaurantsPage extends AppCompatActivity {
 
 
             if(view == null){
-                view = LayoutInflater.inflate(R.layout.restaurants_list, viewGroup, attachToRoot: false);
+//                view = LayoutInflater.inflate(R.layout.restaurants_list, viewGroup, false);
+                view = layoutInflater.inflate(R.layout.restaurants_list, viewGroup, false);
 
             }
 
