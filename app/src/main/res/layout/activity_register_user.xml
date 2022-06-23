@@ -150,23 +150,31 @@
                 tools:ignore="TouchTargetSizeCheck" />
         </RelativeLayout>
 
-        <ImageView
+
+        <androidx.cardview.widget.CardView
             android:id="@+id/setPicture"
-            android:layout_width="142dp"
-            android:layout_height="144dp"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
             android:layout_marginTop="96dp"
             android:visibility="visible"
+            app:cardCornerRadius="75dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/user"
             tools:srcCompat="@tools:sample/backgrounds/scenic"
-            tools:visibility="visible" />
-        <androidx.cardview.widget.CardView
-            android:layout_width="150dp"
-            android:layout_height="150dp">
-            
+            tools:visibility="visible">
+            <ImageView
+                android:id="@+id/setPictureImageView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+
+                android:visibility="visible"
+
+                app:srcCompat="@drawable/user"
+                tools:srcCompat="@tools:sample/backgrounds/scenic"
+                tools:visibility="visible" />
         </androidx.cardview.widget.CardView>
 
         <RelativeLayout
