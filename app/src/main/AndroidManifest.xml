@@ -16,47 +16,32 @@
         android:theme="@style/Theme.VeganBuddyApp"
         tools:targetApi="31">
         <activity
-            android:name=".SplashScreenActivity"
-            android:theme="@style/SplashTheme"
+            android:name=".RestaurantMenuPage"
+            android:exported="false" />
+        <activity
+            android:name=".RestaurantsPage"
+            android:exported="false" />
+        <activity
+            android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
-            android:name=".RestaurantsPage"
-            android:exported="true">
-
-        </activity>
-
-        <activity
-            android:name=".MainActivity"
-            android:exported="true">
-
-        </activity>
-
-        <activity
             android:name=".RegisterUser"
-            android:exported="true">
-
-        </activity>
+            android:exported="true"></activity>
         <activity
             android:name=".ProfilePage"
-            android:exported="true">
-
-        </activity>
+            android:exported="true"></activity>
         <activity
             android:name=".PaymentPage"
-            android:exported="true">
-
-        </activity>
+            android:exported="true"></activity>
         <activity
             android:name=".LoginPage"
-            android:exported="true">
-
-        </activity>
-
+            android:exported="true"></activity>
     </application>
 
 </manifest>
