@@ -25,7 +25,7 @@ public class RestaurantsPage extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_restaurants_page);
 
-        gridView = findViewById(R.id.restaurants_name_grid_view);
+        gridView = findViewById(R.id.gridView);
 
         CustomAdapter customAdapter = new CustomAdapter(names,images, this);
 
