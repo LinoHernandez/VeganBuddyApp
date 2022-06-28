@@ -30,74 +30,75 @@ public class RestaurantsPage extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_restaurants_page);
 
-        gridView = findViewById(R.id.gridView);
-
-        CustomAdapter customAdapter = new CustomAdapter(names,images, this);
-
-        gridView.setAdapter(customAdapter);
+//        gridView = findViewById(R.id.gridView);
+//
+//        CustomAdapter customAdapter = new CustomAdapter(names, images, this);
+//
+//        gridView.setAdapter(customAdapter);
     }
 
-    public class CustomAdapter extends BaseAdapter{
-        private String[] restaurantsNames;
-        private int[] restaurantPhotos;
-        private Context context;
-        private LayoutInflater layoutInflater;
-
-        public CustomAdapter(String[] restaurantsNames, int[] restaurantPhotos, Context context) {
-            this.restaurantsNames = restaurantsNames;
-            this.restaurantPhotos = restaurantPhotos;
-            this.context = context;
-            this.layoutInflater = (LayoutInflater) context.getSystemService(LAYOUT_INFLATER_SERVICE);
-        }
-
-        @Override
-        public int getCount() {
-            return restaurantPhotos.length;
-        }
-
-        @Override
-        public Object getItem(int i) {
-            return null;
-        }
-
-        @Override
-        public long getItemId(int i) {
-            return 0;
-        }
-
-        @Override
-        public View getView(int i, View view, ViewGroup viewGroup) {
-
-
-            if(view == null){
-//                view = LayoutInflater.inflate(R.layout.restaurants_list, viewGroup, false);
-                view = layoutInflater.inflate(R.layout.restaurants_list, viewGroup, false);
-
-            }
-
-            TextView restaurant_name = view.findViewById(R.id.restaurant_name);
-            ImageView imageView =view.findViewById(R.id.restaurant_image);
-
-            restaurant_name.setText(restaurantsNames[i]);
-            imageView.setImageResource(restaurantPhotos[i]);
-
-
-            return view;
-        StrictMode.ThreadPolicy policy = new
-                StrictMode.ThreadPolicy.Builder().permitAll().build();
-        StrictMode.setThreadPolicy(policy);
-
-        //Double lng = Double.parseDouble(longitude);
-       // Double lat = Double.parseDouble(latitude);
-        int radius = 1000;
-
-        //ArrayList<Place> list = search(lat,lng,radius);
-
-        //if (list != null)
-        {
-            resList = (GridView) findViewById(R.id.resListView);
-            //ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_expandable_list_item_1, list);
-            //resList.setAdapter(adapter);
-        }
-    }
+//    public class CustomAdapter extends BaseAdapter {
+//        private String[] restaurantsNames;
+//        private int[] restaurantPhotos;
+//        private Context context;
+//        private LayoutInflater layoutInflater;
+//
+//        public CustomAdapter(String[] restaurantsNames, int[] restaurantPhotos, Context context) {
+//            this.restaurantsNames = restaurantsNames;
+//            this.restaurantPhotos = restaurantPhotos;
+//            this.context = context;
+//            this.layoutInflater = (LayoutInflater) context.getSystemService(LAYOUT_INFLATER_SERVICE);
+//        }
+//
+//        @Override
+//        public int getCount() {
+//            return restaurantPhotos.length;
+//        }
+//
+//        @Override
+//        public Object getItem(int i) {
+//            return null;
+//        }
+//
+//        @Override
+//        public long getItemId(int i) {
+//            return 0;
+//        }
+//
+//        @Override
+//        public View getView(int i, View view, ViewGroup viewGroup) {
+//
+//
+//            if (view == null) {
+////                view = LayoutInflater.inflate(R.layout.restaurants_list, viewGroup, false);
+//                view = layoutInflater.inflate(R.layout.restaurants_list, viewGroup, false);
+//
+//            }
+//
+//            TextView restaurant_name = view.findViewById(R.id.restaurant_name);
+//            ImageView imageView = view.findViewById(R.id.restaurant_image);
+//
+//            restaurant_name.setText(restaurantsNames[i]);
+//            imageView.setImageResource(restaurantPhotos[i]);
+//
+//
+//            return view;
+//            StrictMode.ThreadPolicy policy = new
+//                    StrictMode.ThreadPolicy.Builder().permitAll().build();
+//            StrictMode.setThreadPolicy(policy);
+//
+//            //Double lng = Double.parseDouble(longitude);
+//            // Double lat = Double.parseDouble(latitude);
+//            int radius = 1000;
+//
+//            //ArrayList<Place> list = search(lat,lng,radius);
+//
+//            //if (list != null)
+//            {
+//                resList = (GridView) findViewById(R.id.resListView);
+//                //ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_expandable_list_item_1, list);
+//                //resList.setAdapter(adapter);
+//            }
+//        }
+//    }
 }
