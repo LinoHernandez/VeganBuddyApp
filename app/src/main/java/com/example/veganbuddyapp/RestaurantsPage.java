@@ -33,17 +33,17 @@ public class RestaurantsPage extends AppCompatActivity {
                 StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
 
-        Double lng = Double.parseDouble(longitude);
-        Double lat = Double.parseDouble(latitude);
+        //Double lng = Double.parseDouble(longitude);
+       // Double lat = Double.parseDouble(latitude);
         int radius = 1000;
 
-        ArrayList<Place> list = search(lat,lng,radius);
+        //ArrayList<Place> list = search(lat,lng,radius);
 
-        if (list != null)
+        //if (list != null)
         {
             resList = (GridView) findViewById(R.id.resListView);
-            ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_expandable_list_item_1, list);
-            resList.setAdapter(adapter);
+            //ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_expandable_list_item_1, list);
+            //resList.setAdapter(adapter);
         }
     }
 }
