@@ -4,21 +4,26 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
+import android.os.StrictMode;
+import android.widget.ArrayAdapter;
 import android.widget.GridView;
-import android.widget.ImageSwitcher;
-import android.widget.ImageView;
-import android.widget.TextView;
+import android.widget.ListView;
+
+import java.util.ArrayList;
 
 public class RestaurantsPage extends AppCompatActivity {
 
-    GridView gridView;
+    private GridView resList;
+    private static final String API_KEY = "AIzaSyAvhvD5YBxPNO2L4bsN745AF8Bi8fpze7w";
 
-    String[] names = {"restaurants name"};
-    int[] images = {R.drawable.ic_launcher_background};
+    private static final String PLACES_API_BASE =
+            "https://maps.googleapis.com/maps/api/place";
+
+    private static final String TYPE_AUTOCOMPLETE = "/autocomplete";
+    private static final String TYPE_DETAILS = "/details";
+    private static final String TYPE_SEARCH = "/nearbysearch";
+    private static final String OUT_JSON = "/json?";
+    private static final String LOG_TAG = "ListRest";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -78,6 +83,21 @@ public class RestaurantsPage extends AppCompatActivity {
 
 
             return view;
+        StrictMode.ThreadPolicy policy = new
+                StrictMode.ThreadPolicy.Builder().permitAll().build();
+        StrictMode.setThreadPolicy(policy);
+
+        //Double lng = Double.parseDouble(longitude);
+       // Double lat = Double.parseDouble(latitude);
+        int radius = 1000;
+
+        //ArrayList<Place> list = search(lat,lng,radius);
+
+        //if (list != null)
+        {
+            resList = (GridView) findViewById(R.id.resListView);
+            //ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_expandable_list_item_1, list);
+            //resList.setAdapter(adapter);
         }
     }
 }
