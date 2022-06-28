@@ -139,7 +139,7 @@ public class MainActivity extends AppCompatActivity implements
 
     public void showRestaurants(){
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
-        == PackageManager.PERMISSION_GRANTED) {
+                == PackageManager.PERMISSION_GRANTED) {
             //Permission is already available. Show restaurants
             Snackbar.make(resLayout,"Location permission available. Show restaurants.",
                     Snackbar.LENGTH_SHORT).show();
