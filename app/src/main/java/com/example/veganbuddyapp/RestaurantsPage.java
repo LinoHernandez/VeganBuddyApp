@@ -23,7 +23,7 @@ import java.util.ArrayList;
 
 public class RestaurantsPage extends AppCompatActivity {
 
-    private ListView resList;
+    private GridView resList;
     private static final String API_KEY = "AIzaSyAvhvD5YBxPNO2L4bsN745AF8Bi8fpze7w";
 
     private static final String PLACES_API_BASE = "https://maps.googleapis.com/maps/api/place";
@@ -53,7 +53,7 @@ public class RestaurantsPage extends AppCompatActivity {
 
         if (list != null)
         {
-            resList = (ListView) findViewById(R.id.listView);
+            resList = (GridView) findViewById(R.id.resListView);
             ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_expandable_list_item_1, list);
             resList.setAdapter(adapter);
         }
@@ -97,7 +97,7 @@ public class RestaurantsPage extends AppCompatActivity {
         try {
             // Create a JSON object hierarchy from the results
             JSONObject jsonObj = new JSONObject(jsonResults.toString());
-            JSONArray predsJsonArray = jsonObj.getJSONArray("resutls");
+            JSONArray predsJsonArray = jsonObj.getJSONArray("results");
 
             // Extract the descriptions from the results
             resultList = new ArrayList<Place>(predsJsonArray.length());
