@@ -6,13 +6,19 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -20,8 +26,12 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.squareup.picasso.Picasso;
 
 
+import java.io.IOException;
 import java.util.Objects;
 
 public class ProfilePage extends AppCompatActivity {
@@ -32,10 +42,12 @@ public class ProfilePage extends AppCompatActivity {
     public DrawerLayout drawerLayout;
     public ActionBarDrawerToggle actionBarDrawerToggle;
     public NavigationView navigationView;
+    private StorageReference storageReference;
 
     //profile page objects
     EditText nameProfile, emailProfile, phoneProfile;
     Button editProfile;
+    ImageView setPicture;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,6 +60,30 @@ public class ProfilePage extends AppCompatActivity {
         editProfile = findViewById(R.id.editProfile);
 
         navigationView = findViewById(R.id.navView);
+        setPicture = findViewById(R.id.setPicture);
+
+        storageReference = FirebaseStorage.getInstance().getReference().child("Images").child(mAuth.getUid()).child("ProfilePic");
+//        storageReference.getDownloadUrl().addOnSuccessListener(uri -> setPicture.setImageURI(uri));
+
+        storageReference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+            @Override
+            public void onSuccess(Uri uri) {
+                try {
+                    Bitmap bitmap= MediaStore.Images.Media.getBitmap(getContentResolver(),uri);
+//                    setPicture.setImageBitmap(bitmap);
+//                    imageuriaccesstoken =uri.toString();
+                    Picasso.get().load(uri).into(setPicture);
+                    Toast.makeText(getApplicationContext(),"Fetched Image"+e+"",Toast.LENGTH_SHORT).show();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Toast.makeText(getApplicationContext(),"Unable to Fetch Image"+e+"",Toast.LENGTH_SHORT).show();
+            }
+        });
 
 
         //Showing data in profile page
