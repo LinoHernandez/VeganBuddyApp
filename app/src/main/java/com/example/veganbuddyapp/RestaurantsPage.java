@@ -2,12 +2,17 @@ package com.example.veganbuddyapp;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.util.Log;
 import android.widget.ArrayAdapter;
 import android.widget.GridView;
 import android.widget.ListView;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -21,8 +26,7 @@ public class RestaurantsPage extends AppCompatActivity {
     private GridView resList;
     private static final String API_KEY = "AIzaSyAvhvD5YBxPNO2L4bsN745AF8Bi8fpze7w";
 
-    private static final String PLACES_API_BASE =
-            "https://maps.googleapis.com/maps/api/place";
+    private static final String PLACES_API_BASE = "https://maps.googleapis.com/maps/api/place";
 
     private static final String TYPE_AUTOCOMPLETE = "/autocomplete";
     private static final String TYPE_DETAILS = "/details";
@@ -34,16 +38,18 @@ public class RestaurantsPage extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_restaurants_page);
+        Intent intent = getIntent();
+        String longitude = intent.getStringExtra("long");
+        String latitude = intent.getStringExtra("lat");
 
-        StrictMode.ThreadPolicy policy = new
-                StrictMode.ThreadPolicy.Builder().permitAll().build();
+        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
 
         Double lng = Double.parseDouble(longitude);
         Double lat = Double.parseDouble(latitude);
-        int radius = 1000;
+        int radius = 10000;
 
-        ArrayList<Place> list = search(lat,lng,radius);
+        ArrayList<Place> list = search(lat, lng, radius);
 
         if (list != null)
         {
@@ -53,7 +59,7 @@ public class RestaurantsPage extends AppCompatActivity {
         }
     }
 
-    public static ArrayList<Place> search(double lat, double lng, int radius){
+    public static ArrayList<Place> search(double lat, double lng, int radius) {
         ArrayList<Place> resultList = null;
 
         HttpURLConnection conn = null;
@@ -69,8 +75,7 @@ public class RestaurantsPage extends AppCompatActivity {
 
             URL url = new URL(sb.toString());
             conn = (HttpURLConnection) url.openConnection();
-            InputStreamReader in = new
-                    InputStreamReader(conn.getInputStream());
+            InputStreamReader in = new InputStreamReader(conn.getInputStream());
 
             int read;
             char[] buff = new char[1024];
@@ -82,7 +87,43 @@ public class RestaurantsPage extends AppCompatActivity {
             return resultList;
         } catch (IOException e) {
             Log.e(LOG_TAG, "Error connecting to PLaces API", e);
-            return
+            return resultList;
+        } finally {
+            if (conn != null) {
+                conn.disconnect();
+            }
+        }
+
+        try {
+            // Create a JSON object hierarchy from the results
+            JSONObject jsonObj = new JSONObject(jsonResults.toString());
+            JSONArray predsJsonArray = jsonObj.getJSONArray("resutls");
+
+            // Extract the descriptions from the results
+            resultList = new ArrayList<Place>(predsJsonArray.length());
+            for (int i = 0; i < predsJsonArray.length(); i++) {
+                Place place = new Place();
+                place.reference = predsJsonArray.getJSONObject(i).getString("reference");
+                place.name = predsJsonArray.getJSONObject(i).getString("name");
+                resultList.add(place);
+            }
+            } catch (JSONException e) {
+                Log.e(LOG_TAG, "Error processing JSON results", e);
+            }
+            return resultList;
+        }
+
+        //Value Object for the ArrayList
+        public static class Place {
+            private String reference;
+            private String name;
+
+            public Place(){
+            super();
+            }
+            @Override
+            public String toString(){
+                return this.name; //This is what returns the name of each restaurant for array list
+            }
         }
     }
-}
