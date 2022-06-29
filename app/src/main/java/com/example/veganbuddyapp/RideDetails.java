@@ -1,6 +1,7 @@
 package com.example.veganbuddyapp;
 
 import androidx.appcompat.app.AppCompatActivity;
+
 import android.os.Bundle;
 
 public class RideDetails extends AppCompatActivity {
