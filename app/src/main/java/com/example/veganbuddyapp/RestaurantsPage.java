@@ -30,7 +30,7 @@ public class RestaurantsPage extends AppCompatActivity {
 
     private static final String TYPE_AUTOCOMPLETE = "/autocomplete";
     private static final String TYPE_DETAILS = "/details";
-    private static final String TYPE_SEARCH = "/nearbysearch";
+    private static final String TYPE_SEARCH = "/textsearch";
     private static final String OUT_JSON = "/json?";
     private static final String LOG_TAG = "ListRest";
 
@@ -71,6 +71,7 @@ public class RestaurantsPage extends AppCompatActivity {
             sb.append("location=" + String.valueOf(lat) + "," + String.valueOf(lng));
             sb.append("&radius=" + String.valueOf(radius));
             sb.append("&type=restaurant");
+            sb.append("&keyword=veganbase");
             sb.append("&key=" + API_KEY);
 
             URL url = new URL(sb.toString());
