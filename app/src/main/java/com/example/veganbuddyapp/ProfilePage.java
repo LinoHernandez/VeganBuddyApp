@@ -68,20 +68,22 @@ public class ProfilePage extends AppCompatActivity {
         storageReference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
             @Override
             public void onSuccess(Uri uri) {
+                Toast.makeText(getApplicationContext(),"Fetched Image"+mAuth.getUid()+"",Toast.LENGTH_SHORT).show();
                 try {
                     Bitmap bitmap= MediaStore.Images.Media.getBitmap(getContentResolver(),uri);
-//                    setPicture.setImageBitmap(bitmap);
+                    setPicture.setImageBitmap(bitmap);
 //                    imageuriaccesstoken =uri.toString();
-                    Picasso.get().load(uri).into(setPicture);
-                    Toast.makeText(getApplicationContext(),"Fetched Image"+e+"",Toast.LENGTH_SHORT).show();
+//                    Picasso.get().load(uri).into(setPicture);
+                    Toast.makeText(getApplicationContext(),"Fetched Image"+"",Toast.LENGTH_SHORT).show();
                 } catch (IOException e) {
                     e.printStackTrace();
+                    Toast.makeText(getApplicationContext(),"Unable to Fetch Image"+e+"",Toast.LENGTH_SHORT).show();
                 }
             }
         }).addOnFailureListener(new OnFailureListener() {
             @Override
             public void onFailure(@NonNull Exception e) {
-                Toast.makeText(getApplicationContext(),"Unable to Fetch Image"+e+"",Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(),"Unable to Fetch Image",Toast.LENGTH_SHORT).show();
             }
         });
 
