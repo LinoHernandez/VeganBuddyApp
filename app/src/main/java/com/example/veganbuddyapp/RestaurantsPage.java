@@ -15,7 +15,8 @@ import android.widget.TextView;
 
 public class RestaurantsPage extends AppCompatActivity {
 
-    GridView gridView;
+    private GridView resList;
+    private static final String API_KEY = "AIzaSyAvhvD5YBxPNO2L4bsN745AF8Bi8fpze7w";
 
     String[] names = {"restaurants name"};
     int[] images = {R.drawable.ic_launcher_background};
@@ -29,7 +30,14 @@ public class RestaurantsPage extends AppCompatActivity {
 
         CustomAdapter customAdapter = new CustomAdapter(names,images, context: this);
 
-        gridView.setAdapter(customAdapter);
+        ArrayList<Place> list = search(lat, lng, radius);
+
+        if (list != null)
+        {
+            resList = (GridView) findViewById(R.id.resListView);
+            ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_expandable_list_item_1, list);
+            resList.setAdapter(adapter);
+        }
     }
 
     public class CustomAdapter extends BaseAdapter{
@@ -45,9 +53,23 @@ public class RestaurantsPage extends AppCompatActivity {
             this.layoutInflater = (LayoutInflater) context.getSystemService(LAYOUT_INFLATER_SERVICE);
         }
 
-        @Override
-        public int getCount() {
-            return restaurantPhotos.length;
+        try {
+            // Create a JSON object hierarchy from the results
+            JSONObject jsonObj = new JSONObject(jsonResults.toString());
+            JSONArray predsJsonArray = jsonObj.getJSONArray("results");
+
+            // Extract the descriptions from the results
+            resultList = new ArrayList<Place>(predsJsonArray.length());
+            for (int i = 0; i < predsJsonArray.length(); i++) {
+                Place place = new Place();
+                place.reference = predsJsonArray.getJSONObject(i).getString("reference");
+                place.name = predsJsonArray.getJSONObject(i).getString("name");
+                resultList.add(place);
+            }
+            } catch (JSONException e) {
+                Log.e(LOG_TAG, "Error processing JSON results", e);
+            }
+            return resultList;
         }
 
         @Override
