@@ -116,8 +116,8 @@ public class RestaurantsPage extends AppCompatActivity {
 
         //Value Object for the ArrayList
         public static class Place {
-            private String reference;
-            private String name;
+            String reference;
+            String name;
 
             public Place(){
             super();

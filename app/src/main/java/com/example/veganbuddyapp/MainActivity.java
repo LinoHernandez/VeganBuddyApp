@@ -122,7 +122,7 @@ public class MainActivity extends AppCompatActivity implements
         if (ActivityCompat.checkSelfPermission(this,Manifest.permission.ACCESS_FINE_LOCATION)
                 == PackageManager.PERMISSION_GRANTED)
         {
-            Intent intent = new Intent(this, RestaurantsPage.class);
+            Intent intent = new Intent(this, RideDetails.class);
             LocationManager lm =
                     (LocationManager) getSystemService(Context.LOCATION_SERVICE);
             Location location =
@@ -133,6 +133,7 @@ public class MainActivity extends AppCompatActivity implements
             String lat = Double.toString(latitude);
             intent.putExtra("long", longit);
             intent.putExtra("lat", lat);
+            intent.putExtra("postalString", postalString);
             startActivity(intent);
         }
     }
