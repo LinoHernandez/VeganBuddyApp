@@ -4,7 +4,7 @@ buildscript {
     }
     dependencies {
         // Add this line
-        classpath 'com.google.gms:google-services:4.3.13'
+        classpath 'com.google.gms:google-services:4.3.10'
     }
 }
 
@@ -20,14 +20,6 @@ allprojects {
         google()  // Google's Maven repository
 
 
-    }
-}
-
-allprojects {
-    gradle.projectsEvaluated {
-        tasks.withType(JavaCompile) {
-            options.compilerArgs << "-Xlint:unchecked" << "-Xlint:deprecation"
-        }
     }
 }
 
