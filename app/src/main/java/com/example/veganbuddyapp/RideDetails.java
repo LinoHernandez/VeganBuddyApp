@@ -68,16 +68,18 @@ public class RideDetails extends AppCompatActivity {
         try {
             List<Address> address = geoCoder.getFromLocationName(locationName, 1);
             double endlatitude = address.get(0).getLatitude();
+            Log.d("Latitude", latitude);
             double endlongitude = address.get(0).getLongitude();
+            Log.d("Longitude", longitude);
             Location.distanceBetween(lng+0,lat+0,endlongitude+0,endlatitude+0,result);
             distance1 = result[0];
         } catch (IOException e) {
             e.printStackTrace();
         }
-
-        distance.setText((int) distance1);
+        Log.d("Distance", String.valueOf(distance1));
+        distance.setText(String.valueOf(distance1));
         pCode.setText(postalString);
-        charges.setText((int) distance1);
+        charges.setText(String.valueOf(distance1));
 
 //        int radius = 10000;
 //
