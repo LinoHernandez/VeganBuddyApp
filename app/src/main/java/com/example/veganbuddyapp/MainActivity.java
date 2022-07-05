@@ -111,15 +111,25 @@ public class MainActivity extends AppCompatActivity implements
 
         searchPc.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onClick(View view) {
                 showRestaurants();
             }
         });
     }
 
+    public void onStart() {
+        super.onStart();
+        // Check if user is signed in (non-null) and update UI accordingly.
+        FirebaseUser user = mAuth.getCurrentUser();
+        if (user == null){
+            startActivity(new Intent(MainActivity.this, RegisterUser.class));
+        }
+        //updateUI(currentUser);
+    }
+
     @SuppressLint("MissingPermission")
     public void startRestaurants() {
-        if (ActivityCompat.checkSelfPermission(this,Manifest.permission.ACCESS_FINE_LOCATION)
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
                 == PackageManager.PERMISSION_GRANTED)
         {
             Intent intent = new Intent(this, RestaurantsPage.class);
@@ -127,8 +137,8 @@ public class MainActivity extends AppCompatActivity implements
                     (LocationManager) getSystemService(Context.LOCATION_SERVICE);
             Location location =
                     lm.getLastKnownLocation(LocationManager.GPS_PROVIDER);
-            Double longitude = location.getLongitude();
-            Double latitude = location.getLatitude();
+            double longitude = location.getLongitude();
+            double latitude = location.getLatitude();
             String longit = Double.toString(longitude);
             String lat = Double.toString(latitude);
             intent.putExtra("long", longit);
@@ -152,7 +162,7 @@ public class MainActivity extends AppCompatActivity implements
     }
 
     @Override
-    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         if (requestCode == PERMISSION_REQUEST_LOCATION) {
             //Request for location permission.
@@ -179,7 +189,7 @@ public class MainActivity extends AppCompatActivity implements
             Snackbar.make(resLayout,"Location access is required to display restaurants near you.",
                     Snackbar.LENGTH_INDEFINITE).setAction("OK", new View.OnClickListener() {
                 @Override
-                public void onClick(View v) {
+                public void onClick(View view) {
                     //Request the permission
                     ActivityCompat.requestPermissions(MainActivity.this, new String[]
                             {Manifest.permission.ACCESS_FINE_LOCATION},PERMISSION_REQUEST_LOCATION);
@@ -195,15 +205,7 @@ public class MainActivity extends AppCompatActivity implements
     }
 
 
-    public void onStart() {
-        super.onStart();
-        // Check if user is signed in (non-null) and update UI accordingly.
-        FirebaseUser user = mAuth.getCurrentUser();
-        if (user == null){
-            startActivity(new Intent(MainActivity.this, RegisterUser.class));
-        }
-        //updateUI(currentUser);
-    }
+
 
     //Function to Validate the Postal code
     public void validatePostalCode(String postalString) {

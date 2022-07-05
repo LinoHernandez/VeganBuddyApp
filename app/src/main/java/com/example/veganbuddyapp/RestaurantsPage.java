@@ -1,5 +1,6 @@
 package com.example.veganbuddyapp;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -45,15 +46,15 @@ public class RestaurantsPage extends AppCompatActivity {
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
 
-        Double lng = Double.parseDouble(longitude);
-        Double lat = Double.parseDouble(latitude);
+        double lng = Double.parseDouble(longitude);
+        double lat = Double.parseDouble(latitude);
         int radius = 10000;
 
         ArrayList<Place> list = search(lat, lng, radius);
 
         if (list != null)
         {
-            resList = (GridView) findViewById(R.id.resListView);
+            resList = findViewById(R.id.resListView);
             ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_expandable_list_item_1, list);
             resList.setAdapter(adapter);
         }
@@ -68,8 +69,8 @@ public class RestaurantsPage extends AppCompatActivity {
             StringBuilder sb = new StringBuilder(PLACES_API_BASE);
             sb.append(TYPE_SEARCH);
             sb.append(OUT_JSON);
-            sb.append("location=" + String.valueOf(lat) + "," + String.valueOf(lng));
-            sb.append("&radius=" + String.valueOf(radius));
+            sb.append("location=").append(String.valueOf(lat)).append(",").append(String.valueOf(lng));
+            sb.append("&radius=").append(String.valueOf(radius));
             sb.append("&type=restaurant");
             sb.append("&keyword=veganbase");
             sb.append("&key=" + API_KEY);
@@ -116,12 +117,13 @@ public class RestaurantsPage extends AppCompatActivity {
 
         //Value Object for the ArrayList
         public static class Place {
-            String reference;
-            String name;
+            private String reference;
+            private String name;
 
             public Place(){
             super();
             }
+            @NonNull
             @Override
             public String toString(){
                 return this.name; //This is what returns the name of each restaurant for array list
