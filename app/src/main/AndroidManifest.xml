@@ -17,9 +17,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.VeganBuddyApp"
         tools:targetApi="31">
-        <activity
-            android:name=".RideDetails"
-            android:exported="false" />
+<!--        <activity-->
+<!--            android:name=".RideDetails"-->
+<!--            android:exported="false" />-->
         <activity
             android:name=".SplashScreenActivity"
             android:exported="true"
