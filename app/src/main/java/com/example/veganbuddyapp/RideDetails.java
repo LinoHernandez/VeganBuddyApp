@@ -42,6 +42,7 @@ public class RideDetails extends AppCompatActivity {
     float[] result = new float[1];
     public TextView distance,charges, pCode;
     float distance1;
+    float calculatedDistance;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,6 +52,8 @@ public class RideDetails extends AppCompatActivity {
         distance = findViewById(R.id.rideDistance);
         charges = findViewById(R.id.rideCharges);
         pCode = findViewById(R.id.rideAddress);
+
+        calculatedDistance = distance1 / 1000;
         Intent intent = getIntent();
         String longitude = intent.getStringExtra("long");
         String latitude = intent.getStringExtra("lat");
@@ -77,7 +80,7 @@ public class RideDetails extends AppCompatActivity {
             e.printStackTrace();
         }
         Log.d("Distance", String.valueOf(distance1));
-        distance.setText(String.valueOf(distance1));
+        distance.setText(String.valueOf(calculatedDistance));
         pCode.setText(postalString);
         charges.setText(String.valueOf(distance1));
 
