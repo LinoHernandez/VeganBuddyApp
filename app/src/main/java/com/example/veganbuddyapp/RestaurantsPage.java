@@ -57,6 +57,7 @@ public class RestaurantsPage extends AppCompatActivity {
             resList = findViewById(R.id.resListView);
             ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_expandable_list_item_1, list);
             resList.setAdapter(adapter);
+
         }
     }
 
@@ -107,6 +108,7 @@ public class RestaurantsPage extends AppCompatActivity {
                 Place place = new Place();
                 place.reference = predsJsonArray.getJSONObject(i).getString("reference");
                 place.name = predsJsonArray.getJSONObject(i).getString("name");
+                place.location = predsJsonArray.getJSONObject(i).getString("location");
                 resultList.add(place);
             }
             } catch (JSONException e) {
@@ -119,6 +121,7 @@ public class RestaurantsPage extends AppCompatActivity {
         public static class Place {
             private String reference;
             private String name;
+            private String location;
 
             public Place(){
             super();
