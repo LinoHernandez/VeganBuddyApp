@@ -12,6 +12,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Location;
+import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
 import android.view.KeyEvent;
@@ -44,6 +45,7 @@ public class MainActivity extends AppCompatActivity implements
     public DrawerLayout drawerLayout;
     public ActionBarDrawerToggle actionBarDrawerToggle;
     public NavigationView navigationView;
+    public LocationListener locationListener;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -122,19 +124,34 @@ public class MainActivity extends AppCompatActivity implements
         if (ActivityCompat.checkSelfPermission(this,Manifest.permission.ACCESS_FINE_LOCATION)
                 == PackageManager.PERMISSION_GRANTED)
         {
-            Intent intent = new Intent(this, RideDetails.class);
+            Intent intent = new Intent(this, RestaurantsPage.class);
             LocationManager lm =
                     (LocationManager) getSystemService(Context.LOCATION_SERVICE);
             Location location =
                     lm.getLastKnownLocation(LocationManager.GPS_PROVIDER);
-            Double longitude = location.getLongitude();
-            Double latitude = location.getLatitude();
-            String longit = Double.toString(longitude);
-            String lat = Double.toString(latitude);
-            intent.putExtra("long", longit);
-            intent.putExtra("lat", lat);
-            intent.putExtra("postalString", postalString);
-            startActivity(intent);
+
+            if(location == null){
+                location = lm.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+                Snackbar.make(resLayout,"Unable to use GPS",
+                        Snackbar.LENGTH_SHORT).show();
+                String longit = "43.78956";
+                String lat = "-79.58964";
+                intent.putExtra("long", longit);
+                intent.putExtra("lat", lat);
+                intent.putExtra("postalString", postalString);
+                startActivity(intent);
+            }
+            else
+            {
+                Double longitude = location.getLongitude();
+                Double latitude = location.getLatitude();
+                String longit = Double.toString(longitude);
+                String lat = Double.toString(latitude);
+                intent.putExtra("long", longit);
+                intent.putExtra("lat", lat);
+                intent.putExtra("postalString", postalString);
+                startActivity(intent);
+            }
         }
     }
 
@@ -151,7 +168,8 @@ public class MainActivity extends AppCompatActivity implements
         }
     }
 
-    public void onRequestPermissionResult(int requestCode, String[] permissions, int[] grantResults){
+    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         if (requestCode == PERMISSION_REQUEST_LOCATION) {
             //Request for location permission.
             if (grantResults.length == 1 && grantResults[0] ==
@@ -160,7 +178,7 @@ public class MainActivity extends AppCompatActivity implements
                 Snackbar.make(resLayout, "Location permission granted. Showing restaurants.",
                         Snackbar.LENGTH_SHORT).show();
                 startRestaurants();
-            }else {
+            } else {
                 //Permission request was denied.
                 Snackbar.make(resLayout, "Location permission request was denied.",
                         Snackbar.LENGTH_SHORT).show();
@@ -240,4 +258,6 @@ public class MainActivity extends AppCompatActivity implements
         return super.onOptionsItemSelected(item);
 
     }
+
+
 }
