@@ -4,41 +4,45 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="../../../../layout/custom_preview.xml" value="0.11690647482014388" />
-        <entry key="..\:/Users/linoj/AndroidStudioProjects/VeganBuddyApp/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.247" />
-        <entry key="..\:/Users/linoj/AndroidStudioProjects/VeganBuddyApp/app/src/main/res/drawable/bg_gradient.xml" value="0.13" />
-        <entry key="..\:/Users/linoj/AndroidStudioProjects/VeganBuddyApp/app/src/main/res/drawable/ic_icons8_home.xml" value="0.247" />
-        <entry key="..\:/Users/linoj/AndroidStudioProjects/VeganBuddyApp/app/src/main/res/drawable/ic_launcher_background.xml" value="0.247" />
-        <entry key="..\:/Users/linoj/AndroidStudioProjects/VeganBuddyApp/app/src/main/res/drawable/splash_background.xml" value="0.1" />
-        <entry key="..\:/Users/linoj/AndroidStudioProjects/VeganBuddyApp/app/src/main/res/drawable/splash_fg.xml" value="0.178" />
+        <entry key="..\:/Dell/VeganBuddyApp/app/src/main/res/layout/activity_main.xml" value="0.25416666666666665" />
+        <entry key="..\:/Dell/VeganBuddyApp/app/src/main/res/layout/activity_profile_page.xml" value="0.25416666666666665" />
+        <entry key="..\:/Dell/VeganBuddyApp/app/src/main/res/layout/logregister_screen.xml" value="0.25416666666666665" />
+        <entry key="..\:/Dell/VeganBuddyApp/app/src/main/res/layout/payment_page.xml" value="0.1" />
         <entry key="..\:/Users/linoj/AndroidStudioProjects/VeganBuddyApp/app/src/main/res/layout/activity_main.xml" value="0.264" />
-        <entry key="..\:/Users/linoj/AndroidStudioProjects/VeganBuddyApp/app/src/main/res/layout/activity_profile_page.xml" value="0.25" />
-        <entry key="..\:/Users/linoj/AndroidStudioProjects/VeganBuddyApp/app/src/main/res/layout/activity_register_user.xml" value="0.24818840579710144" />
-        <entry key="..\:/Users/linoj/AndroidStudioProjects/VeganBuddyApp/app/src/main/res/layout/activity_restaurants_page.xml" value="0.25" />
-        <entry key="..\:/Users/linoj/AndroidStudioProjects/VeganBuddyApp/app/src/main/res/layout/activity_ride_details.xml" value="0.13385416666666666" />
-        <entry key="..\:/Users/linoj/AndroidStudioProjects/VeganBuddyApp/app/src/main/res/layout/activity_splash_screen.xml" value="0.1" />
         <entry key="..\:/Users/linoj/AndroidStudioProjects/VeganBuddyApp/app/src/main/res/layout/fragment_log_screen.xml" value="0.22826086956521738" />
         <entry key="..\:/Users/linoj/AndroidStudioProjects/VeganBuddyApp/app/src/main/res/layout/fragment_payment_screen.xml" value="0.22826086956521738" />
         <entry key="..\:/Users/linoj/AndroidStudioProjects/VeganBuddyApp/app/src/main/res/layout/fragment_profile_screen.xml" value="0.22826086956521738" />
         <entry key="..\:/Users/linoj/AndroidStudioProjects/VeganBuddyApp/app/src/main/res/layout/logregister_screen.xml" value="0.22826086956521738" />
         <entry key="..\:/Users/linoj/AndroidStudioProjects/VeganBuddyApp/app/src/main/res/layout/payment_page.xml" value="0.25" />
-        <entry key="..\:/Users/linoj/AndroidStudioProjects/VeganBuddyApp/app/src/main/res/layout/restaurant_menu_grid.xml" value="0.13385416666666666" />
-        <entry key="..\:/Users/linoj/AndroidStudioProjects/VeganBuddyApp/app/src/main/res/layout/restaurants_name_grid.xml" value="0.25" />
-        <entry key="..\:/Users/linoj/AndroidStudioProjects/VeganBuddyApp/app/src/main/res/layout/splash_screen_activity.xml" value="0.1" />
         <entry key="..\:/Users/linoj/AndroidStudioProjects/VeganBuddyApp/app/src/main/res/menu/navigation_menu.xml" value="0.25" />
+        <entry key="..\:/Users/satwi/Documents/GitHub/VeganBuddyApp/app/src/main/res/drawable/bg_gradient.xml" value="0.121" />
+        <entry key="..\:/Users/satwi/Documents/GitHub/VeganBuddyApp/app/src/main/res/drawable/ic_baseline_menu_24.xml" value="0.121" />
+        <entry key="..\:/Users/satwi/Documents/GitHub/VeganBuddyApp/app/src/main/res/drawable/ic_icons8_home.xml" value="0.134" />
+        <entry key="..\:/Users/satwi/Documents/GitHub/VeganBuddyApp/app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="..\:/Users/satwi/Documents/GitHub/VeganBuddyApp/app/src/main/res/layout/activity_profile_page.xml" value="0.176" />
-        <entry key="..\:/Users/satwi/Documents/GitHub/VeganBuddyApp/app/src/main/res/layout/activity_register_user.xml" value="0.15789473684210525" />
+        <entry key="..\:/Users/satwi/Documents/GitHub/VeganBuddyApp/app/src/main/res/layout/activity_register_user.xml" value="0.2" />
+        <entry key="..\:/Users/satwi/Documents/GitHub/VeganBuddyApp/app/src/main/res/layout/activity_restaurant_menu_page.xml" value="0.1" />
+        <entry key="..\:/Users/satwi/Documents/GitHub/VeganBuddyApp/app/src/main/res/layout/activity_restaurants_page.xml" value="0.1" />
+        <entry key="..\:/Users/satwi/Documents/GitHub/VeganBuddyApp/app/src/main/res/layout/activity_ride_details.xml" value="0.2" />
+        <entry key="..\:/Users/satwi/Documents/GitHub/VeganBuddyApp/app/src/main/res/layout/activity_splash_screen.xml" value="0.1" />
+        <entry key="..\:/Users/satwi/Documents/GitHub/VeganBuddyApp/app/src/main/res/layout/login_screen.xml" value="0.1" />
         <entry key="..\:/Users/satwi/Documents/GitHub/VeganBuddyApp/app/src/main/res/layout/payment_page.xml" value="0.15789473684210525" />
+        <entry key="..\:/Users/satwi/Documents/GitHub/VeganBuddyApp/app/src/main/res/layout/restaurant_menu_grid.xml" value="0.1" />
+        <entry key="..\:/Users/satwi/Documents/GitHub/VeganBuddyApp/app/src/main/res/layout/restaurant_row.xml" value="0.15789473684210525" />
+        <entry key="..\:/Users/satwi/Documents/GitHub/VeganBuddyApp/app/src/main/res/layout/restaurants_list.xml" value="0.1" />
         <entry key="app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.1955" />
         <entry key="app/src/main/res/drawable/ic_icons8_home.xml" value="0.1955" />
         <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.1955" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.219439697265625" />
         <entry key="app/src/main/res/layout/activity_profile_page.xml" value="0.24174652099609376" />
-        <entry key="app/src/main/res/layout/activity_ride_details.xml" value="0.1431159420289855" />
+        <entry key="app/src/main/res/layout/activity_restaurants_page.xml" value="0.1381340579710145" />
+        <entry key="app/src/main/res/layout/activity_splash_screen.xml" value="0.1381340579710145" />
         <entry key="app/src/main/res/layout/fragment_log_screen.xml" value="0.11145833333333334" />
         <entry key="app/src/main/res/layout/fragment_payment_screen.xml" value="0.11145833333333334" />
         <entry key="app/src/main/res/layout/fragment_profile_screen.xml" value="0.11145833333333334" />
         <entry key="app/src/main/res/layout/logregister_screen.xml" value="0.2596815961187079" />
         <entry key="app/src/main/res/layout/payment_page.xml" value="0.40819091796875" />
+        <entry key="app/src/main/res/layout/restaurants_list.xml" value="0.16802536231884058" />
         <entry key="app/src/main/res/menu/navigation_menu.xml" value="0.25104166666666666" />
         <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.1955" />
         <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.1955" />

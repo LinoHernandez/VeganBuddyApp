@@ -1,14 +1,23 @@
 package com.example.veganbuddyapp;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.GridView;
+import android.widget.ListAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -23,7 +32,7 @@ import java.util.ArrayList;
 
 public class RestaurantsPage extends AppCompatActivity {
 
-    private GridView resList;
+    private RecyclerView resList;
     private static final String API_KEY = "AIzaSyAvhvD5YBxPNO2L4bsN745AF8Bi8fpze7w";
 
     private static final String PLACES_API_BASE = "https://maps.googleapis.com/maps/api/place";
@@ -33,14 +42,17 @@ public class RestaurantsPage extends AppCompatActivity {
     private static final String TYPE_SEARCH = "/nearbysearch";
     private static final String OUT_JSON = "/json?";
     private static final String LOG_TAG = "ListRest";
-
+    public String longitude ;
+    public String latitude ;
+    public String postalString;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_restaurants_page);
         Intent intent = getIntent();
-        String longitude = intent.getStringExtra("long");
-        String latitude = intent.getStringExtra("lat");
+        longitude = intent.getStringExtra("long");
+        latitude = intent.getStringExtra("lat");
+        postalString = "L6V2B5";
 
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
@@ -53,9 +65,11 @@ public class RestaurantsPage extends AppCompatActivity {
 
         if (list != null)
         {
-            resList = (GridView) findViewById(R.id.resListView);
-            ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_expandable_list_item_1, list);
-            resList.setAdapter(adapter);
+            resList = findViewById(R.id.resListView);
+            resList.setLayoutManager(new GridLayoutManager(this,2,GridLayoutManager.VERTICAL,false));
+//            ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_expandable_list_item_1, list);
+            RestaurantAdapter adapter1 = new RestaurantAdapter(this,list);
+            resList.setAdapter(adapter1);
         }
     }
 
@@ -113,10 +127,10 @@ public class RestaurantsPage extends AppCompatActivity {
         return resultList;
     }
 
-    //Value Object for the ArrayList
-    public static class Place {
-        private String reference;
-        private String name;
+        //Value Object for the ArrayList
+        public static class Place {
+            String reference;
+            String name;
 
         public Place(){
             super();
@@ -124,6 +138,62 @@ public class RestaurantsPage extends AppCompatActivity {
         @Override
         public String toString(){
             return this.name; //This is what returns the name of each restaurant for array list
+        }
+
+        class RestaurantAdapter extends RecyclerView.Adapter<RestaurantAdapter.ViewHolder>{
+                Activity activity;
+                ArrayList<Place> restautrantList;
+
+            public RestaurantAdapter(Activity activity, ArrayList<Place> restautrantList) {
+                this.activity = activity;
+                this.restautrantList = restautrantList;
+            }
+
+            @NonNull
+            @Override
+            public RestaurantAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+                View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.restaurant_row, parent, false);
+                return new RestaurantAdapter.ViewHolder(view);
+            }
+
+            @Override
+            public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+                holder.res_name.setText(restautrantList.get(position).name);
+                holder.res_address.setText("ggggg");
+                holder.res_distance.setText("fgggg");
+                holder.res_review.setText("fsddgd");
+                holder.res_name.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent intent = new Intent(getApplicationContext(), RideDetails.class);
+                        intent.putExtra("long", longitude);
+                        intent.putExtra("lat", latitude);
+                        intent.putExtra("postalString", postalString);
+                        startActivity(intent);
+                    }
+                });
+            }
+
+
+            @Override
+            public int getItemCount() {
+                return restautrantList.size();
+            }
+            class ViewHolder extends RecyclerView.ViewHolder {
+
+//                TextView categoryNameTV;
+                TextView res_name, res_address, res_distance, res_review;
+
+                public ViewHolder(@NonNull View itemView) {
+                    super(itemView);
+
+//                    categoryNameTV = itemView.findViewById(R.id.categoryNameTV);
+                    res_name = itemView.findViewById(R.id.res_name);
+                    res_address = itemView.findViewById(R.id.res_address);
+                    res_distance = itemView.findViewById(R.id.res_distance);
+                    res_review = itemView.findViewById(R.id.res_review);
+                }
+            }
         }
     }
 }

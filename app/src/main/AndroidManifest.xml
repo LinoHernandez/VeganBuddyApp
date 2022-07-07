@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.example.veganbuddyapp" >
+    package="com.example.veganbuddyapp">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
@@ -21,9 +21,12 @@
             android:name=".RideDetails"
             android:exported="false" />
         <activity
+            android:name=".RideDetails"
+            android:exported="true" />
+        <activity
             android:name=".SplashScreenActivity"
             android:exported="true"
-            android:theme="@style/SplashTheme" >
+            android:theme="@style/SplashTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -32,28 +35,22 @@
         </activity>
         <activity
             android:name=".RestaurantsPage"
-            android:exported="true" >
-        </activity>
+            android:exported="true"></activity>
         <activity
             android:name=".MainActivity"
-            android:exported="true" >
-        </activity>
+            android:exported="true"></activity>
         <activity
             android:name=".RegisterUser"
-            android:exported="true" >
-        </activity>
+            android:exported="true"></activity>
         <activity
             android:name=".ProfilePage"
-            android:exported="true" >
-        </activity>
+            android:exported="true"></activity>
         <activity
             android:name=".PaymentPage"
-            android:exported="true" >
-        </activity>
+            android:exported="true"></activity>
         <activity
             android:name=".LoginPage"
-            android:exported="true" >
-        </activity>
+            android:exported="true"></activity>
     </application>
 
 </manifest>
