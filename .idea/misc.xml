@@ -34,6 +34,7 @@
         <entry key="app/src/main/res/drawable/ic_icons8_home.xml" value="0.1955" />
         <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.1955" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.219439697265625" />
+        <entry key="app/src/main/res/layout/activity_maps.xml" value="0.1431159420289855" />
         <entry key="app/src/main/res/layout/activity_profile_page.xml" value="0.24174652099609376" />
         <entry key="app/src/main/res/layout/activity_restaurants_page.xml" value="0.1381340579710145" />
         <entry key="app/src/main/res/layout/activity_splash_screen.xml" value="0.1381340579710145" />
@@ -49,7 +50,7 @@
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">
