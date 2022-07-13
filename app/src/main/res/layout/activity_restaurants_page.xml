@@ -7,11 +7,16 @@
     android:layout_height="match_parent"
     tools:context="com.example.veganbuddyapp.RestaurantsPage">
 
-    <com.google.android.gms.maps.MapView
-        android:id="@+id/mapView"
+<!--    <com.google.android.gms.maps.MapView-->
+<!--        android:id="@+id/restaurantMaps"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="361dp"-->
+<!--        tools:ignore="SpeakableTextPresentCheck" />-->
+    <fragment
+        android:id="@+id/map"
+        android:name="com.google.android.gms.maps.SupportMapFragment"
         android:layout_width="match_parent"
-        android:layout_height="361dp"
-        tools:ignore="SpeakableTextPresentCheck" />
+        android:layout_height="500dp" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
