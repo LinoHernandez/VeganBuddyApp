@@ -14,15 +14,12 @@
         android:layout_height="361dp"
         tools:ignore="SpeakableTextPresentCheck" />
 
-    <androidx.recyclerview.widget.RecyclerView
+    <GridView
+        android:id="@+id/resListView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="16dp"
-        android:padding="10dp"
-        android:scrollbars="vertical"
-        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-        android:id="@+id/resListView"
-        app:spanCount="2"
-        tools:listitem="@layout/restaurant_row"/>
+        android:horizontalSpacing="4dp"
+        android:numColumns="auto_fit"
+        android:verticalSpacing="4dp" />
 
 </LinearLayout>
