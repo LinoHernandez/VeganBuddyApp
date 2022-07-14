@@ -11,8 +11,8 @@
             android:id="@+id/restaurant_image"
             android:layout_width="wrap_content"
             android:layout_height="100dp"
-            android:scaleType="fitXY"
             android:layout_centerHorizontal="true"
+            android:scaleType="fitXY"
             android:src="@mipmap/ic_launcher" />
 
         <TextView
