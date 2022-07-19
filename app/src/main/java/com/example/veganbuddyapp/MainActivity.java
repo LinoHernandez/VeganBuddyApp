@@ -134,8 +134,8 @@ public class MainActivity extends AppCompatActivity implements
                 location = lm.getLastKnownLocation(LocationManager.GPS_PROVIDER);
                 Snackbar.make(resLayout,"Unable to use GPS",
                         Snackbar.LENGTH_SHORT).show();
-                String longit = "43.78956";
-                String lat = "-79.58964";
+                String longit = "-79.347015";
+                String lat = "43.651070";
                 intent.putExtra("long", longit);
                 intent.putExtra("lat", lat);
                 intent.putExtra("postalString", postalString);
