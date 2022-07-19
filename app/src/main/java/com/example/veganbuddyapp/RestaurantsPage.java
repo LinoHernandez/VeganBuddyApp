@@ -40,7 +40,7 @@ import java.util.ArrayList;
 public class RestaurantsPage extends AppCompatActivity implements OnMapReadyCallback {
 
     private RecyclerView resList;
-    private static final String API_KEY = "AIzaSyBEWu4ruJDyvaU3bYQVzrGldbw1eyOlO88";
+    private static final String API_KEY = "AIzaSyAvhvD5YBxPNO2L4bsN745AF8Bi8fpze7w";
 
     private static final String PLACES_API_BASE = "https://maps.googleapis.com/maps/api/place";
 
