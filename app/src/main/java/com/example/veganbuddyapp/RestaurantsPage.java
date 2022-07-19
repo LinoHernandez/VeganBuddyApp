@@ -133,8 +133,7 @@ public class RestaurantsPage extends AppCompatActivity implements OnMapReadyCall
             for (int i = 0; i < predsJsonArray.length(); i++) {
                 Place place = new Place();
                 place.reference = predsJsonArray.getJSONObject(i).getString("reference");
-                //place.name = predsJsonArray.getJSONObject(i).getString("name");
-                place.adr_address = predsJsonArray.getJSONObject(i).getString("adr_address");
+                place.adr_address = predsJsonArray.getJSONObject(i).getString("formatted_address");
                 resultList.add(place);
             }
         } catch (JSONException e) {
@@ -155,13 +154,13 @@ public class RestaurantsPage extends AppCompatActivity implements OnMapReadyCall
     //Value Object for the ArrayList
     public static class Place {
         String reference;
-        String name;
         String adr_address;
 
         public Place(){
             super();
         }
         
+
         @Override
         public String toString(){
             return this.adr_address; //This is what returns the name of each restaurant for array list
@@ -187,8 +186,8 @@ public class RestaurantsPage extends AppCompatActivity implements OnMapReadyCall
 
         @Override
         public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-            holder.res_name.setText("fgggg");
-            holder.res_address.setText(restautrantList.get(position).adr_address);
+            holder.res_name.setText(restautrantList.get(position).adr_address);
+            holder.res_address.setText("fgggg");
             holder.res_distance.setText("fgggg");
             holder.res_review.setText("fsddgd");
             holder.res_name.setOnClickListener(new View.OnClickListener() {
