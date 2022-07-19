@@ -154,14 +154,15 @@ public class RestaurantsPage extends AppCompatActivity implements OnMapReadyCall
 
     //Value Object for the ArrayList
     public static class Place {
-        private String reference;
-        private String name;
-        private String adr_address;
+        String reference;
+        String name;
+        String adr_address;
 
         public Place(){
             super();
         }
-
+        
+        @Override
         public String toString(){
             return this.adr_address; //This is what returns the name of each restaurant for array list
         }
