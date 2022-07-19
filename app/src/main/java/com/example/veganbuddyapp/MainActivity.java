@@ -125,10 +125,8 @@ public class MainActivity extends AppCompatActivity implements
                 == PackageManager.PERMISSION_GRANTED)
         {
             Intent intent = new Intent(this, RestaurantsPage.class);
-            LocationManager lm =
-                    (LocationManager) getSystemService(Context.LOCATION_SERVICE);
-            Location location =
-                    lm.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+            LocationManager lm = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+            Location location = lm.getLastKnownLocation(LocationManager.GPS_PROVIDER);
 
             if(location == null){
                 location = lm.getLastKnownLocation(LocationManager.GPS_PROVIDER);
