@@ -32,6 +32,7 @@ import org.json.JSONObject;
 
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.lang.reflect.Array;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -70,8 +71,8 @@ public class RestaurantsPage extends AppCompatActivity implements OnMapReadyCall
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
 
-        double lng = Double.parseDouble(longitude);
-        double lat = Double.parseDouble(latitude);
+        Double lng = Double.parseDouble(longitude);
+        Double lat = Double.parseDouble(latitude);
         int radius = 10000;
 
         ArrayList<Place> list = search(lat, lng, radius);
@@ -95,8 +96,8 @@ public class RestaurantsPage extends AppCompatActivity implements OnMapReadyCall
             StringBuilder sb = new StringBuilder(PLACES_API_BASE);
             sb.append(TYPE_SEARCH);
             sb.append(OUT_JSON);
-            sb.append("location=").append(String.valueOf(lat)).append(",").append(String.valueOf(lng));
-            sb.append("&radius=").append(String.valueOf(radius));
+            sb.append("location=" + String.valueOf(lat) + "," + String.valueOf(lng));
+            sb.append("&radius=" + String.valueOf(radius));
             sb.append("&type=restaurant");
             sb.append("&keyword=veganbase");
             sb.append("&key=" + API_KEY);
@@ -133,15 +134,15 @@ public class RestaurantsPage extends AppCompatActivity implements OnMapReadyCall
                 Place place = new Place();
                 place.reference = predsJsonArray.getJSONObject(i).getString("reference");
                 place.name = predsJsonArray.getJSONObject(i).getString("name");
-                place.location = predsJsonArray.getJSONObject(i).getString("location");
+                place.adr_address = predsJsonArray.getJSONObject(i).getString("adr_address");
                 resultList.add(place);
             }
-            } catch (JSONException e) {
-                Log.e(LOG_TAG, "Error processing JSON results", e);
-            }
-            return resultList;
+        } catch (JSONException e) {
+            Log.e(LOG_TAG, "Error processing JSON results", e);
         }
-//When Googlee Map is Ready
+        return resultList;
+    }
+    //When Googlee Map is Ready
     @Override
     public void onMapReady(@NonNull GoogleMap googleMap) {
         gMap = googleMap;
@@ -152,74 +153,78 @@ public class RestaurantsPage extends AppCompatActivity implements OnMapReadyCall
     }
 
     //Value Object for the ArrayList
-        public static class Place {
-            private String reference;
-            private String name;
-            private String location;
+    public static class Place {
 
-            public Place(){
-            super();
-            }
-            @NonNull
-            @Override
-            public String toString(){
-                return this.name; //This is what returns the name of each restaurant for array list
-            }
+        String reference;
+        String name;
+        String adr_address;
+
+        @Override
+        public String toString(){
+            return this.name; //This is what returns the name of each restaurant for array list
         }
 
-        class RestaurantAdapter extends RecyclerView.Adapter<RestaurantAdapter.ViewHolder>{
-                Activity activity;
-                ArrayList<Place> restautrantList;
-
-            public RestaurantAdapter(Activity activity, ArrayList<Place> restautrantList) {
-                this.activity = activity;
-                this.restautrantList = restautrantList;
-            }
-
-            @NonNull
-            @Override
-            public RestaurantAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-                View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.restaurant_row, parent, false);
-                return new RestaurantAdapter.ViewHolder(view);
-            }
-
-            @Override
-            public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-                holder.res_name.setText(restautrantList.get(position).name);
-                holder.res_address.setText("ggggg");
-                holder.res_distance.setText("fgggg");
-                holder.res_review.setText("fsddgd");
-                holder.res_name.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        Intent intent = new Intent(getApplicationContext(), RideDetails.class);
-                        intent.putExtra("long", longitude);
-                        intent.putExtra("lat", latitude);
-                        intent.putExtra("postalString", postalString);
-                        startActivity(intent);
-                    }
-                });
-            }
+        public Place(){
+            super();
+        }
 
 
-            @Override
-            public int getItemCount() {
-                return restautrantList.size();
-            }
-            class ViewHolder extends RecyclerView.ViewHolder {
+    }
 
-//                TextView categoryNameTV;
-                TextView res_name, res_address, res_distance, res_review;
 
-                public ViewHolder(@NonNull View itemView) {
-                    super(itemView);
+    class RestaurantAdapter extends RecyclerView.Adapter<RestaurantAdapter.ViewHolder>{
+        Activity activity;
+        ArrayList<Place> restautrantList;
+
+        public RestaurantAdapter(Activity activity, ArrayList<Place> restautrantList) {
+            this.activity = activity;
+            this.restautrantList = restautrantList;
+        }
+
+        @NonNull
+        @Override
+        public RestaurantAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+            View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.restaurant_row, parent, false);
+            return new RestaurantAdapter.ViewHolder(view);
+        }
+
+        @Override
+        public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+            holder.res_name.setText(restautrantList.get(position).name);
+            holder.res_address.setText(restautrantList.get(position).adr_address);
+            holder.res_distance.setText("fgggg");
+            holder.res_review.setText("fsddgd");
+            holder.res_name.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(getApplicationContext(), RideDetails.class);
+                    intent.putExtra("long", longitude);
+                    intent.putExtra("lat", latitude);
+                    intent.putExtra("postalString", postalString);
+                    startActivity(intent);
+                }
+            });
+        }
+
+
+        @Override
+        public int getItemCount() {
+            return restautrantList.size();
+        }
+        class ViewHolder extends RecyclerView.ViewHolder {
+
+            //                TextView categoryNameTV;
+            TextView res_name, res_address, res_distance, res_review;
+
+            public ViewHolder(@NonNull View itemView) {
+                super(itemView);
 
 //                    categoryNameTV = itemView.findViewById(R.id.categoryNameTV);
-                    res_name = itemView.findViewById(R.id.res_name);
-                    res_address = itemView.findViewById(R.id.res_address);
-                    res_distance = itemView.findViewById(R.id.res_distance);
-                    res_review = itemView.findViewById(R.id.res_review);
-                }
+                res_name = itemView.findViewById(R.id.res_name);
+                res_address = itemView.findViewById(R.id.res_address);
+                res_distance = itemView.findViewById(R.id.res_distance);
+                res_review = itemView.findViewById(R.id.res_review);
             }
         }
     }
+}
