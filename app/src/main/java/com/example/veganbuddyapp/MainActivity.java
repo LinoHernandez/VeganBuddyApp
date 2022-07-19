@@ -135,33 +135,15 @@ public class MainActivity extends AppCompatActivity implements
                 == PackageManager.PERMISSION_GRANTED)
         {
             Intent intent = new Intent(this, RestaurantsPage.class);
-            LocationManager lm =
-                    (LocationManager) getSystemService(Context.LOCATION_SERVICE);
-            Location location =
-                    lm.getLastKnownLocation(LocationManager.GPS_PROVIDER);
-
-            if(location == null){
-                location = lm.getLastKnownLocation(LocationManager.GPS_PROVIDER);
-                Snackbar.make(resLayout,"Unable to use GPS",
-                        Snackbar.LENGTH_SHORT).show();
-                String longit = "43.78956";
-                String lat = "-79.58964";
-                intent.putExtra("long", longit);
-                intent.putExtra("lat", lat);
-                intent.putExtra("postalString", postalString);
-                startActivity(intent);
-            }
-            else
-            {
-                Double longitude = location.getLongitude();
-                Double latitude = location.getLatitude();
-                String longit = Double.toString(longitude);
-                String lat = Double.toString(latitude);
-                intent.putExtra("long", longit);
-                intent.putExtra("lat", lat);
-                intent.putExtra("postalString", postalString);
-                startActivity(intent);
-            }
+            LocationManager lm = (LocationManager)getSystemService(Context.LOCATION_SERVICE);
+            Location location = lm.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+            Double longitude = location.getLongitude();
+            Double latitude = location.getLatitude();
+            String longit = Double.toString(longitude);
+            String lat = Double.toString(latitude);
+            intent.putExtra("long", longit);
+            intent.putExtra("lat", lat);
+            startActivity(intent);
         }
     }
 
