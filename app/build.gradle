@@ -49,3 +49,6 @@ dependencies {
 }
 
 apply plugin: 'com.google.gms.google-services'
+
+//Google Map Plugin
+apply plugin: 'com.google.android.libraries.mapsplatform.secrets-gradle-plugin'

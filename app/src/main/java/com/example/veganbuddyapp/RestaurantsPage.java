@@ -19,6 +19,13 @@ import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -30,7 +37,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 
-public class RestaurantsPage extends AppCompatActivity {
+public class RestaurantsPage extends AppCompatActivity implements OnMapReadyCallback {
 
     private RecyclerView resList;
     private static final String API_KEY = "AIzaSyBEWu4ruJDyvaU3bYQVzrGldbw1eyOlO88";
@@ -45,10 +52,16 @@ public class RestaurantsPage extends AppCompatActivity {
     public String longitude ;
     public String latitude ;
     public String postalString;
+    public GoogleMap gMap;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_restaurants_page);
+        //To make google map ready
+        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
+        mapFragment.getMapAsync(this);
+
+        ///-------------------------------------
         Intent intent = getIntent();
         longitude = intent.getStringExtra("long");
         latitude = intent.getStringExtra("lat");
@@ -127,8 +140,17 @@ public class RestaurantsPage extends AppCompatActivity {
             }
             return resultList;
         }
+//When Googlee Map is Ready
+    @Override
+    public void onMapReady(@NonNull GoogleMap googleMap) {
+        gMap = googleMap;
 
-        //Value Object for the ArrayList
+        LatLng sydney = new LatLng(-34,151);
+        gMap.addMarker(new MarkerOptions().position(sydney).title("Marker in  Sydney"));
+        gMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
+    }
+
+    //Value Object for the ArrayList
         public static class Place {
             String reference;
             String name;
