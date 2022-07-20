@@ -2,32 +2,41 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical">
+    android:layout_marginRight="10dp"
+    android:layout_marginBottom="10dp"
+    android:orientation="vertical"
+    android:textAlignment="center">
 
     <TextView
         android:id="@+id/res_name"
-        android:layout_width="130dp"
-        android:layout_height="32dp"
+        android:layout_width="match_parent"
+        android:layout_height="38dp"
+        android:background="#DDFBBA"
         android:text="TextView"
         android:textAlignment="center"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
 
     <TextView
         android:id="@+id/res_address"
-        android:layout_width="72dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="#FAF1C5"
         android:text="TextView"
         android:textAlignment="center" />
 
     <TextView
         android:id="@+id/res_distance"
-        android:layout_width="88dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="TextView" />
+        android:background="#EFE3BE"
+        android:text="TextView"
+        android:textAlignment="center" />
 
     <TextView
         android:id="@+id/res_review"
-        android:layout_width="83dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="TextView" />
+        android:background="#F6EABF"
+        android:text="TextView"
+        android:textAlignment="center" />
 </LinearLayout>
