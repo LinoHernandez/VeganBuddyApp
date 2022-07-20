@@ -137,7 +137,7 @@ public class MainActivity extends AppCompatActivity implements
 
     @SuppressLint("MissingPermission")
     public void startRestaurants() {
-        sydney = new LatLng(getIntent().getDoubleExtra("latitude",0) ,  getIntent().getDoubleExtra("longitude",0));
+//        sydney = new LatLng(getIntent().getDoubleExtra("latitude",0) ,  getIntent().getDoubleExtra("longitude",0));
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
                 == PackageManager.PERMISSION_GRANTED)
         {
