@@ -21,6 +21,10 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.FirebaseAuth;
@@ -42,6 +46,8 @@ public class MainActivity extends AppCompatActivity implements
     String postalString;
 
     private FirebaseAuth mAuth;
+    LatLng sydney;
+    public GoogleMap gMap;
     public DrawerLayout drawerLayout;
     public ActionBarDrawerToggle actionBarDrawerToggle;
     public NavigationView navigationView;
@@ -131,6 +137,7 @@ public class MainActivity extends AppCompatActivity implements
 
     @SuppressLint("MissingPermission")
     public void startRestaurants() {
+        sydney = new LatLng(getIntent().getDoubleExtra("latitude",0) ,  getIntent().getDoubleExtra("longitude",0));
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
                 == PackageManager.PERMISSION_GRANTED)
         {
@@ -145,6 +152,7 @@ public class MainActivity extends AppCompatActivity implements
             intent.putExtra("lat", lat);
             startActivity(intent);
         }
+
     }
 
     public void showRestaurants(){
@@ -199,6 +207,7 @@ public class MainActivity extends AppCompatActivity implements
             //Request the permission. The result will be received in onRequestPermissionResult().
             ActivityCompat.requestPermissions(this, new String[]
                     {Manifest.permission.ACCESS_FINE_LOCATION},PERMISSION_REQUEST_LOCATION);
+
         }
     }
 

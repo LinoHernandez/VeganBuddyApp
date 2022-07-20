@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.Manifest;
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -25,13 +26,16 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.protobuf.StringValue;
+import com.google.android.gms.location.FusedLocationProviderClient;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -60,7 +64,8 @@ public class RestaurantsPage extends AppCompatActivity implements OnMapReadyCall
     public String latitude;
     public String postalString;
     public GoogleMap gMap;
-    double lat =0, lng =0;
+    private FusedLocationProviderClient fusedLocationProviderClient;
+    LatLng sydney;
     Location gLastLocation;
 
     @Override
@@ -93,7 +98,9 @@ public class RestaurantsPage extends AppCompatActivity implements OnMapReadyCall
             RestaurantAdapter adapter1 = new RestaurantAdapter(this, list);
             resList.setAdapter(adapter1);
         }
+        fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
     }
+
 
     public static ArrayList<Place> search(double lat, double lng, int radius) {
         ArrayList<Place> resultList = null;
@@ -150,11 +157,12 @@ public class RestaurantsPage extends AppCompatActivity implements OnMapReadyCall
         return resultList;
     }
 
+
     //When Google Map is Ready
     @Override
     public void onMapReady(@NonNull GoogleMap googleMap) {
         gMap = googleMap;
-
+        sydney = new LatLng(getIntent().getDoubleExtra("latitude",0) ,  getIntent().getDoubleExtra("longitude",0));
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             // TODO: Consider calling
             //    ActivityCompat#requestPermissions
@@ -167,18 +175,8 @@ public class RestaurantsPage extends AppCompatActivity implements OnMapReadyCall
         }
         gMap.setMyLocationEnabled(true);
 
-        LatLng sydney = new LatLng(lat,lng);
         gMap.addMarker(new MarkerOptions().position(sydney).title("Marker in  Sydney"));
         gMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
-
-
-    }
-
-    public void onConnected(Bundle bundle) {
-        if (gLastLocation != null) {
-            lat = gLastLocation.getLatitude();
-            lng = gLastLocation.getLongitude();
-        }
 
     }
 
