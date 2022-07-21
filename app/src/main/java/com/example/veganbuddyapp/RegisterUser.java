@@ -105,8 +105,8 @@ public class RegisterUser extends AppCompatActivity {
             }
         });
 
-        //Uploading Picture
-
+//        Uploading Picture
+//
 //        ActivityResultLauncher<Intent> startActivityForResult = registerForActivityResult(new
 //                        ActivityResultContracts.StartActivityForResult(),
 //                result -> {
@@ -261,16 +261,16 @@ public class RegisterUser extends AppCompatActivity {
             }
         });
     }
-    //@Override
-    //public void onStart() {
-    //super.onStart();
-    // Check if user is signed in (non-null) and update UI accordingly.
-    //FirebaseUser user = mAuth.getCurrentUser();
-    //if (user == null){
-    //startActivity(new Intent(MainActivity.this, RegisterPage.class));
-    //}
-    //updateUI(currentUser);
-    //}
+//    @Override
+//    public void onStart() {
+//    super.onStart();
+//     Check if user is signed in (non-null) and update UI accordingly.
+//    FirebaseUser user = mAuth.getCurrentUser();
+//    if (user == null){
+//    startActivity(new Intent(MainActivity.this, RegisterPage.class));
+//    }
+//    updateUI(currentUser);
+//    }
 
 
     @Override
