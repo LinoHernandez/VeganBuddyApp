@@ -48,7 +48,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 
-public class RestaurantsPage extends AppCompatActivity implements OnMapReadyCallback {
+public class RestaurantsPage<RestaurantAdapter> extends AppCompatActivity implements OnMapReadyCallback {
 
     private RecyclerView resList;
     private static final String API_KEY = "AIzaSyAvhvD5YBxPNO2L4bsN745AF8Bi8fpze7w";
