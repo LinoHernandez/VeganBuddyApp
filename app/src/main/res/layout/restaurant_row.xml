@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginRight="10dp"
+    android:layout_marginBottom="10dp"
+    android:background="#CEEF90"
+    android:fadeScrollbars="true"
+    android:orientation="vertical"
+    android:textAlignment="center"
+    app:layout_constraintCircleRadius="10dp">
+
+    <TextView
+        android:id="@+id/res_name"
+        android:layout_width="match_parent"
+        android:layout_height="38dp"
+        android:background="#DDFBBA"
+        android:gravity="center"
+        android:text="TextView"
+        android:textAlignment="center"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+        android:textColor="#090909" />
+
+    <TextView
+        android:id="@+id/res_address"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#FAF1C5"
+        android:gravity="center"
+        android:text="TextView"
+        android:textAlignment="center" />
+
+    <TextView
+        android:id="@+id/res_distance"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#FAF1C5"
+        android:gravity="center"
+        android:text="TextView"
+        android:textAlignment="center" />
+
+    <TextView
+        android:id="@+id/res_review"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#FAF1C5"
+        android:gravity="center"
+        android:text="TextView"
+        android:textAlignment="center" />
+</LinearLayout>

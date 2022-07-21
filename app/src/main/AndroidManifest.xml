@@ -17,9 +17,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.VeganBuddyApp"
         tools:targetApi="31">
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyBEWu4ruJDyvaU3bYQVzrGldbw1eyOlO88"/>
         <activity
             android:name=".RideDetails"
-            android:exported="false" />
+            android:exported="true" />
         <activity
             android:name=".SplashScreenActivity"
             android:exported="true"
@@ -32,22 +36,22 @@
         </activity>
         <activity
             android:name=".RestaurantsPage"
-            android:exported="true"></activity>
+            android:exported="true"/>
         <activity
             android:name=".MainActivity"
-            android:exported="true"></activity>
+            android:exported="true"/>
         <activity
             android:name=".RegisterUser"
-            android:exported="true"></activity>
+            android:exported="true"/>
         <activity
             android:name=".ProfilePage"
-            android:exported="true"></activity>
+            android:exported="true"/>
         <activity
             android:name=".PaymentPage"
-            android:exported="true"></activity>
+            android:exported="true"/>
         <activity
             android:name=".LoginPage"
-            android:exported="true"></activity>
+            android:exported="true"/>
     </application>
 
 </manifest>

@@ -6,158 +6,104 @@
     android:layout_height="match_parent"
     tools:context=".RideDetails">
 
-    <Button
-        android:id="@+id/confirmButton"
+    <TextView
+        android:id="@+id/textView6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:text="Confirm"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginStart="57dp"
+        android:layout_marginTop="54dp"
+        android:text="Distance"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/registerMapButton" />
+        app:layout_constraintTop_toBottomOf="@+id/textView8" />
 
-    <Button
-        android:id="@+id/registerMapButton"
+    <TextView
+        android:id="@+id/rideDistance"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:text="Map"
+        android:layout_marginTop="52dp"
+        android:layout_marginEnd="137dp"
+        android:text="TextView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/rideAddress" />
+
+    <TextView
+        android:id="@+id/textView8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="57dp"
+        android:layout_marginTop="130dp"
+        android:text="Ride Address"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/rideAddress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="132dp"
+        android:layout_marginEnd="134dp"
+        android:text="TextView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="56dp"
+        android:layout_marginTop="69dp"
+        android:text="Estimated Time"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView6" />
+
+    <TextView
+        android:id="@+id/estimatedTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="68dp"
+        android:layout_marginEnd="131dp"
+        android:text="TextView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/rideDistance" />
+
+    <TextView
+        android:id="@+id/textView12"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="57dp"
+        android:layout_marginTop="61dp"
+        android:text="Ride Charges"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView10" />
+
+    <TextView
+        android:id="@+id/rideCharges"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="62dp"
+        android:layout_marginEnd="129dp"
+        android:text="TextView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/estimatedTime" />
+
+    <Button
+        android:id="@+id/confirmRide"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="38dp"
+        android:text="Confirm Ride"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/relativeEstimatedLayout" />
+        app:layout_constraintTop_toBottomOf="@+id/rideCharges" />
 
-    <RelativeLayout
-        android:id="@+id/relativeDistancelayout"
-        android:layout_width="413dp"
-        android:layout_height="56dp"
-        android:layout_marginTop="2dp"
+    <Button
+        android:id="@+id/cancelRide"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="26dp"
+        android:text="Cancel"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.484"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/relativeDestinationLayout">
-
-        <TextView
-            android:id="@+id/textDistance"
-            android:layout_width="131dp"
-            android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_marginStart="20dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginRight="20dp"
-            android:breakStrategy="high_quality"
-            android:fontFamily="sans-serif"
-            android:text="Distance"
-            android:textAlignment="center"
-            android:textColor="@color/textColor"
-            android:textSize="14sp"
-            android:textStyle="bold" />
-
-        <EditText
-            android:id="@+id/Distance"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_marginStart="17dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="40dp"
-            android:layout_toEndOf="@+id/textDistance"
-            android:ems="10"
-            android:hint="distance"
-            android:inputType="text"
-            android:paddingLeft="20dp"
-            android:scrollIndicators="left"
-            android:textAlignment="center"
-            android:textColor="@color/textColor"
-            tools:ignore="TouchTargetSizeCheck" />
-    </RelativeLayout>
-
-    <RelativeLayout
-        android:id="@+id/relativeDestinationLayout"
-        android:layout_width="413dp"
-        android:layout_height="56dp"
-        android:layout_marginTop="120dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <TextView
-            android:id="@+id/textDestination"
-            android:layout_width="131dp"
-            android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_marginStart="20dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginRight="20dp"
-            android:breakStrategy="high_quality"
-            android:fontFamily="sans-serif"
-            android:text="Destination"
-            android:textAlignment="center"
-            android:textColor="@color/textColor"
-            android:textSize="14sp"
-            android:textStyle="bold" />
-
-        <EditText
-            android:id="@+id/destination"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_marginStart="17dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="40dp"
-            android:layout_toEndOf="@+id/textDestination"
-            android:ems="10"
-            android:hint="destination"
-            android:inputType="text"
-            android:paddingLeft="20dp"
-            android:scrollIndicators="left"
-            android:textAlignment="center"
-            android:textColor="@color/textColor"
-            tools:ignore="TouchTargetSizeCheck" />
-    </RelativeLayout>
-
-    <RelativeLayout
-        android:id="@+id/relativeEstimatedLayout"
-        android:layout_width="413dp"
-        android:layout_height="56dp"
-        android:layout_marginTop="2dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/relativeDistancelayout">
-
-        <TextView
-            android:id="@+id/textEstimatedPrice"
-            android:layout_width="131dp"
-            android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_marginStart="20dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginRight="20dp"
-            android:breakStrategy="high_quality"
-            android:fontFamily="sans-serif"
-            android:text="Estimated Price"
-            android:textAlignment="center"
-            android:textColor="@color/textColor"
-            android:textSize="14sp"
-            android:textStyle="bold" />
-
-        <EditText
-            android:id="@+id/registerName"
-            android:layout_width="205dp"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_marginStart="17dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="40dp"
-            android:layout_toEndOf="@+id/textEstimatedPrice"
-            android:ems="10"
-            android:hint="estimated price"
-            android:inputType="textPersonName"
-            android:paddingLeft="20dp"
-            android:scrollIndicators="left"
-            android:textAlignment="center"
-            android:textColor="@color/textColor"
-            tools:ignore="TouchTargetSizeCheck" />
-    </RelativeLayout>
+        app:layout_constraintTop_toBottomOf="@+id/confirmRide" />
 </androidx.constraintlayout.widget.ConstraintLayout>
