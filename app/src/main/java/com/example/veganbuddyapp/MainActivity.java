@@ -125,43 +125,24 @@ public class MainActivity extends AppCompatActivity implements
 
     @SuppressLint("MissingPermission")
     public void startRestaurants() {
-//        final Location[] location1 = new Location[1];
-        if (ActivityCompat.checkSelfPermission(this,Manifest.permission.ACCESS_FINE_LOCATION)
+//        sydney = new LatLng(getIntent().getDoubleExtra("latitude",0) ,  getIntent().getDoubleExtra("longitude",0));
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
                 == PackageManager.PERMISSION_GRANTED)
         {
             Intent intent = new Intent(this, RestaurantsPage.class);
-//            fusedLocationProviderClient.getLastLocation().addOnSuccessListener(this, new OnSuccessListener<Location>() {
-//                @Override
-//                public void onSuccess(Location location) {
-//                location1[0] = location;
-//                }
-//            });
-            LocationManager lm = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
-            Location location = lm.getLastKnownLocation(LocationManager.GPS_PROVIDER);
-
-            if(location == null){
-//                location = lm.getCurrentLocation(LocationManager.GPS_PROVIDER);
-                Snackbar.make(resLayout,"Unable to use GPS",
-                        Snackbar.LENGTH_SHORT).show();
-                String longit = "-79.347015";
-                String lat = "43.651070";
-                intent.putExtra("long", longit);
-                intent.putExtra("lat", lat);
-                intent.putExtra("postalString", postalString);
-                startActivity(intent);
-            }
-            else
-            {
-                Double longitude = location.getLongitude();
-                Double latitude = location.getLatitude();
-                String longit = Double.toString(longitude);
-                String lat = Double.toString(latitude);
-                intent.putExtra("long", longit);
-                intent.putExtra("lat", lat);
-                intent.putExtra("postalString", postalString);
-                startActivity(intent);
-            }
+//            LocationManager lm = (LocationManager)getSystemService(Context.LOCATION_SERVICE);
+//            Location location = lm.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+//            Double longitude = location.getLongitude();
+//            Double latitude = location.getLatitude();
+//            String longit = Double.toString(longitude);
+//            String lat = Double.toString(latitude);
+//            intent.putExtra("long", longit);
+//            intent.putExtra("lat", lat);
+            intent.putExtra("postalString",postalString);
+            startActivity(intent);
         }
+
+
     }
 
     public void showRestaurants(){

@@ -2,11 +2,14 @@ package com.example.veganbuddyapp;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.Manifest;
 import android.app.Activity;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.location.Location;
 import android.os.Bundle;
 import android.os.StrictMode;
@@ -20,12 +23,16 @@ import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.google.android.gms.location.FusedLocationProviderClient;
+import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -50,11 +57,16 @@ public class RestaurantsPage extends AppCompatActivity implements OnMapReadyCall
     private static final String TYPE_SEARCH = "/textsearch";
     private static final String OUT_JSON = "/json?";
     private static final String LOG_TAG = "ListRest";
-    public String longitude ;
-    public String latitude ;
+    public Double longitude;
+    public Double latitude;
     public String postalString;
+    private FusedLocationProviderClient fusedLocationProviderClient;
     public GoogleMap gMap;
     ArrayList<Place> list;
+    LatLng latLng;
+    Location location;
+    Task<Location> lastKnownLocation;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -63,27 +75,28 @@ public class RestaurantsPage extends AppCompatActivity implements OnMapReadyCall
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
 
+        //FuesedLocationClient
+        fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
         ///-------------------------------------
         Intent intent = getIntent();
-        longitude = intent.getStringExtra("long");
-        latitude = intent.getStringExtra("lat");
-        postalString = "L6V2B5";
+//        longitude = intent.getStringExtra("long");
+//        latitude = intent.getStringExtra("lat");
+        postalString = intent.getStringExtra("postalString");
 
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
 
-        Double lng = Double.parseDouble(longitude);
-        Double lat = Double.parseDouble(latitude);
+        Double lng = -79.347015;
+        Double lat = 43.651070;
         int radius = 10;
 
 //        ArrayList<Place> list = search(lat, lng, radius);
         list = search(lat, lng, radius);
-        if (list != null)
-        {
+        if (list != null) {
             resList = findViewById(R.id.resListView);
-            resList.setLayoutManager(new GridLayoutManager(this,2,GridLayoutManager.VERTICAL,false));
+            resList.setLayoutManager(new GridLayoutManager(this, 2, GridLayoutManager.VERTICAL, false));
 //            ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_expandable_list_item_1, list);
-            RestaurantAdapter adapter1 = new RestaurantAdapter(this,list);
+            RestaurantAdapter adapter1 = new RestaurantAdapter(this, list);
             resList.setAdapter(adapter1);
         }
     }
@@ -142,12 +155,13 @@ public class RestaurantsPage extends AppCompatActivity implements OnMapReadyCall
 
                 resultList.add(place);
             }
-            } catch (JSONException e) {
-                Log.e(LOG_TAG, "Error processing JSON results", e);
-            }
-            return resultList;
+        } catch (JSONException e) {
+            Log.e(LOG_TAG, "Error processing JSON results", e);
         }
-//When Googlee Map is Ready
+        return resultList;
+    }
+
+    //When Googlee Map is Ready
     @Override
     public void onMapReady(@NonNull GoogleMap googleMap) {
         gMap = googleMap;
@@ -155,16 +169,43 @@ public class RestaurantsPage extends AppCompatActivity implements OnMapReadyCall
 //        LatLng sydney = new LatLng(43.651070,-79.347015);
 //        gMap.addMarker(new MarkerOptions().position(sydney).title("Marker in  Sydney"));
 //        gMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
-        for(int i = 0;i<list.size();i++){
-            LatLng mark = new LatLng(Double.parseDouble(list.get(i).latitude1),Double.parseDouble(list.get(i).longitude1));
+        for (int i = 0; i < list.size(); i++) {
+            LatLng mark = new LatLng(Double.parseDouble(list.get(i).latitude1), Double.parseDouble(list.get(i).longitude1));
             gMap.addMarker(new MarkerOptions().position(mark).title(list.get(i).name));
 
 
 //            gMap.animateCamera(CameraUpdateFactory.zoomIn());
 //            gMap.animateCamera(CameraUpdateFactory.zoomTo(10.0f));
 //            gMap.moveCamera(CameraUpdateFactory.newLatLng(mark));
-            gMap.moveCamera(CameraUpdateFactory.newLatLngZoom(mark,12));
+            gMap.moveCamera(CameraUpdateFactory.newLatLngZoom(mark, 12));
         }
+
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            // TODO: Consider calling
+            //    ActivityCompat#requestPermissions
+            // here to request the missing permissions, and then overriding
+            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+            //                                          int[] grantResults)
+            // to handle the case where the user grants the permission. See the documentation
+            // for ActivityCompat#requestPermissions for more details.
+            return;
+        }
+        else{
+            lastKnownLocation = fusedLocationProviderClient.getLastLocation();
+            lastKnownLocation.addOnCompleteListener(new OnCompleteListener<Location>() {
+                @Override
+                public void onComplete(@NonNull Task<Location> task) {
+                    if(task.isSuccessful()){
+                        location = task.getResult();
+                        if(location!=null){
+                            longitude = location.getLongitude();
+                            latitude = location.getLatitude();
+                        }
+                    }
+                }
+            });
+        }
+        gMap.setMyLocationEnabled(true);
 
     }
 
@@ -211,8 +252,8 @@ public class RestaurantsPage extends AppCompatActivity implements OnMapReadyCall
                     @Override
                     public void onClick(View v) {
                         Intent intent = new Intent(getApplicationContext(), RideDetails.class);
-                        intent.putExtra("long", longitude);
-                        intent.putExtra("lat", latitude);
+                        intent.putExtra("long", restautrantList.get(position).longitude1);
+                        intent.putExtra("lat",restautrantList.get(position).latitude1 );
                         intent.putExtra("postalString", postalString);
                         startActivity(intent);
                     }
