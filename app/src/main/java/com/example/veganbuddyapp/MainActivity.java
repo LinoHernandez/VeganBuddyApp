@@ -46,8 +46,6 @@ public class MainActivity extends AppCompatActivity implements
     String postalString;
 
     private FirebaseAuth mAuth;
-    LatLng sydney;
-    public GoogleMap gMap;
     public DrawerLayout drawerLayout;
     public ActionBarDrawerToggle actionBarDrawerToggle;
     public NavigationView navigationView;
