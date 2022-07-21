@@ -21,6 +21,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.google.android.gms.location.FusedLocationProviderApi;
+import com.google.android.gms.location.FusedLocationProviderClient;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.FirebaseAuth;
@@ -36,6 +39,7 @@ public class MainActivity extends AppCompatActivity implements
 
     private static final int PERMISSION_REQUEST_LOCATION = 0;
     private View resLayout;
+    private FusedLocationProviderClient fusedLocationProviderClient;
 
     EditText postalCode;
     Button searchPc;
@@ -121,15 +125,22 @@ public class MainActivity extends AppCompatActivity implements
 
     @SuppressLint("MissingPermission")
     public void startRestaurants() {
+//        final Location[] location1 = new Location[1];
         if (ActivityCompat.checkSelfPermission(this,Manifest.permission.ACCESS_FINE_LOCATION)
                 == PackageManager.PERMISSION_GRANTED)
         {
             Intent intent = new Intent(this, RestaurantsPage.class);
+//            fusedLocationProviderClient.getLastLocation().addOnSuccessListener(this, new OnSuccessListener<Location>() {
+//                @Override
+//                public void onSuccess(Location location) {
+//                location1[0] = location;
+//                }
+//            });
             LocationManager lm = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
             Location location = lm.getLastKnownLocation(LocationManager.GPS_PROVIDER);
 
             if(location == null){
-                location = lm.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+//                location = lm.getCurrentLocation(LocationManager.GPS_PROVIDER);
                 Snackbar.make(resLayout,"Unable to use GPS",
                         Snackbar.LENGTH_SHORT).show();
                 String longit = "-79.347015";

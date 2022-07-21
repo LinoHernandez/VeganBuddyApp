@@ -158,10 +158,14 @@ public class RestaurantsPage extends AppCompatActivity implements OnMapReadyCall
         for(int i = 0;i<list.size();i++){
             LatLng mark = new LatLng(Double.parseDouble(list.get(i).latitude1),Double.parseDouble(list.get(i).longitude1));
             gMap.addMarker(new MarkerOptions().position(mark).title(list.get(i).name));
-            gMap.animateCamera(CameraUpdateFactory.zoomIn());
-            gMap.moveCamera(CameraUpdateFactory.newLatLng(mark));
 
+
+//            gMap.animateCamera(CameraUpdateFactory.zoomIn());
+//            gMap.animateCamera(CameraUpdateFactory.zoomTo(10.0f));
+//            gMap.moveCamera(CameraUpdateFactory.newLatLng(mark));
+            gMap.moveCamera(CameraUpdateFactory.newLatLngZoom(mark,12));
         }
+
     }
 
     //Value Object for the ArrayList
