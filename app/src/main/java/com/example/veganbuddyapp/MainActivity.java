@@ -142,14 +142,15 @@ public class MainActivity extends AppCompatActivity implements
                 == PackageManager.PERMISSION_GRANTED)
         {
             Intent intent = new Intent(this, RestaurantsPage.class);
-            LocationManager lm = (LocationManager)getSystemService(Context.LOCATION_SERVICE);
-            Location location = lm.getLastKnownLocation(LocationManager.GPS_PROVIDER);
-            Double longitude = location.getLongitude();
-            Double latitude = location.getLatitude();
-            String longit = Double.toString(longitude);
-            String lat = Double.toString(latitude);
-            intent.putExtra("long", longit);
-            intent.putExtra("lat", lat);
+//            LocationManager lm = (LocationManager)getSystemService(Context.LOCATION_SERVICE);
+//            Location location = lm.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+//            Double longitude = location.getLongitude();
+//            Double latitude = location.getLatitude();
+//            String longit = Double.toString(longitude);
+//            String lat = Double.toString(latitude);
+//            intent.putExtra("long", longit);
+//            intent.putExtra("lat", lat);
+            intent.putExtra("postalString",postalString);
             startActivity(intent);
         }
 
