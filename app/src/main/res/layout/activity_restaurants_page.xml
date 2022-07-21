@@ -22,7 +22,6 @@
         android:id="@+id/resListView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="16dp"
         android:background="#30730D"
         android:padding="10dp"
         android:scrollbars="vertical"
