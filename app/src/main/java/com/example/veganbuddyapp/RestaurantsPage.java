@@ -7,9 +7,9 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.Manifest;
-import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.location.Location;
 import android.os.Bundle;
 import android.os.StrictMode;
@@ -23,7 +23,7 @@ import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -63,11 +63,12 @@ public class RestaurantsPage extends AppCompatActivity implements OnMapReadyCall
     public double longitude;
     public double latitude;
     public String postalString;
-    public GoogleMap gMap;
     private FusedLocationProviderClient fusedLocationProviderClient;
-    LatLng sydney;
+    public GoogleMap gMap;
+    ArrayList<Place> list;
+    LatLng latLng;
     Location location;
-    Task<Location> gLastLocation;
+    Task<Location> lastKnownLocation;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -77,6 +78,8 @@ public class RestaurantsPage extends AppCompatActivity implements OnMapReadyCall
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
 
+        //FuesedLocationClient
+        fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
         ///-------------------------------------
         Intent intent = getIntent();
 //        longitude = intent.getStringExtra("long");
@@ -86,14 +89,12 @@ public class RestaurantsPage extends AppCompatActivity implements OnMapReadyCall
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
 
-//        double lng = Double.parseDouble(longitude);
-//        double lat = Double.parseDouble(latitude);
-        double lng = -79.347015;
-        double lat = 43.651070;
-        int radius = 10000;
+        Double lng = -79.347015;
+        Double lat = 43.651070;
+        int radius = 10;
 
-        ArrayList<Place> list = search(lat, lng, radius);
-
+//        ArrayList<Place> list = search(lat, lng, radius);
+        list = search(lat, lng, radius);
         if (list != null) {
             resList = findViewById(R.id.resListView);
             resList.setLayoutManager(new GridLayoutManager(this, 2, GridLayoutManager.VERTICAL, false));
@@ -166,17 +167,21 @@ public class RestaurantsPage extends AppCompatActivity implements OnMapReadyCall
         return resultList;
     }
 
-
-    //When Google Map is Ready
+    //When Googlee Map is Ready
     @Override
     public void onMapReady(@NonNull GoogleMap googleMap) {
         gMap = googleMap;
 
-//        sydney = new LatLng(getIntent().getDoubleExtra("latitude",0) ,  getIntent().getDoubleExtra("longitude",0));
+//        LatLng sydney = new LatLng(43.651070,-79.347015);
+//        gMap.addMarker(new MarkerOptions().position(sydney).title("Marker in  Sydney"));
+//        gMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
+        for (int i = 0; i < list.size(); i++) {
+            LatLng mark = new LatLng(Double.parseDouble(list.get(i).latitude1), Double.parseDouble(list.get(i).longitude1));
+            gMap.addMarker(new MarkerOptions().position(mark).title(list.get(i).name));
 
-        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
+    
 
-            Log.d("rrrrrrrrrrrrrrrrrrrrrrrrrrrrrr", "onMapReady: ");
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             // TODO: Consider calling
             //    ActivityCompat#requestPermissions
             // here to request the missing permissions, and then overriding
@@ -184,34 +189,24 @@ public class RestaurantsPage extends AppCompatActivity implements OnMapReadyCall
             //                                          int[] grantResults)
             // to handle the case where the user grants the permission. See the documentation
             // for ActivityCompat#requestPermissions for more details.
-            gLastLocation = fusedLocationProviderClient.getLastLocation();
-            gLastLocation.addOnCompleteListener(this, new OnCompleteListener<Location>() {
+            return;
+        }
+        else{
+            lastKnownLocation = fusedLocationProviderClient.getLastLocation();
+            lastKnownLocation.addOnCompleteListener(new OnCompleteListener<Location>() {
                 @Override
                 public void onComplete(@NonNull Task<Location> task) {
                     if(task.isSuccessful()){
                         location = task.getResult();
-                        if(location != null){
-
-                            sydney = new LatLng(location.getLatitude(),location.getLongitude());
+                        if(location!=null){
                             longitude = location.getLongitude();
                             latitude = location.getLatitude();
-                            gMap.addMarker(new MarkerOptions().position(sydney).title("Marker in  MyLocation"));
-                            gMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
-                        }
-                        else{
-                            sydney = new LatLng(43.651070,-79.347015);
-                            gMap.addMarker(new MarkerOptions().position(sydney).title("Marker in  Toronto"));
-                            gMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
                         }
                     }
                 }
             });
-            return;
         }
-
         gMap.setMyLocationEnabled(true);
-//        gMap.addMarker(new MarkerOptions().position(sydney).title("Marker in  Sydney"));
-//        gMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
 
     }
 
@@ -259,10 +254,8 @@ public class RestaurantsPage extends AppCompatActivity implements OnMapReadyCall
                     @Override
                     public void onClick(View v) {
                         Intent intent = new Intent(getApplicationContext(), RideDetails.class);
-                        Log.d(String.valueOf(longitude), "onClick: ");
-                        intent.putExtra("long", longitude);
-
-                        intent.putExtra("lat", latitude);
+                        intent.putExtra("long", restautrantList.get(position).longitude1);
+                        intent.putExtra("lat",restautrantList.get(position).latitude1 );
                         intent.putExtra("postalString", postalString);
                         startActivity(intent);
                     }
