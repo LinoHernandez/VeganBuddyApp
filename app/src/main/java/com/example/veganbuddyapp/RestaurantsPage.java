@@ -10,9 +10,7 @@ import android.Manifest;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.location.Location;
-import android.location.LocationManager;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.util.Log;
@@ -117,8 +115,8 @@ public class RestaurantsPage extends AppCompatActivity implements OnMapReadyCall
             StringBuilder sb = new StringBuilder(PLACES_API_BASE);
             sb.append(TYPE_SEARCH);
             sb.append(OUT_JSON);
-            sb.append("location=" + String.valueOf(lat) + "," + String.valueOf(lng));
-            sb.append("&radius=" + String.valueOf(radius));
+            sb.append("location=" + lat + "," + lng);
+            sb.append("&radius=" + radius);
             sb.append("&type=restaurant");
             sb.append("&keyword=veganbase");
             sb.append("&key=" + API_KEY);
@@ -148,14 +146,18 @@ public class RestaurantsPage extends AppCompatActivity implements OnMapReadyCall
             // Create a JSON object hierarchy from the results
             JSONObject jsonObj = new JSONObject(jsonResults.toString());
             JSONArray predsJsonArray = jsonObj.getJSONArray("results");
-
+//            Log.d(String.valueOf(predsJsonArray), "search: ");
             // Extract the descriptions from the results
             resultList = new ArrayList<Place>(predsJsonArray.length());
             for (int i = 0; i < predsJsonArray.length(); i++) {
                 Place place = new Place();
                 place.reference = predsJsonArray.getJSONObject(i).getString("reference");
                 place.name = predsJsonArray.getJSONObject(i).getString("name");
-                place.adr_address = predsJsonArray.getJSONObject(i).getString("formatted_address");
+                place.address = predsJsonArray.getJSONObject(i).getString("formatted_address");
+                place.latitude1 = predsJsonArray.getJSONObject(i).getJSONObject("geometry").getJSONObject("location").getString("lat");
+                place.longitude1 = predsJsonArray.getJSONObject(i).getJSONObject("geometry").getJSONObject("location").getString("lng");
+                System.out.println(predsJsonArray.getJSONObject(i));
+
                 resultList.add(place);
             }
         } catch (JSONException e) {
@@ -218,7 +220,9 @@ public class RestaurantsPage extends AppCompatActivity implements OnMapReadyCall
         public static class Place {
             String reference;
             String name;
-            String adr_address;
+            String address;
+            String latitude1;
+            String longitude1;
 
             public Place(){
             super();
@@ -248,8 +252,8 @@ public class RestaurantsPage extends AppCompatActivity implements OnMapReadyCall
             @Override
             public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
                 holder.res_name.setText(restautrantList.get(position).name);
-                holder.res_address.setText(restautrantList.get(position).adr_address);
-                holder.res_distance.setText("fgggg");
+                holder.res_address.setText(restautrantList.get(position).address);
+                holder.res_distance.setText(restautrantList.get(position).latitude1);
                 holder.res_review.setText("fsddgd");
                 holder.res_name.setOnClickListener(new View.OnClickListener() {
                     @Override

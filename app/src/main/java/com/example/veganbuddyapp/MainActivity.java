@@ -21,10 +21,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
-import com.google.android.gms.maps.CameraUpdateFactory;
-import com.google.android.gms.maps.GoogleMap;
-import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.gms.location.FusedLocationProviderApi;
+import com.google.android.gms.location.FusedLocationProviderClient;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.FirebaseAuth;
@@ -40,6 +39,7 @@ public class MainActivity extends AppCompatActivity implements
 
     private static final int PERMISSION_REQUEST_LOCATION = 0;
     private View resLayout;
+    private FusedLocationProviderClient fusedLocationProviderClient;
 
     EditText postalCode;
     Button searchPc;
