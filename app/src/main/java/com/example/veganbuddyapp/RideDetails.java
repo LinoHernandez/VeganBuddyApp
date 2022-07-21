@@ -2,30 +2,11 @@ package com.example.veganbuddyapp;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Context;
 import android.content.Intent;
-import android.location.Address;
-import android.location.Geocoder;
 import android.location.Location;
 import android.os.Bundle;
-import android.os.StrictMode;
 import android.util.Log;
-import android.widget.ArrayAdapter;
-import android.widget.GridView;
 import android.widget.TextView;
-
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Locale;
 
 public class RideDetails extends AppCompatActivity {
 
@@ -47,31 +28,40 @@ public class RideDetails extends AppCompatActivity {
         charges = findViewById(R.id.rideCharges);
         pCode = findViewById(R.id.rideAddress);
         Intent intent = getIntent();
-        String longitude = intent.getStringExtra("long");
-        String latitude = intent.getStringExtra("lat");
+        double endlongitude = intent.getDoubleExtra("long",0);
+        double endlatitude = intent.getDoubleExtra("lat",0);
+        double startLng = intent.getDoubleExtra("mylng",0);
+        double startlat = intent.getDoubleExtra("mylat",0);
         String postalString = intent.getStringExtra("postalString");
 
 //        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
 //        StrictMode.setThreadPolicy(policy);
 
-        Double lng = Double.parseDouble(longitude);
-        Double lat = Double.parseDouble(latitude);
+//        Double lng = Double.parseDouble(longitude);
+//        Double lat = Double.parseDouble(latitude);
 
-        String locationName = postalString + ", " + "CANADA";
-        Geocoder geoCoder = new Geocoder(this, Locale.getDefault());
-
+//        String locationName = postalString + ", " + "CANADA";
+//        Geocoder geoCoder = new Geocoder(this, Locale.getDefault());
+//
+//        try {
+//            List<Address> address = geoCoder.getFromLocationName(locationName, 1);
+//            double endlatitude = address.get(0).getLatitude();
+//            Log.d("Latitude", latitude);
+//            double endlongitude = address.get(0).getLongitude();
+//            Log.d("Longitude", longitude);
+//            Location.distanceBetween(lng+0,lat+0,endlongitude+0,endlatitude+0,result);
+//            distance1 = result[0];
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
         try {
-            List<Address> address = geoCoder.getFromLocationName(locationName, 1);
-            double endlatitude = address.get(0).getLatitude();
-            Log.d("Latitude", latitude);
-            double endlongitude = address.get(0).getLongitude();
-            Log.d("Longitude", longitude);
-            Location.distanceBetween(lng+0,lat+0,endlongitude+0,endlatitude+0,result);
+            Location.distanceBetween(startLng,startlat,endlongitude,endlatitude,result);
             distance1 = result[0];
-        } catch (IOException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
         Log.d("Distance", String.valueOf(distance1));
+        System.out.println(result);
         distance.setText(String.valueOf(distance1));
         pCode.setText(postalString);
         charges.setText(String.valueOf(distance1));

@@ -10,6 +10,8 @@ import android.Manifest;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.location.Address;
+import android.location.Geocoder;
 import android.location.Location;
 import android.os.Bundle;
 import android.os.StrictMode;
@@ -44,6 +46,8 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Locale;
 
 public class RestaurantsPage extends AppCompatActivity implements OnMapReadyCallback {
 
@@ -59,6 +63,8 @@ public class RestaurantsPage extends AppCompatActivity implements OnMapReadyCall
     private static final String LOG_TAG = "ListRest";
     public Double longitude;
     public Double latitude;
+    public Double lng;
+    public Double lat;
     public String postalString;
     private FusedLocationProviderClient fusedLocationProviderClient;
     public GoogleMap gMap;
@@ -86,9 +92,22 @@ public class RestaurantsPage extends AppCompatActivity implements OnMapReadyCall
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
 
-        Double lng = -79.347015;
-        Double lat = 43.651070;
-        int radius = 10;
+        String locationName = postalString + ", " + "CANADA";
+        Geocoder geoCoder = new Geocoder(this, Locale.getDefault());
+
+        try {
+            List<Address> address = geoCoder.getFromLocationName(locationName, 1);
+             lat = address.get(0).getLatitude();
+//            Log.d("Latitude", latitude);
+             lng = address.get(0).getLongitude();
+//            Log.d("Longitude", longitude);
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+
+        int radius = 50;
 
 //        ArrayList<Place> list = search(lat, lng, radius);
         list = search(lat, lng, radius);
@@ -254,6 +273,8 @@ public class RestaurantsPage extends AppCompatActivity implements OnMapReadyCall
                         Intent intent = new Intent(getApplicationContext(), RideDetails.class);
                         intent.putExtra("long", restautrantList.get(position).longitude1);
                         intent.putExtra("lat",restautrantList.get(position).latitude1 );
+                        intent.putExtra("mylat",latitude);
+                        intent.putExtra("mylng",longitude);
                         intent.putExtra("postalString", postalString);
                         startActivity(intent);
                     }
