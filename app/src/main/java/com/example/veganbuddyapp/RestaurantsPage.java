@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.Manifest;
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -180,7 +181,7 @@ public class RestaurantsPage extends AppCompatActivity implements OnMapReadyCall
             LatLng mark = new LatLng(Double.parseDouble(list.get(i).latitude1), Double.parseDouble(list.get(i).longitude1));
             gMap.addMarker(new MarkerOptions().position(mark).title(list.get(i).name));
 
-    
+        }
 
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             // TODO: Consider calling
@@ -246,7 +247,7 @@ public class RestaurantsPage extends AppCompatActivity implements OnMapReadyCall
             }
 
             @Override
-            public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+            public void onBindViewHolder(@NonNull ViewHolder holder, @SuppressLint("RecyclerView") int position) {
                 holder.res_name.setText(restautrantList.get(position).name);
                 holder.res_address.setText(restautrantList.get(position).address);
                 holder.res_distance.setText(restautrantList.get(position).latitude1);
