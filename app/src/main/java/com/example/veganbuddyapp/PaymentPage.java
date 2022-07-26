@@ -29,7 +29,7 @@ public class PaymentPage extends AppCompatActivity {
     public ActionBarDrawerToggle actionBarDrawerToggle;
     public NavigationView navigationView;
 
-    //-----------
+
     EditText cardNumber, expiry, cvv;
     Button saveCard;
 

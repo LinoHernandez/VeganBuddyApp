@@ -117,10 +117,20 @@ public class MainActivity extends AppCompatActivity implements
 
         searchPc.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onClick(View view) {
                 showRestaurants();
             }
         });
+    }
+
+    public void onStart() {
+        super.onStart();
+        // Check if user is signed in (non-null) and update UI accordingly.
+        FirebaseUser user = mAuth.getCurrentUser();
+        if (user == null){
+            startActivity(new Intent(MainActivity.this, RegisterUser.class));
+        }
+        //updateUI(currentUser);
     }
 
     @SuppressLint("MissingPermission")
@@ -141,7 +151,6 @@ public class MainActivity extends AppCompatActivity implements
             intent.putExtra("postalString",postalString);
             startActivity(intent);
         }
-
 
     }
 
@@ -185,7 +194,7 @@ public class MainActivity extends AppCompatActivity implements
             Snackbar.make(resLayout,"Location access is required to display restaurants near you.",
                     Snackbar.LENGTH_INDEFINITE).setAction("OK", new View.OnClickListener() {
                 @Override
-                public void onClick(View v) {
+                public void onClick(View view) {
                     //Request the permission
                     ActivityCompat.requestPermissions(MainActivity.this, new String[]
                             {Manifest.permission.ACCESS_FINE_LOCATION},PERMISSION_REQUEST_LOCATION);
@@ -197,19 +206,12 @@ public class MainActivity extends AppCompatActivity implements
             //Request the permission. The result will be received in onRequestPermissionResult().
             ActivityCompat.requestPermissions(this, new String[]
                     {Manifest.permission.ACCESS_FINE_LOCATION},PERMISSION_REQUEST_LOCATION);
+
         }
     }
 
 
-    public void onStart() {
-        super.onStart();
-        // Check if user is signed in (non-null) and update UI accordingly.
-        FirebaseUser user = mAuth.getCurrentUser();
-        if (user == null){
-            startActivity(new Intent(MainActivity.this, RegisterUser.class));
-        }
-        //updateUI(currentUser);
-    }
+
 
     //Function to Validate the Postal code
     public void validatePostalCode(String postalString) {

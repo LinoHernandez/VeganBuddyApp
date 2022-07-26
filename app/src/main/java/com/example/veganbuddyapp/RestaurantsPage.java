@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.Manifest;
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -27,6 +28,7 @@ import android.widget.TextView;
 
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
+import com.google.android.gms.location.places.Place;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -34,7 +36,10 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.protobuf.StringValue;
+import com.google.android.gms.location.FusedLocationProviderClient;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -118,7 +123,10 @@ public class RestaurantsPage extends AppCompatActivity implements OnMapReadyCall
             RestaurantAdapter adapter1 = new RestaurantAdapter(this, list);
             resList.setAdapter(adapter1);
         }
+        fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
+
     }
+
 
     public static ArrayList<Place> search(double lat, double lng, int radius) {
         ArrayList<Place> resultList = null;
@@ -168,6 +176,7 @@ public class RestaurantsPage extends AppCompatActivity implements OnMapReadyCall
                 place.reference = predsJsonArray.getJSONObject(i).getString("reference");
                 place.name = predsJsonArray.getJSONObject(i).getString("name");
                 place.address = predsJsonArray.getJSONObject(i).getString("formatted_address");
+                place.openhour = predsJsonArray.getJSONObject(i).getString("opening_hours");
                 place.latitude1 = predsJsonArray.getJSONObject(i).getJSONObject("geometry").getJSONObject("location").getString("lat");
                 place.longitude1 = predsJsonArray.getJSONObject(i).getJSONObject("geometry").getJSONObject("location").getString("lng");
                 System.out.println(predsJsonArray.getJSONObject(i));
@@ -192,11 +201,6 @@ public class RestaurantsPage extends AppCompatActivity implements OnMapReadyCall
             LatLng mark = new LatLng(Double.parseDouble(list.get(i).latitude1), Double.parseDouble(list.get(i).longitude1));
             gMap.addMarker(new MarkerOptions().position(mark).title(list.get(i).name));
 
-
-//            gMap.animateCamera(CameraUpdateFactory.zoomIn());
-//            gMap.animateCamera(CameraUpdateFactory.zoomTo(10.0f));
-//            gMap.moveCamera(CameraUpdateFactory.newLatLng(mark));
-            gMap.moveCamera(CameraUpdateFactory.newLatLngZoom(mark, 12));
         }
 
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
@@ -228,6 +232,7 @@ public class RestaurantsPage extends AppCompatActivity implements OnMapReadyCall
 
     }
 
+
     //Value Object for the ArrayList
         public static class Place {
             String reference;
@@ -235,6 +240,7 @@ public class RestaurantsPage extends AppCompatActivity implements OnMapReadyCall
             String address;
             String latitude1;
             String longitude1;
+            String openhour;
 
             public Place(){
             super();
@@ -262,11 +268,11 @@ public class RestaurantsPage extends AppCompatActivity implements OnMapReadyCall
             }
 
             @Override
-            public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+            public void onBindViewHolder(@NonNull ViewHolder holder, @SuppressLint("RecyclerView") int position) {
                 holder.res_name.setText(restautrantList.get(position).name);
                 holder.res_address.setText(restautrantList.get(position).address);
                 holder.res_distance.setText(restautrantList.get(position).latitude1);
-                holder.res_review.setText("fsddgd");
+                holder.res_review.setText(restautrantList.get(position).openhour);
                 holder.res_name.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {

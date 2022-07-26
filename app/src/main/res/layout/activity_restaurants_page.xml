@@ -19,14 +19,14 @@
         android:layout_height="500dp" />
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/resListView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="16dp"
+        android:background="#30730D"
         android:padding="10dp"
         android:scrollbars="vertical"
         app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-        android:id="@+id/resListView"
         app:spanCount="2"
-        tools:listitem="@layout/restaurant_row"/>
+        tools:listitem="@layout/restaurant_row" />
 
 </LinearLayout>
