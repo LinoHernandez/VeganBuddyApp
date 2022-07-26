@@ -271,8 +271,8 @@ public class RestaurantsPage extends AppCompatActivity implements OnMapReadyCall
                     @Override
                     public void onClick(View v) {
                         Intent intent = new Intent(getApplicationContext(), RideDetails.class);
-                        intent.putExtra("long", restautrantList.get(position).longitude1);
-                        intent.putExtra("lat",restautrantList.get(position).latitude1 );
+                        intent.putExtra("long", Double.parseDouble(restautrantList.get(position).longitude1));
+                        intent.putExtra("lat",Double.parseDouble(restautrantList.get(position).latitude1) );
                         intent.putExtra("mylat",latitude);
                         intent.putExtra("mylng",longitude);
                         intent.putExtra("postalString", postalString);
