@@ -287,7 +287,7 @@ public class RestaurantsPage extends AppCompatActivity implements OnMapReadyCall
                 });
             }
 
-
+//-----------------------------------------------------
             @Override
             public int getItemCount() {
                 return restautrantList.size();
