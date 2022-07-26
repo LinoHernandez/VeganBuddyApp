@@ -176,6 +176,7 @@ public class RestaurantsPage extends AppCompatActivity implements OnMapReadyCall
                 place.reference = predsJsonArray.getJSONObject(i).getString("reference");
                 place.name = predsJsonArray.getJSONObject(i).getString("name");
                 place.address = predsJsonArray.getJSONObject(i).getString("formatted_address");
+                place.openhour = predsJsonArray.getJSONObject(i).getString("opening_hours");
                 place.latitude1 = predsJsonArray.getJSONObject(i).getJSONObject("geometry").getJSONObject("location").getString("lat");
                 place.longitude1 = predsJsonArray.getJSONObject(i).getJSONObject("geometry").getJSONObject("location").getString("lng");
                 System.out.println(predsJsonArray.getJSONObject(i));
@@ -239,6 +240,7 @@ public class RestaurantsPage extends AppCompatActivity implements OnMapReadyCall
             String address;
             String latitude1;
             String longitude1;
+            String openhour;
 
             public Place(){
             super();
@@ -270,7 +272,7 @@ public class RestaurantsPage extends AppCompatActivity implements OnMapReadyCall
                 holder.res_name.setText(restautrantList.get(position).name);
                 holder.res_address.setText(restautrantList.get(position).address);
                 holder.res_distance.setText(restautrantList.get(position).latitude1);
-                holder.res_review.setText("fsddgd");
+                holder.res_review.setText(restautrantList.get(position).openhour);
                 holder.res_name.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
