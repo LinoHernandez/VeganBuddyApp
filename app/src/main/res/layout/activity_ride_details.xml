@@ -11,7 +11,7 @@
         android:id="@+id/textView6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="57dp"
+        android:layout_marginStart="80dp"
         android:layout_marginTop="54dp"
         android:text="Distance"
         android:textAppearance="@style/TextAppearance.AppCompat.Body2"
@@ -20,11 +20,12 @@
 
     <TextView
         android:id="@+id/rideDistance"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="52dp"
-        android:layout_marginEnd="131dp"
+        android:layout_width="94dp"
+        android:layout_height="18dp"
+        android:layout_marginTop="54dp"
+        android:layout_marginEnd="80dp"
         android:text="TextView"
+        android:textAlignment="center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/rideAddress" />
 
@@ -32,7 +33,7 @@
         android:id="@+id/textView8"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="57dp"
+        android:layout_marginStart="80dp"
         android:layout_marginTop="130dp"
         android:text="Ride Address"
         android:textAppearance="@style/TextAppearance.AppCompat.Body2"
@@ -41,11 +42,12 @@
 
     <TextView
         android:id="@+id/rideAddress"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="132dp"
-        android:layout_marginEnd="131dp"
+        android:layout_width="96dp"
+        android:layout_height="19dp"
+        android:layout_marginTop="130dp"
+        android:layout_marginEnd="80dp"
         android:text="TextView"
+        android:textAlignment="center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -53,8 +55,8 @@
         android:id="@+id/textView10"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="56dp"
-        android:layout_marginTop="69dp"
+        android:layout_marginStart="80dp"
+        android:layout_marginTop="54dp"
         android:text="Estimated Time"
         android:textAppearance="@style/TextAppearance.AppCompat.Body2"
         app:layout_constraintStart_toStartOf="parent"
@@ -62,11 +64,12 @@
 
     <TextView
         android:id="@+id/estimatedTime"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="68dp"
-        android:layout_marginEnd="131dp"
+        android:layout_width="94dp"
+        android:layout_height="19dp"
+        android:layout_marginTop="54dp"
+        android:layout_marginEnd="80dp"
         android:text="TextView"
+        android:textAlignment="center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/rideDistance" />
 
@@ -74,8 +77,8 @@
         android:id="@+id/textView12"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="57dp"
-        android:layout_marginTop="61dp"
+        android:layout_marginStart="80dp"
+        android:layout_marginTop="54dp"
         android:text="Ride Charges"
         android:textAppearance="@style/TextAppearance.AppCompat.Body2"
         app:layout_constraintStart_toStartOf="parent"
@@ -83,11 +86,12 @@
 
     <TextView
         android:id="@+id/rideCharges"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="62dp"
-        android:layout_marginEnd="131dp"
+        android:layout_width="93dp"
+        android:layout_height="19dp"
+        android:layout_marginTop="54dp"
+        android:layout_marginEnd="80dp"
         android:text="TextView"
+        android:textAlignment="center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/estimatedTime" />
 
@@ -95,7 +99,7 @@
         android:id="@+id/confirmRide"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="38dp"
+        android:layout_marginTop="40dp"
         android:text="Confirm Ride"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -105,7 +109,7 @@
         android:id="@+id/cancelRide"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="26dp"
+        android:layout_marginTop="20dp"
         android:text="Cancel"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.484"
