@@ -176,7 +176,7 @@ public class RestaurantsPage extends AppCompatActivity implements OnMapReadyCall
                 place.reference = predsJsonArray.getJSONObject(i).getString("reference");
                 place.name = predsJsonArray.getJSONObject(i).getString("name");
                 place.address = predsJsonArray.getJSONObject(i).getString("formatted_address");
-                place.openhour = predsJsonArray.getJSONObject(i).getString("opening_hours");
+                place.openhour = predsJsonArray.getJSONObject(i).getString("open_now");
                 place.latitude1 = predsJsonArray.getJSONObject(i).getJSONObject("geometry").getJSONObject("location").getString("lat");
                 place.longitude1 = predsJsonArray.getJSONObject(i).getJSONObject("geometry").getJSONObject("location").getString("lng");
                 System.out.println(predsJsonArray.getJSONObject(i));
