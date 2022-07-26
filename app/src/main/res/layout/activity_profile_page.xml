@@ -150,9 +150,9 @@
                 android:fontFamily="sans-serif"
                 android:text="Name"
                 android:textAlignment="center"
+                android:textColor="@color/textColor"
                 android:textSize="14sp"
-                android:textStyle="bold"
-                android:textColor="@color/textColor" />
+                android:textStyle="bold" />
 
             <EditText
                 android:id="@+id/nameProfile"
