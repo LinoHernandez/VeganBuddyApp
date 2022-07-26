@@ -21,6 +21,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.google.android.gms.location.FusedLocationProviderApi;
+import com.google.android.gms.location.FusedLocationProviderClient;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.FirebaseAuth;
@@ -36,6 +39,7 @@ public class MainActivity extends AppCompatActivity implements
 
     private static final int PERMISSION_REQUEST_LOCATION = 0;
     private View resLayout;
+    private FusedLocationProviderClient fusedLocationProviderClient;
 
     EditText postalCode;
     Button searchPc;
@@ -113,46 +117,41 @@ public class MainActivity extends AppCompatActivity implements
 
         searchPc.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onClick(View view) {
                 showRestaurants();
             }
         });
     }
 
+    public void onStart() {
+        super.onStart();
+        // Check if user is signed in (non-null) and update UI accordingly.
+        FirebaseUser user = mAuth.getCurrentUser();
+        if (user == null){
+            startActivity(new Intent(MainActivity.this, RegisterUser.class));
+        }
+        //updateUI(currentUser);
+    }
+
     @SuppressLint("MissingPermission")
     public void startRestaurants() {
-        if (ActivityCompat.checkSelfPermission(this,Manifest.permission.ACCESS_FINE_LOCATION)
+//        sydney = new LatLng(getIntent().getDoubleExtra("latitude",0) ,  getIntent().getDoubleExtra("longitude",0));
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
                 == PackageManager.PERMISSION_GRANTED)
         {
             Intent intent = new Intent(this, RestaurantsPage.class);
-            LocationManager lm =
-                    (LocationManager) getSystemService(Context.LOCATION_SERVICE);
-            Location location =
-                    lm.getLastKnownLocation(LocationManager.GPS_PROVIDER);
-
-            if(location == null){
-                location = lm.getLastKnownLocation(LocationManager.GPS_PROVIDER);
-                Snackbar.make(resLayout,"Unable to use GPS",
-                        Snackbar.LENGTH_SHORT).show();
-                String longit = "43.78956";
-                String lat = "-79.58964";
-                intent.putExtra("long", longit);
-                intent.putExtra("lat", lat);
-                intent.putExtra("postalString", postalString);
-                startActivity(intent);
-            }
-            else
-            {
-                Double longitude = location.getLongitude();
-                Double latitude = location.getLatitude();
-                String longit = Double.toString(longitude);
-                String lat = Double.toString(latitude);
-                intent.putExtra("long", longit);
-                intent.putExtra("lat", lat);
-                intent.putExtra("postalString", postalString);
-                startActivity(intent);
-            }
+//            LocationManager lm = (LocationManager)getSystemService(Context.LOCATION_SERVICE);
+//            Location location = lm.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+//            Double longitude = location.getLongitude();
+//            Double latitude = location.getLatitude();
+//            String longit = Double.toString(longitude);
+//            String lat = Double.toString(latitude);
+//            intent.putExtra("long", longit);
+//            intent.putExtra("lat", lat);
+            intent.putExtra("postalString",postalString);
+            startActivity(intent);
         }
+
     }
 
     public void showRestaurants(){
@@ -195,7 +194,7 @@ public class MainActivity extends AppCompatActivity implements
             Snackbar.make(resLayout,"Location access is required to display restaurants near you.",
                     Snackbar.LENGTH_INDEFINITE).setAction("OK", new View.OnClickListener() {
                 @Override
-                public void onClick(View v) {
+                public void onClick(View view) {
                     //Request the permission
                     ActivityCompat.requestPermissions(MainActivity.this, new String[]
                             {Manifest.permission.ACCESS_FINE_LOCATION},PERMISSION_REQUEST_LOCATION);
@@ -207,19 +206,12 @@ public class MainActivity extends AppCompatActivity implements
             //Request the permission. The result will be received in onRequestPermissionResult().
             ActivityCompat.requestPermissions(this, new String[]
                     {Manifest.permission.ACCESS_FINE_LOCATION},PERMISSION_REQUEST_LOCATION);
+
         }
     }
 
 
-    public void onStart() {
-        super.onStart();
-        // Check if user is signed in (non-null) and update UI accordingly.
-        FirebaseUser user = mAuth.getCurrentUser();
-        if (user == null){
-            startActivity(new Intent(MainActivity.this, RegisterUser.class));
-        }
-        //updateUI(currentUser);
-    }
+
 
     //Function to Validate the Postal code
     public void validatePostalCode(String postalString) {
