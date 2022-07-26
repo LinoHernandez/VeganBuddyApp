@@ -38,7 +38,8 @@
                 android:text="Password"
                 android:textAlignment="center"
                 android:textColor="@color/textColor"
-                android:textSize="14sp" />
+                android:textSize="14sp"
+                android:textStyle="bold" />
 
             <EditText
                 android:id="@+id/editTextTextPassword"
@@ -84,7 +85,8 @@
                 android:text="Email"
                 android:textAlignment="center"
                 android:textColor="@color/textColor"
-                android:textSize="14sp" />
+                android:textSize="14sp"
+                android:textStyle="bold" />
 
             <EditText
                 android:id="@+id/editTextTextEmailAddress"
