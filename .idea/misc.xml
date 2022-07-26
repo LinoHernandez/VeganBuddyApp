@@ -43,13 +43,14 @@
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.219439697265625" />
         <entry key="app/src/main/res/layout/activity_maps.xml" value="0.1431159420289855" />
         <entry key="app/src/main/res/layout/activity_profile_page.xml" value="0.24174652099609376" />
+        <entry key="app/src/main/res/layout/activity_register_user.xml" value="0.3308365254658213" />
         <entry key="app/src/main/res/layout/activity_restaurants_page.xml" value="0.284" />
-        <entry key="app/src/main/res/layout/activity_ride_details.xml" value="0.4822505563929461" />
+        <entry key="app/src/main/res/layout/activity_ride_details.xml" value="0.1256099313929461" />
         <entry key="app/src/main/res/layout/activity_splash_screen.xml" value="0.1381340579710145" />
         <entry key="app/src/main/res/layout/fragment_log_screen.xml" value="0.11145833333333334" />
         <entry key="app/src/main/res/layout/fragment_payment_screen.xml" value="0.11145833333333334" />
         <entry key="app/src/main/res/layout/fragment_profile_screen.xml" value="0.11145833333333334" />
-        <entry key="app/src/main/res/layout/login_screen.xml" value="0.1431159420289855" />
+        <entry key="app/src/main/res/layout/login_screen.xml" value="0.30983804896257927" />
         <entry key="app/src/main/res/layout/logregister_screen.xml" value="0.2596815961187079" />
         <entry key="app/src/main/res/layout/payment_page.xml" value="0.1598114013671875" />
         <entry key="app/src/main/res/layout/restaurant_row.xml" value="0.28370786516853935" />
