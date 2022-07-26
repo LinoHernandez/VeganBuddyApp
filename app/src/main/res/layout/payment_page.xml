@@ -41,9 +41,10 @@
                 android:layout_marginBottom="19dp"
                 android:layout_toStartOf="@+id/cardNumber"
                 android:breakStrategy="high_quality"
-                android:fontFamily="sans-serif"
+                android:fontFamily="serif"
                 android:text="Card Number"
                 android:textAlignment="center"
+                android:textColor="#000000"
                 android:textStyle="bold" />
 
             <EditText
@@ -104,6 +105,7 @@
                 android:layout_marginEnd="140dp"
                 android:layout_marginBottom="17dp"
                 android:layout_toStartOf="@+id/expiry"
+                android:fontFamily="serif"
                 android:text="Expiry"
                 android:textAlignment="center"
                 android:textColor="#000000"
@@ -131,8 +133,10 @@
                 android:layout_marginEnd="152dp"
                 android:layout_marginBottom="13dp"
                 android:layout_toStartOf="@+id/cvv"
+                android:fontFamily="serif"
                 android:text="CVV"
                 android:textAlignment="center"
+                android:textColor="#000000"
                 android:textStyle="bold" />
 
             <EditText
@@ -158,10 +162,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Save Card"
+            android:textColor="#FFFFFF"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/relativeLayout2" />
+            app:layout_constraintTop_toBottomOf="@+id/relativeLayout2"
+            app:layout_constraintVertical_bias="0.163" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
