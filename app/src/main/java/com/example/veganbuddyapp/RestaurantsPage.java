@@ -131,10 +131,12 @@ public class RestaurantsPage extends AppCompatActivity implements OnMapReadyCall
     public static ArrayList<Place> search(double lat, double lng, int radius) {
         ArrayList<Place> resultList = null;
 
+
         HttpURLConnection conn = null;
         StringBuilder jsonResults = new StringBuilder();
         try {
             StringBuilder sb = new StringBuilder(PLACES_API_BASE);
+            //sb.append(TYPE_DETAILS);
             sb.append(TYPE_SEARCH);
             sb.append(OUT_JSON);
             sb.append("location=" + lat + "," + lng);
@@ -176,7 +178,8 @@ public class RestaurantsPage extends AppCompatActivity implements OnMapReadyCall
                 place.reference = predsJsonArray.getJSONObject(i).getString("reference");
                 place.name = predsJsonArray.getJSONObject(i).getString("name");
                 place.address = predsJsonArray.getJSONObject(i).getString("formatted_address");
-                place.openhour = predsJsonArray.getJSONObject(i).getString("open_now");
+                System.out.println(predsJsonArray.getJSONObject(i).getJSONObject("opening_hours"));
+
                 place.latitude1 = predsJsonArray.getJSONObject(i).getJSONObject("geometry").getJSONObject("location").getString("lat");
                 place.longitude1 = predsJsonArray.getJSONObject(i).getJSONObject("geometry").getJSONObject("location").getString("lng");
                 System.out.println(predsJsonArray.getJSONObject(i));
@@ -240,7 +243,8 @@ public class RestaurantsPage extends AppCompatActivity implements OnMapReadyCall
             String address;
             String latitude1;
             String longitude1;
-            String openhour;
+            String openNow;
+            String phone;
 
             public Place(){
             super();
@@ -271,8 +275,9 @@ public class RestaurantsPage extends AppCompatActivity implements OnMapReadyCall
             public void onBindViewHolder(@NonNull ViewHolder holder, @SuppressLint("RecyclerView") int position) {
                 holder.res_name.setText(restautrantList.get(position).name);
                 holder.res_address.setText(restautrantList.get(position).address);
-                holder.res_distance.setText(restautrantList.get(position).latitude1);
-                holder.res_review.setText(restautrantList.get(position).openhour);
+                holder.res_distance.setText(restautrantList.get(position).phone);
+                holder.res_review.setText(restautrantList.get(position).openNow);
+                if
                 holder.res_name.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
