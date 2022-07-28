@@ -32,6 +32,8 @@ public class RideDetails extends AppCompatActivity {
         double endlatitude = intent.getDoubleExtra("lat",0);
         double startLng = intent.getDoubleExtra("mylng",0);
         double startlat = intent.getDoubleExtra("mylat",0);
+        System.out.println(startlat+" "+startLng);
+        System.out.println(endlatitude+" "+endlongitude);
         String postalString = intent.getStringExtra("postalString");
 
 //        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
@@ -55,13 +57,13 @@ public class RideDetails extends AppCompatActivity {
 //            e.printStackTrace();
 //        }
         try {
-            Location.distanceBetween(startLng,startlat,endlongitude,endlatitude,result);
-            distance1 = result[0];
+            Location.distanceBetween(startlat+0,startLng+0,endlatitude+0,endlongitude+0,result);
+            distance1 = result[0]/1000;
         } catch (Exception e) {
             e.printStackTrace();
         }
         Log.d("Distance", String.valueOf(distance1));
-        System.out.println(result);
+        System.out.println(result[0]);
         distance.setText(String.valueOf(distance1));
         pCode.setText(postalString);
         charges.setText(String.valueOf(distance1));
