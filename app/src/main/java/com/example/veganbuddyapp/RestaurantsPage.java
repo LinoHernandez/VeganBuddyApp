@@ -90,8 +90,6 @@ public class RestaurantsPage extends AppCompatActivity implements OnMapReadyCall
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
         ///-------------------------------------
         Intent intent = getIntent();
-//        longitude = intent.getStringExtra("long");
-//        latitude = intent.getStringExtra("lat");
         postalString = intent.getStringExtra("postalString");
 
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
@@ -136,13 +134,13 @@ public class RestaurantsPage extends AppCompatActivity implements OnMapReadyCall
         StringBuilder jsonResults = new StringBuilder();
         try {
             StringBuilder sb = new StringBuilder(PLACES_API_BASE);
-            //sb.append(TYPE_DETAILS);
             sb.append(TYPE_SEARCH);
             sb.append(OUT_JSON);
             sb.append("location=" + lat + "," + lng);
             sb.append("&radius=" + radius);
             sb.append("&type=restaurant");
             sb.append("&keyword=veganbase");
+            sb.append("&opennow");
             sb.append("&key=" + API_KEY);
 
             URL url = new URL(sb.toString());
@@ -178,9 +176,6 @@ public class RestaurantsPage extends AppCompatActivity implements OnMapReadyCall
                 place.reference = predsJsonArray.getJSONObject(i).getString("reference");
                 place.name = predsJsonArray.getJSONObject(i).getString("name");
                 place.address = predsJsonArray.getJSONObject(i).getString("formatted_address");
-                //System.out.println(predsJsonArray.getJSONObject(i).getJSONObject("opening_hours"));
-                place.openNow = predsJsonArray.getJSONObject(i).getString("business_status");
-
                 place.latitude1 = predsJsonArray.getJSONObject(i).getJSONObject("geometry").getJSONObject("location").getString("lat");
                 place.longitude1 = predsJsonArray.getJSONObject(i).getJSONObject("geometry").getJSONObject("location").getString("lng");
                 System.out.println(predsJsonArray.getJSONObject(i));
@@ -244,8 +239,6 @@ public class RestaurantsPage extends AppCompatActivity implements OnMapReadyCall
             String address;
             String latitude1;
             String longitude1;
-            String openNow;
-            String phone;
 
             public Place(){
             super();
@@ -276,8 +269,8 @@ public class RestaurantsPage extends AppCompatActivity implements OnMapReadyCall
             public void onBindViewHolder(@NonNull ViewHolder holder, @SuppressLint("RecyclerView") int position) {
                 holder.res_name.setText(restautrantList.get(position).name);
                 holder.res_address.setText(restautrantList.get(position).address);
-                holder.res_distance.setText(restautrantList.get(position).phone);
-                holder.res_review.setText(restautrantList.get(position).openNow);
+                //holder.res_distance.setText(restautrantList.get(position).phone);
+                //holder.res_review.setText(restautrantList.get(position).openNow);
                 /// if
                 holder.res_name.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -300,13 +293,13 @@ public class RestaurantsPage extends AppCompatActivity implements OnMapReadyCall
             }
             class ViewHolder extends RecyclerView.ViewHolder {
 
-//                TextView categoryNameTV;
+
                 TextView res_name, res_address, res_distance, res_review;
 
                 public ViewHolder(@NonNull View itemView) {
                     super(itemView);
 
-//                    categoryNameTV = itemView.findViewById(R.id.categoryNameTV);
+
                     res_name = itemView.findViewById(R.id.res_name);
                     res_address = itemView.findViewById(R.id.res_address);
                     res_distance = itemView.findViewById(R.id.res_distance);
