@@ -299,8 +299,7 @@ public class RestaurantsPage extends AppCompatActivity implements OnMapReadyCall
 
                 public ViewHolder(@NonNull View itemView) {
                     super(itemView);
-
-//                    categoryNameTV = itemView.findViewById(R.id.categoryNameTV);
+                    
                     res_name = itemView.findViewById(R.id.res_name);
                     res_address = itemView.findViewById(R.id.res_address);
                     res_distance = itemView.findViewById(R.id.res_distance);

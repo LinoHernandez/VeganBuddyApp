@@ -48,14 +48,14 @@
         android:textColor="#000000"
         android:textStyle="normal" />
 
-    <TextView
-        android:id="@+id/res_review"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="2dp"
-        android:background="#FAF1C5"
-        android:gravity="center"
-        android:text="TextView"
-        android:textAlignment="center"
-        android:textStyle="normal" />
+<!--    <TextView-->
+<!--        android:id="@+id/res_review"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginTop="2dp"-->
+<!--        android:background="#FAF1C5"-->
+<!--        android:gravity="center"-->
+<!--        android:text="TextView"-->
+<!--        android:textAlignment="center"-->
+<!--        android:textStyle="normal" />-->
 </LinearLayout>
