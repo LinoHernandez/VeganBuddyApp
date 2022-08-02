@@ -173,9 +173,13 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
+
+
     <!--this the navigation view which draws
         and shows the navigation drawer-->
     <!--include the menu created in the menu folder-->
+
+
     <com.google.android.material.navigation.NavigationView
         android:id="@+id/navView"
         android:layout_width="wrap_content"
