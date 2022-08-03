@@ -72,6 +72,8 @@ public class RestaurantsPage extends AppCompatActivity implements OnMapReadyCall
     public Double lat;
     public String postalString;
     private FusedLocationProviderClient fusedLocationProviderClient;
+    float[] result = new float[1];
+    float distance1;
     public GoogleMap gMap;
     ArrayList<Place> list;
     LatLng latLng;
@@ -267,17 +269,23 @@ public class RestaurantsPage extends AppCompatActivity implements OnMapReadyCall
 
             @Override
             public void onBindViewHolder(@NonNull ViewHolder holder, @SuppressLint("RecyclerView") int position) {
+                try {
+                    Location.distanceBetween(latitude+0,longitude+0,Double.parseDouble(restautrantList.get(position).latitude1)+0,Double.parseDouble(restautrantList.get(position).longitude1)+0,result);
+                    distance1 = result[0]/1000;
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
                 holder.res_name.setText(restautrantList.get(position).name);
                 holder.res_address.setText(restautrantList.get(position).address);
+                holder.res_distance.setText(String.valueOf(distance1));
                 //holder.res_distance.setText(restautrantList.get(position).phone);
                 //holder.res_review.setText(restautrantList.get(position).openNow);
-                /// if
                 holder.res_name.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         Intent intent = new Intent(getApplicationContext(), RideDetails.class);
                         intent.putExtra("long", Double.parseDouble(restautrantList.get(position).longitude1));
-                        intent.putExtra("lat",Double.parseDouble(restautrantList.get(position).latitude1) );
+                        intent.putExtra("lat",Double.parseDouble(restautrantList.get(position).latitude1));
                         intent.putExtra("mylat",latitude);
                         intent.putExtra("mylng",longitude);
                         intent.putExtra("postalString", postalString);
@@ -285,6 +293,7 @@ public class RestaurantsPage extends AppCompatActivity implements OnMapReadyCall
                     }
                 });
             }
+
 
 //-----------------------------------------------------
             @Override
@@ -302,7 +311,7 @@ public class RestaurantsPage extends AppCompatActivity implements OnMapReadyCall
                     res_name = itemView.findViewById(R.id.res_name);
                     res_address = itemView.findViewById(R.id.res_address);
                     res_distance = itemView.findViewById(R.id.res_distance);
-                    res_review = itemView.findViewById(R.id.res_review);
+                    //res_review = itemView.findViewById(R.id.res_review);
                 }
             }
         }
