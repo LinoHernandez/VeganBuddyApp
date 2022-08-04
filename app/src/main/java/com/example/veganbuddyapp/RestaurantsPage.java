@@ -142,7 +142,7 @@ public class RestaurantsPage extends AppCompatActivity implements OnMapReadyCall
             sb.append("&type=restaurant");
             sb.append("&keyword=veganbase");
             sb.append("&key=" + API_KEY);
-
+            System.out.println("String for https "+sb.toString());
             URL url = new URL(sb.toString());
             conn = (HttpURLConnection) url.openConnection();
             InputStreamReader in = new InputStreamReader(conn.getInputStream());
@@ -277,6 +277,7 @@ public class RestaurantsPage extends AppCompatActivity implements OnMapReadyCall
                     @Override
                     public void onClick(View v) {
                         Intent intent = new Intent(getApplicationContext(), RideDetails.class);
+                        System.out.println(restautrantList.get(position).latitude1);
                         intent.putExtra("long", Double.parseDouble(restautrantList.get(position).longitude1));
                         intent.putExtra("lat",Double.parseDouble(restautrantList.get(position).latitude1) );
                         intent.putExtra("mylat",latitude);

@@ -13,7 +13,17 @@ public class RideDetails extends AppCompatActivity {
 
     private static final String API_KEY = "AIzaSyAvhvD5YBxPNO2L4bsN745AF8Bi8fpze7w";
 
-    private static final String PLACES_API_BASE = "https://maps.googleapis.com/maps/api/place";
+    private static final String DIRECTIONS_API_BASE = "https://maps.googleapis.com/maps/api/directions";
+
+
+
+    private static  String ORIGIN = "";
+    private static  String DESTINATION = "";
+    private static final String TYPE_SEARCH = "/textsearch";
+    private static final String OUT_JSON = "/json?";
+    private static final String LOG_TAG = "ListRest";
+
+
 
     float[] result = new float[1];
     public TextView distance, charges, pCode;
@@ -35,6 +45,15 @@ public class RideDetails extends AppCompatActivity {
         System.out.println(startlat+" "+startLng);
         System.out.println(endlatitude+" "+endlongitude);
         String postalString = intent.getStringExtra("postalString");
+        ORIGIN = startlat+","+startLng;
+        DESTINATION = endlatitude+","+endlongitude;
+
+        StringBuilder sb = new StringBuilder(DIRECTIONS_API_BASE);
+        sb.append(OUT_JSON);
+        sb.append("o");
+        sb.append(DESTINATION);
+
+        System.out.println(sb.toString());
 
 //        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
 //        StrictMode.setThreadPolicy(policy);
@@ -64,9 +83,9 @@ public class RideDetails extends AppCompatActivity {
         }
         Log.d("Distance", String.valueOf(distance1));
         System.out.println(result[0]);
-        distance.setText(String.valueOf(distance1));
+        distance.setText(String.valueOf(Math.round(distance1))+"KM");
         pCode.setText(postalString);
-        charges.setText(String.valueOf(distance1));
+        charges.setText(String.valueOf(Math.round(distance1))+"CAD");
 
     }
 }

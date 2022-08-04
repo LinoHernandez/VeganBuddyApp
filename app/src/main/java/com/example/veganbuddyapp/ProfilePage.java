@@ -6,13 +6,21 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -20,6 +28,8 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 
 
 import java.util.Objects;
@@ -32,9 +42,11 @@ public class ProfilePage extends AppCompatActivity {
     public DrawerLayout drawerLayout;
     public ActionBarDrawerToggle actionBarDrawerToggle;
     public NavigationView navigationView;
+    public Uri imageUri;
 
     //profile page objects
     EditText nameProfile, emailProfile, phoneProfile;
+    ImageView getImage;
     Button editProfile;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,9 +58,22 @@ public class ProfilePage extends AppCompatActivity {
         emailProfile = findViewById(R.id.emailProfile);
         phoneProfile = findViewById(R.id.phoneProfile);
         editProfile = findViewById(R.id.editProfile);
+        getImage = findViewById(R.id.setPicture);
 
         navigationView = findViewById(R.id.navView);
+        //Showing Profile Image
+        StorageReference storageReference = FirebaseStorage.getInstance().getReference();
 
+        storageReference.child("Images").child(mAuth.getUid()).child("ProfilePic").getDownloadUrl().addOnCompleteListener(new OnCompleteListener<Uri>() {
+            @Override
+            public void onComplete(@NonNull Task<Uri> task) {
+                if(task.isSuccessful()){
+                    imageUri = task.getResult();
+
+                    Glide.with(getApplicationContext()).load(imageUri).into(getImage);
+                }
+            }
+        });
 
         //Showing data in profile page
         databaseReference = FirebaseDatabase.getInstance().getReference().child("Users").child(mAuth.getUid());
