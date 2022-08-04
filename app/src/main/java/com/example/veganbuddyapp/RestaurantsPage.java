@@ -277,7 +277,7 @@ public class RestaurantsPage extends AppCompatActivity implements OnMapReadyCall
                 }
                 holder.res_name.setText(restautrantList.get(position).name);
                 holder.res_address.setText(restautrantList.get(position).address);
-                holder.res_distance.setText(String.valueOf(distance1));
+                holder.res_distance.setText(String.valueOf(Math.round(distance1)));
                 //holder.res_distance.setText(restautrantList.get(position).phone);
                 //holder.res_review.setText(restautrantList.get(position).openNow);
                 holder.res_name.setOnClickListener(new View.OnClickListener() {
@@ -289,6 +289,8 @@ public class RestaurantsPage extends AppCompatActivity implements OnMapReadyCall
                         intent.putExtra("mylat",latitude);
                         intent.putExtra("mylng",longitude);
                         intent.putExtra("postalString", postalString);
+                        intent.putExtra("distance", distance1);
+                        System.out.println(distance1);
                         startActivity(intent);
                     }
                 });

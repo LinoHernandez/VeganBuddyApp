@@ -32,8 +32,10 @@ public class RideDetails extends AppCompatActivity {
         double endlatitude = intent.getDoubleExtra("lat",0);
         double startLng = intent.getDoubleExtra("mylng",0);
         double startlat = intent.getDoubleExtra("mylat",0);
-        System.out.println(startlat+" "+startLng);
-        System.out.println(endlatitude+" "+endlongitude);
+        distance1 = intent.getFloatExtra("distance",0);
+
+        System.out.println(distance1);
+//        System.out.println(endlatitude+" "+endlongitude);
         String postalString = intent.getStringExtra("postalString");
 
 //        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
@@ -56,17 +58,17 @@ public class RideDetails extends AppCompatActivity {
 //        } catch (IOException e) {
 //            e.printStackTrace();
 //        }
-        try {
-            Location.distanceBetween(startlat+0,startLng+0,endlatitude+0,endlongitude+0,result);
-            distance1 = result[0]/1000;
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+//        try {
+//            Location.distanceBetween(startlat+0,startLng+0,endlatitude+0,endlongitude+0,result);
+//            distance1 = result[0]/1000;
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
         Log.d("Distance", String.valueOf(distance1));
-        System.out.println(result[0]);
-        distance.setText(String.valueOf(distance1));
+//        System.out.println(result[0]);
+        distance.setText(String.valueOf(Math.round(distance1)));
         pCode.setText(postalString);
-        charges.setText(String.valueOf(distance1));
+        charges.setText(String.valueOf(Math.round(distance1)));
 
     }
 }
