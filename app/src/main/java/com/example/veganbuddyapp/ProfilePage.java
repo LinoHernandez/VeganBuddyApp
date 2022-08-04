@@ -6,7 +6,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.content.Intent;
+<<<<<<< Updated upstream
 import android.graphics.Bitmap;
+=======
+>>>>>>> Stashed changes
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -17,9 +20,13 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+<<<<<<< Updated upstream
 import com.bumptech.glide.Glide;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+=======
+import com.google.android.gms.tasks.OnCompleteListener;
+>>>>>>> Stashed changes
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
@@ -43,7 +50,10 @@ public class ProfilePage extends AppCompatActivity {
     public ActionBarDrawerToggle actionBarDrawerToggle;
     public NavigationView navigationView;
     public Uri imageUri;
+<<<<<<< Updated upstream
 
+=======
+>>>>>>> Stashed changes
     //profile page objects
     EditText nameProfile, emailProfile, phoneProfile;
     ImageView getImage;
@@ -64,6 +74,7 @@ public class ProfilePage extends AppCompatActivity {
         //Showing Profile Image
         StorageReference storageReference = FirebaseStorage.getInstance().getReference();
 
+<<<<<<< Updated upstream
         storageReference.child("Images").child(mAuth.getUid()).child("ProfilePic").getDownloadUrl().addOnCompleteListener(new OnCompleteListener<Uri>() {
             @Override
             public void onComplete(@NonNull Task<Uri> task) {
@@ -72,6 +83,16 @@ public class ProfilePage extends AppCompatActivity {
 
                     Glide.with(getApplicationContext()).load(imageUri).into(getImage);
                 }
+=======
+        StorageReference storageReference = FirebaseStorage.getInstance().getReference();
+
+        storageReference.child("Images").child(mAuth.getUid()).child("ProfilePic").getDownloadUrl().addOnCompleteListener(new OnCompleteListener<Uri>() {
+            @Override
+            public void onComplete(@NonNull Task<Uri> task) {
+                imageUri = task.getResult();
+                System.out.println(imageUri);
+                
+>>>>>>> Stashed changes
             }
         });
 
